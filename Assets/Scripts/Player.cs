@@ -47,11 +47,8 @@ public class Player : MonoBehaviour
             }
             else
             {
-                StartCoroutine(FireSingle());
+                StartCoroutine(FireSingle());                                                                           //  Stopcoroutine (routinename) to stop specific
             }
-
-
-
 
         }
                 
@@ -59,7 +56,7 @@ public class Player : MonoBehaviour
 
     IEnumerator FireSingle()
     {
-        int bullitcount = FindObjectsOfType<laser>().Length;                                                        // how many laser are alive ? > dependant on bullitLifeTime = 1.5f; 
+        int bullitcount = FindObjectsOfType<laser>().Length;                                                            // how many laser are alive ? > dependant on bullitLifeTime = 1.5f; 
         if (bullitcount < maxNumberOfBullitsOnScreen)
         {
             FirePrimaryLaser();
@@ -90,7 +87,7 @@ public class Player : MonoBehaviour
         GameObject laser = Instantiate(
                         laserPrefab,
                         transform.position,
-                        Quaternion.identity) as GameObject;                                                                     // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
+                        Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
     }
 
@@ -103,8 +100,6 @@ public class Player : MonoBehaviour
                
         transform.position = new Vector2(newXPos, newYPos);                                                              // Update player movement every frame
 
-
-
     }
      private void SetupMoveBoundaries()
         {
@@ -113,7 +108,6 @@ public class Player : MonoBehaviour
             xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x + movementRestrictionX * -1;                   // Since we are interested in X, only the other axis can be left zero
             yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + movementRestrictionY_Bottom;                          
             yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - movementRestrictionY_Top;                            
-
 
         }
 

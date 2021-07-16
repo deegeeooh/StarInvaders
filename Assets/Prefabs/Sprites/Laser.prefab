@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7522099141675168872}
   - component: {fileID: -5128532996875137196}
   - component: {fileID: -3809658402403283768}
+  - component: {fileID: -5460503195189374359}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9c7e4d13323ee4f8fa8cd6860a470e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullitLifeTime: 1.34
+  bullitLifeTime: 5.48
   lasersound: {fileID: 8300000, guid: 1eb1b47749df5484292db15b52c8709c, type: 3}
 --- !u!82 &-3809658402403283768
 AudioSource:
@@ -215,3 +216,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &-5460503195189374359
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682606363366131455}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.09, y: 0.54}
+    newSize: {x: 0.09, y: 0.54}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.09, y: 0.54}
+  m_EdgeRadius: 0
