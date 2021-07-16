@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float player_MovementSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +21,11 @@ public class Player : MonoBehaviour
 
     private void Move()
      {
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * player_MovementSpeed;
         var newXPos = transform.position.x + deltaX;
-        var deltaY = Input.GetAxis("Vertical");
+        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * player_MovementSpeed;
         var newYPos = transform.position.y + deltaY;
-        transform.position = new Vector2(newXPos, transform.position.y);
+        transform.position = new Vector2(newXPos, newYPos);
 
 
 
