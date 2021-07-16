@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class laser : MonoBehaviour
 {
+    [SerializeField] float bullitLifeTime = 1.5f;
     [SerializeField] AudioClip lasersound;
 
     AudioSource myAudiosource;
@@ -13,7 +14,7 @@ public class laser : MonoBehaviour
     {
         myAudiosource = GetComponent<AudioSource>();
         myAudiosource.PlayOneShot(lasersound);
-        Destroy(gameObject,2f);
+        Destroy(gameObject,bullitLifeTime);
     }
 
     // Update is called once per frame
