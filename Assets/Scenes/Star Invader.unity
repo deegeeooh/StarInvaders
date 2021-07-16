@@ -817,8 +817,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
         type: 3}
-      propertyPath: projectileSpeed
-      value: 9.9
+      propertyPath: laserPrefab
+      value: 
+      objectReference: {fileID: 3682606363366131455, guid: f99df37d1c3daf24ea985cec09090b1b,
+        type: 3}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: projectileFiringPeriod
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: maxNumberOfBullitsOnScreen
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: projectileFiringBurstPeriod
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 984c84ad4874ce740b8485bbcf0707a3, type: 3}
