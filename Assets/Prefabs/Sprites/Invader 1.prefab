@@ -140,6 +140,8 @@ MonoBehaviour:
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
+  explosion_kill: {fileID: 2347737935598711462, guid: 8a6fabbf45c307a45be35c3de32fa8a5,
+    type: 3}
 --- !u!60 &-4868911605539250411
 PolygonCollider2D:
   m_ObjectHideFlags: 0

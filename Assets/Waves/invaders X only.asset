@@ -19,6 +19,6 @@ MonoBehaviour:
   timeBetweenSpawns: 0.2
   waypointToLoopFrom: 1
   spawnRandomFactor: 0.3
-  numberOfEnemies: 1
-  moveSpeed: 7.18
-  numberOfWaves: 3
+  numberOfEnemies: 2
+  moveSpeed: 2
+  numberOfWaves: 1
