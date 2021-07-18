@@ -7,8 +7,8 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] List<WaveConfig> waveConfigs;
     [SerializeField] float timeBetweenWaves = 1f;
-    [SerializeField] bool infiniteLoop = false;
-    [SerializeField] bool singleLoop = false;
+    [SerializeField] bool infiniteLoop = false;                                                     // all waves in this spawner will be repeated infinitely
+    [SerializeField] bool singleLoop = false;                                                       // for a single repeated loop for a number of times
     [SerializeField] int numberOfSingleLoops = 1;
     int startingWave = 0;
     // WaveConfig waveconfig;  
@@ -16,13 +16,14 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
    public IEnumerator Start()
     {
-        for (startingWave = 0; startingWave < waveConfigs.Count; startingWave++)
+        do
         {
-            var currentWave = waveConfigs[startingWave];
-           
+            for (startingWave = 0; startingWave < waveConfigs.Count; startingWave++)
             {
-                do
+                var currentWave = waveConfigs[startingWave];
+
                 {
+
                     var nmberofLoops = waveConfigs[startingWave].GetNumberOfLoops();                 // number of loops from the current Wave
                     int loop = 0;
                     do
@@ -33,13 +34,13 @@ public class EnemySpawner : MonoBehaviour
                         loop++;
                     }
                     while (loop < nmberofLoops);
+                    // will the current waves be looped infinitely?
                 }
-                while (infiniteLoop);                                                                 // will the current waves be looped infinitely?
-            }
-                       
-        }
 
-        
+            }
+
+        }
+        while (infiniteLoop); 
     }
 
     // Update is called once per frame
