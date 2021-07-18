@@ -8,10 +8,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots =0.2f;
     [SerializeField] float maxTimeBetweenShots =3f;
+    [SerializeField] GameObject projectile;
+    [SerializeField] float projectileSpeed = 8f;
+    [SerializeField] float randomFactor = 1f;
+
+    Player player;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
@@ -27,13 +34,26 @@ public class Enemy : MonoBehaviour
         if (shotCounter <= 0f)
         {
             Fire();
+            shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
         }
 
     }
 
-    private static void Fire()
+    private void Fire()
     {
-        Fire();
+        GameObject shot = Instantiate(
+            projectile,
+            transform.position,
+            Quaternion.identity) as GameObject;
+
+        var playerPosX = player.transform.position.x;
+
+
+        shot.GetComponent<Rigidbody2D>().velocity = 
+            new Vector2(playerPosX+Random.Range(0,randomFactor),
+            -projectileSpeed - Random.Range(0,randomFactor));
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)

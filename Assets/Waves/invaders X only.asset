@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
   m_Name: invaders X only
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7418166494161454473, guid: d7c635cf2c395ea46970100407cf77be,
+  enemyPrefab: {fileID: 4398456057378765359, guid: 357b56304b935fc4782316f7a9631e62,
     type: 3}
-  pathPrefab: {fileID: 5177991161331285527, guid: 9a4db8bed30a2bf4d952c301b838642a,
+  pathPrefab: {fileID: 5177991161331285527, guid: 638a7843b4ef1f64ea7d76b17d2618d6,
     type: 3}
   timeBetweenSpawns: 0.2
-  waypointToLoopFrom: 0
+  waypointToLoopFrom: 1
   spawnRandomFactor: 0.3
-  numberOfEnemies: 8
+  numberOfEnemies: 1
   moveSpeed: 7.18
-  numberOfWaves: 7
+  numberOfWaves: 1

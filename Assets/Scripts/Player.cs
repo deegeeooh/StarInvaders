@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField] int maxNumberOfBullitsOnScreen = 4;
     [SerializeField] bool autoFire = true;
     [SerializeField] float offsetLaser = 0.3f;
+    [SerializeField] GameObject shadowPrefab;
+    [SerializeField] float shadowOffsetX = 0.5f;
+    [SerializeField] float shadowOffsetY = 0.5f;    
 
     bool isFiring; // standard = false;
     float xMin;
@@ -102,6 +105,12 @@ public class Player : MonoBehaviour
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
                
         transform.position = new Vector2(newXPos, newYPos);                                                              // Update player movement every frame
+
+        //GameObject shadow = Instantiate(
+        //                shadowPrefab,
+        //                new Vector3(newXPos+shadowOffsetX, newYPos+shadowOffsetY, 0),
+        //                Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
+        
 
     }
      private void SetupMoveBoundaries()

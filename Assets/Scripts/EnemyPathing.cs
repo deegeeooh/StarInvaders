@@ -61,9 +61,9 @@ public class EnemyPathing : MonoBehaviour
                 loopsCompleted++;
                 if (loopsCompleted < numberOfLoops)
                 {
-
-                    //Debug.Log("completed: " + loopsCompleted + "numberofLoops: " + numberOfLoops + "newWP: " + waypointIndex);
                     waypointIndex = waveConfig.GetWayPointToLoopFrom();
+                    Debug.Log("completed: " + loopsCompleted + "numberofLoops: " + numberOfLoops + "newWP: " + waypointIndex);
+                    
                 }
                 else
                 {

@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812531967781834808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.707, y: 2.331, z: 0}
+  m_LocalPosition: {x: 4.707, y: 3.274, z: 0}
   m_LocalScale: {x: 0.5128162, y: 0.5128162, z: 0.5128162}
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,6 +130,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  shotCounter: 0
+  minTimeBetweenShots: 0.2
+  maxTimeBetweenShots: 3
+  projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
+    type: 3}
+  projectileSpeed: 2
 --- !u!60 &6422487409299929729
 PolygonCollider2D:
   m_ObjectHideFlags: 0

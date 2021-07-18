@@ -112,7 +112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4398456057378765359}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68aac0fee69ff474db047302ad241e76, type: 3}
   m_Name: 
@@ -130,6 +130,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  shotCounter: 0
+  minTimeBetweenShots: 0.07
+  maxTimeBetweenShots: 1
+  projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
+    type: 3}
+  projectileSpeed: 14.1
+  randomFactor: 13.58
 --- !u!60 &-5524105407188813252
 PolygonCollider2D:
   m_ObjectHideFlags: 0
