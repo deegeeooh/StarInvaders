@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5517840599319738398
+--- !u!1 &829335900991751229
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5517840599319738397}
-  - component: {fileID: 5517840599319738396}
+  - component: {fileID: 829335900991751230}
+  - component: {fileID: 829335900991751231}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5517840599319738397
+--- !u!4 &829335900991751230
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5517840599319738398}
+  m_GameObject: {fileID: 829335900991751229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7572845, y: -0.13705586, z: -14.460909}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,20 +31,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5517840599319738396
+--- !u!114 &829335900991751231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5517840599319738398}
+  m_GameObject: {fileID: 829335900991751229}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e2a1a47ff530f44e978ba6404a06bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waveConfigs:
-  - {fileID: 11400000, guid: 6139207fcc03c84419d162471fbfedb3, type: 2}
-  - {fileID: 11400000, guid: 4593861d42c20d34d980c3bb2dcdfd64, type: 2}
-  timeBetweenWaves: 2.65
-  infiniteLoop: 1
+  - {fileID: 11400000, guid: 7a1ed965895eaea4188991cd22a29632, type: 2}
+  timeBetweenWaves: 2
+  infiniteLoop: 0
+  singleLoop: 1
+  numberOfSingleLoops: 2
