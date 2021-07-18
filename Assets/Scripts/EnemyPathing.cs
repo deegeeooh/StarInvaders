@@ -43,19 +43,18 @@ public class EnemyPathing : MonoBehaviour
     private void Move()
     
     {
-        Debug.Log("here: "+ waypointIndex+" "+ waypoints.Count);
+        //Debug.Log("here: "+ waypointIndex+" "+ waypoints.Count);
         if (waypointIndex <= waypoints.Count -1)
         {
             /*  var playerPosX = player.transform.position.x;                     *** for player position
               var targetPosition = new Vector3(playerPosX, waypoints[waypointIndex].transform.position.y, 0);*/
 
-            var targetPosition = waypoints[waypointIndex].transform.position;
-            var movementThisFrame = waveConfig.GetMoveSpeed() * Time.deltaTime;                                                 // using Time.deltaTime which is the interval time since the last frame update
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+            Vector3 targetPosition = MoveToNextWaypoint();
+
             if (transform.position == targetPosition)                                                           // target reached? next waypoint
             {
                 waypointIndex++;
-                Debug.Log("waypointIndex " + waypointIndex);
+                //Debug.Log("waypointIndex " + waypointIndex);
             }
             if (waypointIndex == waypoints.Count && singleLoop)
             {
@@ -63,7 +62,7 @@ public class EnemyPathing : MonoBehaviour
                 if (loopsCompleted < numberOfLoops)
                 {
 
-                    Debug.Log("completed: " + loopsCompleted + "numberofLoops: " + numberOfLoops + "newWP: " + waypointIndex);
+                    //Debug.Log("completed: " + loopsCompleted + "numberofLoops: " + numberOfLoops + "newWP: " + waypointIndex);
                     waypointIndex = waveConfig.GetWayPointToLoopFrom();
                 }
                 else
@@ -78,12 +77,19 @@ public class EnemyPathing : MonoBehaviour
         else //if (!singleLoop)
         {
             Destroy(gameObject);                                                                                // no more waypoints? destroy this gameObject
-            Debug.Log("Destroyed ");
+            //Debug.Log("Destroyed ");
         }
 
     }
 
-    
+    private Vector3 MoveToNextWaypoint()
+    {
+        var targetPosition = waypoints[waypointIndex].transform.position;
+        var movementThisFrame = waveConfig.GetMoveSpeed() * Time.deltaTime;                                                 // using Time.deltaTime which is the interval time since the last frame update
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+        return targetPosition;
+    }
+
 
 
 
