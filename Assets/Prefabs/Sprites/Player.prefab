@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3640661433284644880}
   - component: {fileID: 3640661433284644910}
   - component: {fileID: -4339803981895821414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,8 @@ MonoBehaviour:
   movementRestrictionX: 0.56
   movementRestrictionY_Top: 3.49
   movementRestrictionY_Bottom: 2.27
+  health: 200
+  lifes: 3
   laserPrefab: {fileID: 3682606363366131455, guid: f99df37d1c3daf24ea985cec09090b1b,
     type: 3}
   projectileSpeed: 10.81
@@ -106,10 +108,6 @@ MonoBehaviour:
   maxNumberOfBullitsOnScreen: 2
   autoFire: 1
   offsetLaser: 1.24
-  shadowPrefab: {fileID: 6695049385664154868, guid: 316509523ed39b6458ff9e8a74b7e25c,
-    type: 3}
-  shadowOffsetX: 0.5
-  shadowOffsetY: 0.5
 --- !u!58 &-4339803981895821414
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -123,6 +121,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5091208}
+  m_Offset: {x: 0.03, y: -0.56000006}
   serializedVersion: 2
-  m_Radius: 0.54847753
+  m_Radius: 0.57844585

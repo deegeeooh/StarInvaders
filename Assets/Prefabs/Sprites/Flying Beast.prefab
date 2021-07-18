@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8932152830659532036}
   - component: {fileID: -4522664293234995988}
   - component: {fileID: -3895487272409064657}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flying Beast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,6 +136,10 @@ MonoBehaviour:
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
   projectileSpeed: 2
+  randomFactor: 1
+  explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
+    type: 3}
+  durationOfExplosion: 1
 --- !u!60 &-3895487272409064657
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8400168030231965142}
   - component: {fileID: 2292637076603705181}
   - component: {fileID: -5524105407188813252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flying Beast Big (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1761a5a66fddaf345bce085e357822d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1000
   shotCounter: 0
   minTimeBetweenShots: 0.07
   maxTimeBetweenShots: 1
@@ -137,6 +137,9 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 14.1
   randomFactor: 13.58
+  explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
+    type: 3}
+  durationOfExplosion: 1
 --- !u!60 &-5524105407188813252
 PolygonCollider2D:
   m_ObjectHideFlags: 0

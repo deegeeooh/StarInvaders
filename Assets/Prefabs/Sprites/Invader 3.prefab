@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6684641864828604240}
   - component: {fileID: 4803150810785578304}
   - component: {fileID: 7638271836677117130}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invader 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,6 +130,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  shotCounter: 0
+  minTimeBetweenShots: 0.2
+  maxTimeBetweenShots: 3
+  projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
+    type: 3}
+  projectileSpeed: 8
+  randomFactor: 1
+  explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
+    type: 3}
+  durationOfExplosion: 1
 --- !u!60 &7638271836677117130
 PolygonCollider2D:
   m_ObjectHideFlags: 0

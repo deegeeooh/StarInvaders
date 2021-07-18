@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2828976096182362948}
   - component: {fileID: 4471114706338298872}
   - component: {fileID: 6842674504437155820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invader 3_animated_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,6 +137,10 @@ MonoBehaviour:
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
   projectileSpeed: 8
+  randomFactor: 1
+  explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
+    type: 3}
+  durationOfExplosion: 1
 --- !u!114 &4471114706338298872
 MonoBehaviour:
   m_ObjectHideFlags: 0

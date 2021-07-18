@@ -21,4 +21,4 @@ MonoBehaviour:
   spawnRandomFactor: 0.3
   numberOfEnemies: 1
   moveSpeed: 7.18
-  numberOfWaves: 1
+  numberOfWaves: 3
