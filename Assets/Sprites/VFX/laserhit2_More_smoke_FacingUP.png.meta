@@ -1,0 +1,548 @@
+fileFormatVersion: 2
+guid: 34c2e7ce4acca6e4f9a6f9adec9ffdff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1612902764666635528
+    second: laserhit2_More_smoke_FacingUP_0
+  - first:
+      213: 9045643295484048130
+    second: laserhit2_More_smoke_FacingUP_1
+  - first:
+      213: -8612948159092018228
+    second: laserhit2_More_smoke_FacingUP_2
+  - first:
+      213: -6072350737593717732
+    second: laserhit2_More_smoke_FacingUP_3
+  - first:
+      213: -3983330605803917291
+    second: laserhit2_More_smoke_FacingUP_4
+  - first:
+      213: 6436187723107677338
+    second: laserhit2_More_smoke_FacingUP_5
+  - first:
+      213: -3934357551320150252
+    second: laserhit2_More_smoke_FacingUP_6
+  - first:
+      213: 6160135267587248022
+    second: laserhit2_More_smoke_FacingUP_7
+  - first:
+      213: -603072992844441144
+    second: laserhit2_More_smoke_FacingUP_8
+  - first:
+      213: 1212617341671108162
+    second: laserhit2_More_smoke_FacingUP_9
+  - first:
+      213: -5750913130329477067
+    second: laserhit2_More_smoke_FacingUP_10
+  - first:
+      213: 8301448684836158154
+    second: laserhit2_More_smoke_FacingUP_11
+  - first:
+      213: 8428866844259100961
+    second: laserhit2_More_smoke_FacingUP_12
+  - first:
+      213: 3227624859972201720
+    second: laserhit2_More_smoke_FacingUP_13
+  - first:
+      213: 7246384125723410175
+    second: laserhit2_More_smoke_FacingUP_14
+  - first:
+      213: 5987923670321070830
+    second: laserhit2_More_smoke_FacingUP_15
+  - first:
+      213: 1130146611764461031
+    second: laserhit2_More_smoke_FacingUP_16
+  - first:
+      213: -8478563133834923890
+    second: laserhit2_More_smoke_FacingUP_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 731
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8054339d48e226610800000000000000
+      internalID: 1612902764666635528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 688
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2037830c6a4988d70800000000000000
+      internalID: 9045643295484048130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 645
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc3377c5849a87880800000000000000
+      internalID: -8612948159092018228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 602
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c25264d2daabba0800000000000000
+      internalID: -6072350737593717732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 559
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 510bd1a2bed58b8c0800000000000000
+      internalID: -3983330605803917291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 516
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94309f32aee15950800000000000000
+      internalID: 6436187723107677338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 473
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41fcf26f6aa5669c0800000000000000
+      internalID: -3934357551320150252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 430
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69fc4e853623d7550800000000000000
+      internalID: 6160135267587248022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 387
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c910e7ee4471a7f0800000000000000
+      internalID: -603072992844441144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 344
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ee8ca2c0514d010800000000000000
+      internalID: 1212617341671108162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 301
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 530f4944af6a030b0800000000000000
+      internalID: -5750913130329477067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 258
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acafacc889ba43370800000000000000
+      internalID: 8301448684836158154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 215
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129a12f9cb959f470800000000000000
+      internalID: 8428866844259100961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 172
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fcecde95b3dacc20800000000000000
+      internalID: 3227624859972201720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffef5c728f3509460800000000000000
+      internalID: 7246384125723410175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 86
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee204af4ad0691350800000000000000
+      internalID: 5987923670321070830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 43
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7edf45a0b561faf00800000000000000
+      internalID: 1130146611764461031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laserhit2_More_smoke_FacingUP_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e80fb0a40c7165a80800000000000000
+      internalID: -8478563133834923890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

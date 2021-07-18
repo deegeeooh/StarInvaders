@@ -14,7 +14,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject explosion_1_VFX;
     [SerializeField] float durationOfExplosion = 1f;
     [SerializeField] GameObject explosion_kill;
-
+    [SerializeField] GameObject damage1_sprite_FacingUP;
+    [SerializeField] GameObject damage2_sprite_FacingUP;
+    [SerializeField] float durationOfdamage1 = 1f;
+    [SerializeField] float durationOfdamage2 = 1f;
+    [SerializeField] int maxDamageSpritesActive = 5;
 
     Player player;
     
@@ -84,7 +88,8 @@ public class Enemy : MonoBehaviour
         Vector3 locationOther = damageDealer.transform.position;            // Get position of laserhit
         GameObject explosion = Instantiate(explosion_1_VFX, locationOther, transform.rotation);         //instantiate explosion there.
         Destroy(explosion, durationOfExplosion);
-
+        GameObject damageSprite1 = Instantiate(damage1_sprite_FacingUP, locationOther, transform.rotation);
+        Destroy(damageSprite1, durationOfdamage1);
 
 
         if (health <= 0)

@@ -142,6 +142,13 @@ MonoBehaviour:
   durationOfExplosion: 1
   explosion_kill: {fileID: 2347737935598711462, guid: 8a6fabbf45c307a45be35c3de32fa8a5,
     type: 3}
+  damage1_sprite_FacingUP: {fileID: 7030025870239296413, guid: 5791a094aa6b54d429c01d7234efc679,
+    type: 3}
+  damage2_sprite_FacingUP: {fileID: 2301495072138391924, guid: fcfe1cd8e074b1e43af80b4cddfe7969,
+    type: 3}
+  durationOfdamage1: 1
+  durationOfdamage2: 1
+  maxDamageSpritesActive: 5
 --- !u!60 &-3895487272409064657
 PolygonCollider2D:
   m_ObjectHideFlags: 0
