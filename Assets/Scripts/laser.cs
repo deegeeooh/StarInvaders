@@ -23,9 +23,9 @@ public class laser : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(gameObject);
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)           laser is destroyed by DamageDealer.hit on collision
+    //{
+    //    Destroy(gameObject);
+    //}
 
 }

@@ -5,27 +5,34 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // configuration parameters
+    [Header("Player Movement")]
     [SerializeField] float player_MovementSpeed = 11f;
     [SerializeField] float movementRestrictionX;                                                                        // movement restrictions for player ship
     [SerializeField] float movementRestrictionY_Top;
-    [SerializeField] float movementRestrictionY_Bottom; 
+    [SerializeField] float movementRestrictionY_Bottom;
+    [Header("Player stats")]
+    [SerializeField] int health = 200;
+    [SerializeField] int lifes = 3;
+    [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 10f;                                                                       // how fast do projectiles travel
     [SerializeField] float projectileFiringPeriod = 2f;                                                                 
     [SerializeField] int maxNumberOfBullitsOnScreen = 4;
     [SerializeField] bool autoFire = true;
     [SerializeField] float offsetLaser = 0.3f;
-    [SerializeField] GameObject shadowPrefab;
-    [SerializeField] float shadowOffsetX = 0.5f;
-    [SerializeField] float shadowOffsetY = 0.5f;    
+
+
+
+    //[SerializeField] GameObject shadowPrefab;
+    //[SerializeField] float shadowOffsetX = 0.5f;
+    //[SerializeField] float shadowOffsetY = 0.5f;    
 
     bool isFiring; // standard = false;
     float xMin;
     float xMax;
     float yMin;
     float yMax;
-    
-       
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,7 +105,7 @@ public class Player : MonoBehaviour
     }
 
     private void Move()
-     {
+    {
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * player_MovementSpeed;                                // using Time.deltatime to make movement FPS independent
         var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * player_MovementSpeed;
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);                                            // Mathf.Clamp to limit range
@@ -106,22 +113,40 @@ public class Player : MonoBehaviour
                
         transform.position = new Vector2(newXPos, newYPos);                                                              // Update player movement every frame
 
-        //GameObject shadow = Instantiate(
-        //                shadowPrefab,
-        //                new Vector3(newXPos+shadowOffsetX, newYPos+shadowOffsetY, 0),
-        //                Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
-        
+    }
+    private void SetupMoveBoundaries()
+    {
+        Camera gameCamera = Camera.main;
+        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + movementRestrictionX;                        // ViewportToWorldPoint has max coordinates 0.0 to 1.0
+        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x + movementRestrictionX * -1;                   // Since we are interested in X, only the other axis can be left zero
+        yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + movementRestrictionY_Bottom;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - movementRestrictionY_Top;
 
     }
-     private void SetupMoveBoundaries()
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        DamageDealer damagedealer = other.gameObject.GetComponent<DamageDealer>();
+        if (!damagedealer) { return; }                                             // protect agains null
+        ProcessHit(damagedealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        damageDealer.Hit();                     //destroy gameobject which dealth damage.
+        health -= damageDealer.GetDamage();
+        if (health <= 0)
         {
-            Camera gameCamera = Camera.main;
-            xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + movementRestrictionX;                        // ViewportToWorldPoint has max coordinates 0.0 to 1.0
-            xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x + movementRestrictionX * -1;                   // Since we are interested in X, only the other axis can be left zero
-            yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + movementRestrictionY_Bottom;                          
-            yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - movementRestrictionY_Top;                            
-
+            lifes = lifes - 1;
+            health = 200;
+            Debug.Log("Lifes remaining: " + lifes);
+            if (lifes == 0)
+            {
+                Destroy(gameObject);
+            }
         }
-
+    }
 }
+
 

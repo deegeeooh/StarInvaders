@@ -11,10 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 8f;
     [SerializeField] float randomFactor = 1f;
+    [SerializeField] GameObject explosion_1_VFX;
+    [SerializeField] float durationOfExplosion = 1f;
+
 
     Player player;
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +48,19 @@ public class Enemy : MonoBehaviour
             transform.position,
             Quaternion.identity) as GameObject;
 
-        var playerPosX = player.transform.position.x;
 
+            if (FindObjectsOfType<Player>().Length == 0)
+            {
+                         shot.GetComponent<Rigidbody2D>().velocity =
+                         new Vector2(Random.Range(0, randomFactor),
+                         -projectileSpeed - Random.Range(0, randomFactor));
+            return;
+
+            }
+
+            var playerPosX = player.transform.position.x;
+        
+        
 
         shot.GetComponent<Rigidbody2D>().velocity = 
             new Vector2(playerPosX+Random.Range(0,randomFactor),
@@ -59,15 +72,24 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) { return;  }                                             // protect agains null
         ProcessHit(damageDealer);
     }
 
     private void ProcessHit(DamageDealer damageDealer)
     {
+        damageDealer.Hit();                             //destroy gameobject which dealth damage.
         health -= damageDealer.GetDamage();
+        Vector3 locationOther = damageDealer.transform.position;
+        GameObject explosion = Instantiate(explosion_1_VFX, locationOther, transform.rotation);
+        Destroy(explosion, durationOfExplosion);
+
+
+
         if (health <= 0)
         {
             Destroy(gameObject);
+            
         }
     }
 }
