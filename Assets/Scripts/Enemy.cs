@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float randomFactor = 1f;
     [SerializeField] GameObject explosion_1_VFX;
     [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] GameObject explosion_kill;
 
 
     Player player;
@@ -80,15 +81,19 @@ public class Enemy : MonoBehaviour
     {
         damageDealer.Hit();                             //destroy gameobject which dealth damage.
         health -= damageDealer.GetDamage();
-        Vector3 locationOther = damageDealer.transform.position;
-        GameObject explosion = Instantiate(explosion_1_VFX, locationOther, transform.rotation);
+        Vector3 locationOther = damageDealer.transform.position;            // Get position of laserhit
+        GameObject explosion = Instantiate(explosion_1_VFX, locationOther, transform.rotation);         //instantiate explosion there.
         Destroy(explosion, durationOfExplosion);
 
 
 
         if (health <= 0)
         {
+
+            GameObject killExplosion = Instantiate(explosion_kill, transform.position, transform.rotation);
+            Destroy(killExplosion,durationOfExplosion);
             Destroy(gameObject);
+
             
         }
     }
