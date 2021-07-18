@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 100;
     [SerializeField] float shotCounter;
-    [SerializeField] float minTimeBetweenShots 0.2f;
-    [SerializeField] float maxTimeBetweenShots 3f;
+    [SerializeField] float minTimeBetweenShots =0.2f;
+    [SerializeField] float maxTimeBetweenShots =3f;
 
     // Start is called before the first frame update
     void Start()

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5128532996875137196}
   - component: {fileID: -3809658402403283768}
   - component: {fileID: -5460503195189374359}
+  - component: {fileID: -1548222885451650530}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -101,10 +102,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3f3ff2c853a2828469106e6cd69a8517, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &-5128532996875137196
 MonoBehaviour:
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9c7e4d13323ee4f8fa8cd6860a470e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullitLifeTime: 5.48
+  bullitLifeTime: 1
   lasersound: {fileID: 8300000, guid: 1eb1b47749df5484292db15b52c8709c, type: 3}
 --- !u!82 &-3809658402403283768
 AudioSource:
@@ -225,8 +226,8 @@ BoxCollider2D:
   m_GameObject: {fileID: 3682606363366131455}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_Material: {fileID: 6200000, guid: 3f3ff2c853a2828469106e6cd69a8517, type: 2}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -242,3 +243,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.54}
   m_EdgeRadius: 0
+--- !u!114 &-1548222885451650530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682606363366131455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76a80b5eb6964244b18bb4257498493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100

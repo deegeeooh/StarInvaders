@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] float projectileFiringPeriod = 2f;                                                                 
     [SerializeField] int maxNumberOfBullitsOnScreen = 4;
     [SerializeField] bool autoFire = true;
+    [SerializeField] float offsetLaser = 0.3f;
 
     bool isFiring; // standard = false;
     float xMin;
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
     {
         GameObject laser = Instantiate(
                         laserPrefab,
-                        transform.position,
+                        new Vector3(transform.position.x,transform.position.y+offsetLaser,0),
                         Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
     }
