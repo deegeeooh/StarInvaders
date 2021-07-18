@@ -12,17 +12,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] float projectileSpeed = 8f;
     [SerializeField] float randomFactor = 1f;
     [SerializeField] GameObject explosion_1_VFX;
-    [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] float durationOfExplosion = 2f;
     [SerializeField] GameObject explosion_kill;
     [SerializeField] GameObject damage1_sprite_FacingUP;
     [SerializeField] GameObject damage2_sprite_FacingUP;
-    [SerializeField] float durationOfdamage1 = 1f;
-    [SerializeField] float durationOfdamage2 = 1f;
+    [SerializeField] float durationOfdamage1 = 2f;
+    [SerializeField] float durationOfdamage2 = 2f;
     [SerializeField] int maxDamageSpritesActive = 5;
 
     Player player;
     
-    // Start is called before the first frame update
+    // Start is called before the first frame updatea
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -88,10 +88,24 @@ public class Enemy : MonoBehaviour
         Vector3 locationOther = damageDealer.transform.position;            // Get position of laserhit
         GameObject explosion = Instantiate(explosion_1_VFX, locationOther, transform.rotation);         //instantiate explosion there.
         Destroy(explosion, durationOfExplosion);
+              
         GameObject damageSprite1 = Instantiate(damage1_sprite_FacingUP, locationOther, transform.rotation);
+        damageSprite1.transform.parent = this.transform;                        // attach damage sprite to parent( this enemy)
+
+         
+        ////WHY IS THIS NOT WORKING???
+        SpriteRenderer damagesprite = damageSprite1.GetComponent<SpriteRenderer>();
+        //var kleur1 = damagesprite.GetComponent<SpriteRenderer>().color;
+             
+        var kleur2 =  GetComponent<SpriteRenderer>().color;
+        damagesprite.color = kleur2;
+
+        //Debug.Log(" "+kleur2);
+
         Destroy(damageSprite1, durationOfdamage1);
 
-
+        
+        
         if (health <= 0)
         {
 

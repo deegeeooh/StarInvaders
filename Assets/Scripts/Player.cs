@@ -20,12 +20,16 @@ public class Player : MonoBehaviour
     [SerializeField] int maxNumberOfBullitsOnScreen = 4;
     [SerializeField] bool autoFire = true;
     [SerializeField] float offsetLaser = 0.3f;
+    [Header("DamageSprites")]
+    [SerializeField] GameObject damage1_sprite_FacingDOWN;
+    [SerializeField] GameObject damage2_sprite_FacingDOWN;
+    [SerializeField] float durationOfdamage1 = 2f;
+    [SerializeField] float durationOfdamage2 = 2f;
+    [SerializeField] int maxDamageSpritesActive = 5;
 
 
 
-    //[SerializeField] GameObject shadowPrefab;
-    //[SerializeField] float shadowOffsetX = 0.5f;
-    //[SerializeField] float shadowOffsetY = 0.5f;    
+         
 
     bool isFiring; // standard = false;
     float xMin;
@@ -136,6 +140,8 @@ public class Player : MonoBehaviour
     {
         damageDealer.Hit();                     //destroy gameobject which dealth damage.
         health -= damageDealer.GetDamage();
+        Vector3 locationOther = damageDealer.transform.position;
+        DamageHitLight(locationOther);
         if (health <= 0)
         {
             lifes = lifes - 1;
@@ -146,6 +152,13 @@ public class Player : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private static void DamageHitLight(Vector3 hitLocation)
+    {
+       
+        GameObject damageSprite1 = Instantiate(damage1_sprite_FacingDOWN , hitLocation, transform.rotation);
+        damageSprite1.transform.parent = this.transform;                        // attach damage sprite to parent( this enemy)
     }
 }
 
