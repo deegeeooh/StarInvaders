@@ -15,16 +15,18 @@ public class Player : MonoBehaviour
     [SerializeField] int maxNumberOfBullitsOnScreen = 4;
     [SerializeField] bool autoFire = true;
 
-    bool isFiring;
+    bool isFiring; // standard = false;
     float xMin;
     float xMax;
     float yMin;
     float yMax;
-        
+    
+       
     // Start is called before the first frame update
     void Start()
     {
         SetupMoveBoundaries();
+       
     }
 
     
