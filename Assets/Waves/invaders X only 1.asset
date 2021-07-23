@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
-  m_Name: Wave 3
+  m_Name: invaders X only 1
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7418166494161454473, guid: d7c635cf2c395ea46970100407cf77be,
+  enemyPrefab: {fileID: 4240647654239916794, guid: 8534864ab63b54940b5e2d424c4ff253,
     type: 3}
-  pathPrefab: {fileID: 5177991161331285527, guid: 638a7843b4ef1f64ea7d76b17d2618d6,
+  pathPrefab: {fileID: 3487128928697509954, guid: a84832602df8985489e819af369c44f4,
     type: 3}
-  timeBetweenSpawns: 0.5
+  timeBetweenSpawns: 1
   waypointToLoopFrom: 1
   spawnRandomFactor: 0.3
-  numberOfEnemies: 1
-  moveSpeed: 8.09
-  numberOfWaves: 1
+  numberOfEnemies: 3
+  moveSpeed: 3
+  numberOfWaves: 5

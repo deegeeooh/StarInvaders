@@ -19,12 +19,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] float durationOfdamage1 = 2f;
     [SerializeField] float durationOfdamage2 = 2f;
     [SerializeField] int maxDamageSpritesActive = 5;
+    [SerializeField] bool shootAtPlayerPos = true;
+    [SerializeField] AudioClip soundHit;
+    [SerializeField] AudioClip soundDestroyed;
+    [SerializeField] AudioClip soundShoot;
+    [Range(0f, 1f)] [SerializeField] float volumeHit = 1f;
+    [Range(0f, 1f)] [SerializeField] float volumeExplosion = 1f;
 
     Player player;
-    
+    AudioSource myAudiosource;
+
     // Start is called before the first frame updatea
     void Start()
     {
+        // myAudiosource = GetComponent<AudioSource>();
+        // myAudiosource.volume = volume;
         player = FindObjectOfType<Player>();
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
@@ -42,6 +51,7 @@ public class Enemy : MonoBehaviour
         {
             Fire();
             shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            AudioSource.PlayClipAtPoint(soundShoot, Camera.main.transform.position,volumeHit);
         }
 
     }
@@ -54,7 +64,7 @@ public class Enemy : MonoBehaviour
             Quaternion.identity) as GameObject;
 
 
-            if (FindObjectsOfType<Player>().Length == 0)
+            if (FindObjectsOfType<Player>().Length == 0)                    
             {
                          shot.GetComponent<Rigidbody2D>().velocity =
                          new Vector2(Random.Range(0, randomFactor),
@@ -63,14 +73,14 @@ public class Enemy : MonoBehaviour
 
             }
 
-            var playerPosX = player.transform.position.x;
-        
-        
-
-        shot.GetComponent<Rigidbody2D>().velocity = 
-            new Vector2(playerPosX+Random.Range(0,randomFactor),
-            -projectileSpeed - Random.Range(0,randomFactor));
-
+        var playerPosX = player.transform.position.x;
+        var playerposY = player.transform.position.y;
+        var playerVectorX = transform.position.x - playerPosX;
+        var playerVectorY = transform.position.y - playerposY;
+        shot.GetComponent<Rigidbody2D>().velocity =
+            
+        new Vector2(-playerVectorX + Random.Range(-randomFactor,randomFactor),       // shoot at player position
+        -playerVectorY + Random.Range(-randomFactor, randomFactor));
 
     }
 
@@ -86,19 +96,21 @@ public class Enemy : MonoBehaviour
         damageDealer.Hit();                             //destroy gameobject which dealth damage.
         health -= damageDealer.GetDamage();
         Vector3 locationOther = damageDealer.transform.position;            // Get position of laserhit
+        
         GameObject explosion = Instantiate(explosion_1_VFX, locationOther, transform.rotation);         //instantiate explosion there.
         Destroy(explosion, durationOfExplosion);
               
         GameObject damageSprite1 = Instantiate(damage1_sprite_FacingUP, locationOther, transform.rotation);
         damageSprite1.transform.parent = this.transform;                        // attach damage sprite to parent( this enemy)
 
-         
-        ////WHY IS THIS NOT WORKING???
-        SpriteRenderer damagesprite = damageSprite1.GetComponent<SpriteRenderer>();
-        //var kleur1 = damagesprite.GetComponent<SpriteRenderer>().color;
-             
-        var kleur2 =  GetComponent<SpriteRenderer>().color;
-        damagesprite.color = kleur2;
+        AudioSource.PlayClipAtPoint(soundHit, Camera.main.transform.position,volumeHit);
+
+        
+        // set COLOR of damagesprite to color of gameObject
+
+        //SpriteRenderer damagesprite = damageSprite1.GetComponent<SpriteRenderer>();
+        //var kleur2 =  GetComponent<SpriteRenderer>().color;
+        //damagesprite.color = kleur2;
 
         //Debug.Log(" "+kleur2);
 
@@ -111,6 +123,7 @@ public class Enemy : MonoBehaviour
 
             GameObject killExplosion = Instantiate(explosion_kill, transform.position, transform.rotation);
             Destroy(killExplosion,durationOfExplosion);
+            AudioSource.PlayClipAtPoint(soundDestroyed, Camera.main.transform.position,volumeExplosion);
             Destroy(gameObject);
 
             

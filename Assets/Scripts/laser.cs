@@ -6,6 +6,7 @@ public class laser : MonoBehaviour
 {
     [SerializeField] float bullitLifeTime = 1.5f;
     [SerializeField] AudioClip lasersound;
+    [Range(0f, 1f)] [SerializeField]  float volume=1f;
 
     AudioSource myAudiosource;
 
@@ -13,6 +14,7 @@ public class laser : MonoBehaviour
     void Start()
     {
         myAudiosource = GetComponent<AudioSource>();
+        myAudiosource.volume = volume;
         myAudiosource.PlayOneShot(lasersound);
         Destroy(gameObject,bullitLifeTime);
     }

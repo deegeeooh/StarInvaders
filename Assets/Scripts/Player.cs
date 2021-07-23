@@ -23,13 +23,15 @@ public class Player : MonoBehaviour
     [Header("DamageSprites")]
     [SerializeField] GameObject damage1_sprite_FacingDOWN;
     [SerializeField] GameObject damage2_sprite_FacingDOWN;
+    [SerializeField] GameObject destructionSprite;
     [SerializeField] float durationOfdamage1 = 2f;
     [SerializeField] float durationOfdamage2 = 2f;
     [SerializeField] int maxDamageSpritesActive = 5;
-
-
-
-         
+    [Header("DamageSounds")]
+    [SerializeField] AudioClip sound_Damage;
+    [Range(0f, 1f)] [SerializeField] float volume_sound_Damage= 1f;
+    [SerializeField] AudioClip sound_Destruction;
+    [Range(0f, 1f)] [SerializeField] float volume_sound_Destruction = 1f;
 
     bool isFiring; // standard = false;
     float xMin;
@@ -128,6 +130,7 @@ public class Player : MonoBehaviour
 
     }
 
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -140,8 +143,8 @@ public class Player : MonoBehaviour
     {
         damageDealer.Hit();                     //destroy gameobject which dealth damage.
         health -= damageDealer.GetDamage();
-        Vector3 locationOther = damageDealer.transform.position;
-        DamageHitLight(locationOther);
+        //Vector3 locationOther = damageDealer.transform.position;
+        DamageHitLight(damageDealer.transform.position);
         if (health <= 0)
         {
             lifes = lifes - 1;
@@ -149,16 +152,26 @@ public class Player : MonoBehaviour
             Debug.Log("Lifes remaining: " + lifes);
             if (lifes == 0)
             {
+                DestructionHit(gameObject.transform.position);
                 Destroy(gameObject);
             }
         }
     }
 
-    private static void DamageHitLight(Vector3 hitLocation)
+    private void DestructionHit(Vector3 hitlocation)
+    {
+        GameObject destructionSprite1 = Instantiate(destructionSprite , hitlocation, transform.rotation);
+        AudioSource.PlayClipAtPoint(sound_Destruction, Camera.main.transform.position,volume_sound_Destruction);
+        Destroy(destructionSprite1, 1.1f);
+    }
+
+
+    private void DamageHitLight(Vector3 hitLocation)
     {
        
-        GameObject damageSprite1 = Instantiate(damage1_sprite_FacingDOWN , hitLocation, transform.rotation);
-        damageSprite1.transform.parent = this.transform;                        // attach damage sprite to parent( this enemy)
+        GameObject damageSprite1 = Instantiate(damage1_sprite_FacingDOWN , hitLocation, Quaternion.identity);
+        damageSprite1.transform.parent = gameObject.transform;                        // attach damage sprite to parent( this enemy)
+        AudioSource.PlayClipAtPoint(sound_Damage, Camera.main.transform.position,volume_sound_Damage );
     }
 }
 

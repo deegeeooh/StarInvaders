@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3640661433284644883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7929, y: -7.1829, z: -2.681597}
+  m_LocalPosition: {x: 0.7929, y: -7.1829, z: -2.5}
   m_LocalScale: {x: 0.5843627, y: 0.5843627, z: 1.1687254}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,15 +99,26 @@ MonoBehaviour:
   movementRestrictionX: 0.56
   movementRestrictionY_Top: 3.49
   movementRestrictionY_Bottom: 2.27
-  health: 200
-  lifes: 3
+  health: 1000
+  lifes: 1
   laserPrefab: {fileID: 3682606363366131455, guid: f99df37d1c3daf24ea985cec09090b1b,
     type: 3}
   projectileSpeed: 10.81
-  projectileFiringPeriod: 0.15
-  maxNumberOfBullitsOnScreen: 2
+  projectileFiringPeriod: 0.13
+  maxNumberOfBullitsOnScreen: 13
   autoFire: 1
   offsetLaser: 1.24
+  damage1_sprite_FacingDOWN: {fileID: 1136389360311973083, guid: 588ebf30c3b0ab14a87bcc4821df87ee,
+    type: 3}
+  damage2_sprite_FacingDOWN: {fileID: 820556967208674087, guid: 283a3af73e1681f4b81ac50bf312a2b4,
+    type: 3}
+  destructionSprite: {fileID: 2347737935598711462, guid: 8a6fabbf45c307a45be35c3de32fa8a5,
+    type: 3}
+  durationOfdamage1: 2
+  durationOfdamage2: 2
+  maxDamageSpritesActive: 5
+  damage1_sound: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
+  destruction_sound: {fileID: 8300000, guid: 7353f243e0f08f7419f64986782e3786, type: 3}
 --- !u!58 &-4339803981895821414
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -117,8 +128,8 @@ CircleCollider2D:
   m_GameObject: {fileID: 3640661433284644883}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 3f3ff2c853a2828469106e6cd69a8517, type: 2}
-  m_IsTrigger: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.03, y: -0.56000006}

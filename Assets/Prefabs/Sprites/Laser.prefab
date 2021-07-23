@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullitLifeTime: 1
-  lasersound: {fileID: 8300000, guid: 1eb1b47749df5484292db15b52c8709c, type: 3}
+  lasersound: {fileID: 8300000, guid: 8231e459589866242b9c87b54a26e301, type: 3}
+  volume: 0.202
 --- !u!82 &-3809658402403283768
 AudioSource:
   m_ObjectHideFlags: 0
