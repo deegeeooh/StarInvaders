@@ -1,0 +1,17 @@
+Star Invaders
+
+2D shooter prototype as part of the GameWeb.TV Unity 2D /C# course
+
+Basic functionalities:
+
+- Using animated sprites (addition to the course, using multiple frame sprites as animations)
+- Multiple scene game loop
+- Enemy spawner which instantiates configurable waves of enemies with variable pathing
+- Single and infinite loop posssibilities per wave
+- Scrolling and looping background
+- Particle effects for starfield background
+- Particle effects for hits 
+- Explosion animations 
+- Damage GFX as child on impacted parent 
+- audio clips for OnTrigger events
+- Looped music per scene 
