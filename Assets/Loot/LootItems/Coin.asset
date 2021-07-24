@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f087f0499597e4fa1c9c17797cbf27, type: 3}
+  m_Name: Coin
+  m_EditorClassIdentifier: 
+  lootItem: {fileID: 4886553203281670849, guid: b1e9b6e45e2c0c44ba6d15e2b4b6e847,
+    type: 3}
+  dropChance: 50
+  gold: 1
+  shooter_3way: 0
+  shooter_double: 0
+  life: 0
+  health: 0

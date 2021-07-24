@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots =0.2f;
     [SerializeField] float maxTimeBetweenShots =3f;
+    [SerializeField] LootTable lootTable;
     [Header("Projectile stats")]
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 8f;
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour
 
     Player player;
     AudioSource myAudiosource;
+     
 
     // Start is called before the first frame updatea
     void Start()
@@ -134,7 +136,7 @@ public class Enemy : MonoBehaviour
         AudioSource.PlayClipAtPoint(soundHit, Camera.main.transform.position,volumeHit);
 
         
-        // set COLOR of damagesprite to color of gameObject
+        // set COLOR of damagesprite to color of gameObject //
 
         //SpriteRenderer damagesprite = damageSprite1.GetComponent<SpriteRenderer>();
         //var kleur2 =  GetComponent<SpriteRenderer>().color;
@@ -153,10 +155,36 @@ public class Enemy : MonoBehaviour
             Destroy(killExplosion,durationOfExplosion);
             
             AudioSource.PlayClipAtPoint(soundDestroyed, Camera.main.transform.position,volumeExplosion);
+            // RollLoot();
             Destroy(gameObject);
 
+            ///TODO: addtoScore maybe count totalkilled
+
             
+
+
         }
     }
+
+    private void RollLoot()
+    {
+        var lootTableDropChance = lootTable.GetLootTableDropChance();
+        List<ScriptableObject> lootItems = lootTable.GetLootItems();
+
+        Debug.Log("LootItems "+ lootItems.Count);
+
+        for (int startItem = 0; startItem < lootItems.Count; startItem++)
+        {
+            Debug.Log(lootItems[startItem].name);
+        }
+
+    
+
+
+
+
+
+    }
+
 }
 
