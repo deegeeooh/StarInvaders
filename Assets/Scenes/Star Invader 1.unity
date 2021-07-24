@@ -5501,7 +5501,7 @@ PrefabInstance:
     - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
         type: 3}
       propertyPath: waveConfigs.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
         type: 3}
@@ -5519,19 +5519,19 @@ PrefabInstance:
         type: 3}
       propertyPath: waveConfigs.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: e4c945e7ca24f1a4499c5284f692204b,
+      objectReference: {fileID: 11400000, guid: 52da91b0d14d1b44385b093e19147563,
         type: 2}
     - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
         type: 3}
       propertyPath: waveConfigs.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 81017db30bbef3b46ac6366fbd9f3f6b,
+      objectReference: {fileID: 11400000, guid: e4c945e7ca24f1a4499c5284f692204b,
         type: 2}
     - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
         type: 3}
       propertyPath: waveConfigs.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 5f096aef7c86e014cb83c207f657432d,
+      objectReference: {fileID: 11400000, guid: 44f46a5b223326049b921a75f9e0ac0a,
         type: 2}
     - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
         type: 3}
