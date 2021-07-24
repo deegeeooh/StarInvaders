@@ -57,6 +57,21 @@ public class Player : MonoBehaviour
     {
         Move();
         Fire();
+        CheckRemainingEnemies();
+    }
+
+    
+    private void CheckRemainingEnemies()                        // Did we kill everything in the current Scene?
+    {
+        int numberofSpawners = FindObjectsOfType<EnemySpawner>().Length;            
+        int numberofEnemiesLeft = FindObjectsOfType<Enemy>().Length;
+        Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
+        if (numberofEnemiesLeft + numberofSpawners == 0)
+        {
+            FindObjectOfType<Levels>().LoadNextScene();
+
+        }
+
     }
 
     private void Fire()

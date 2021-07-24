@@ -51,7 +51,8 @@ public class EnemySpawner : MonoBehaviour
         }
         while (infiniteLoop);
         Debug.Log("end level");
-    }
+        Destroy(gameObject);                        // When the spawner is done, destroy the spawner so we can check if 
+    }                                               // the scene is completed in player.cs
 
     // Update is called once per frame
     
