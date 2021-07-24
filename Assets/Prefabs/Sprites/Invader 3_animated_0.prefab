@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2828976096182362948}
   - component: {fileID: 4471114706338298872}
   - component: {fileID: 6842674504437155820}
+  - component: {fileID: 3214151032894236040}
+  - component: {fileID: 6030911024706642968}
   m_Layer: 9
   m_Name: Invader 3_animated_0
   m_TagString: Untagged
@@ -117,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76a80b5eb6964244b18bb4257498493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 1000
 --- !u!114 &2828976096182362948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,11 +135,12 @@ MonoBehaviour:
   health: 100
   shotCounter: 0
   minTimeBetweenShots: 0.2
-  maxTimeBetweenShots: 3
-  projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
+  maxTimeBetweenShots: 2.13
+  projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 8
   randomFactor: 1
+  shootAtPlayerPos: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -145,10 +148,16 @@ MonoBehaviour:
     type: 3}
   damage1_sprite_FacingUP: {fileID: 7030025870239296413, guid: 5791a094aa6b54d429c01d7234efc679,
     type: 3}
-  damage2_sprite_FacingUP: {fileID: 0}
+  damage2_sprite_FacingUP: {fileID: 820556967208674087, guid: 283a3af73e1681f4b81ac50bf312a2b4,
+    type: 3}
   durationOfdamage1: 1
   durationOfdamage2: 1
   maxDamageSpritesActive: 5
+  soundHit: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
+  soundDestroyed: {fileID: 8300000, guid: 343ef11374bc6bd43a425dd2c462438d, type: 3}
+  soundShoot: {fileID: 8300000, guid: 0ebf4c40e77d76142b20a5955a107247, type: 3}
+  volumeHit: 1
+  volumeExplosion: 1
 --- !u!114 &4471114706338298872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +180,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -212,3 +221,37 @@ PolygonCollider2D:
       - {x: 0.37, y: 0.13}
       - {x: 0.37, y: 0.03}
       - {x: 0.26999998, y: 0.03}
+--- !u!50 &3214151032894236040
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198930719427974995}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &6030911024706642968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198930719427974995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76a80b5eb6964244b18bb4257498493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100

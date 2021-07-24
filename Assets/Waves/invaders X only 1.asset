@@ -20,5 +20,5 @@ MonoBehaviour:
   waypointToLoopFrom: 1
   spawnRandomFactor: 0.3
   numberOfEnemies: 3
-  moveSpeed: 3
-  numberOfWaves: 5
+  moveSpeed: 10.32
+  numberOfWaves: 3

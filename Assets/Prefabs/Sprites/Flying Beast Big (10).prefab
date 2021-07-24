@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2292637076603705181}
   - component: {fileID: -5524105407188813252}
   - component: {fileID: 6147167744190782110}
+  - component: {fileID: -7431202113774995081}
+  - component: {fileID: 698733965942267880}
   m_Layer: 9
   m_Name: Flying Beast Big (10)
   m_TagString: Untagged
@@ -133,11 +135,12 @@ MonoBehaviour:
   health: 1000
   shotCounter: 0
   minTimeBetweenShots: 0.013
-  maxTimeBetweenShots: 0.45
+  maxTimeBetweenShots: 1.14
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
   projectileSpeed: 9.4
   randomFactor: 2
+  shootAtPlayerPos: 1
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -150,11 +153,10 @@ MonoBehaviour:
   durationOfdamage1: 1
   durationOfdamage2: 2
   maxDamageSpritesActive: 5
-  shootAtPlayerPos: 1
   soundHit: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
   soundDestroyed: {fileID: 8300000, guid: 7353f243e0f08f7419f64986782e3786, type: 3}
   soundShoot: {fileID: 8300000, guid: 6a97a6a687c00b44a99bdd29df9f23cb, type: 3}
-  volumeHit: 0.545
+  volumeHit: 0.402
   volumeExplosion: 0.855
 --- !u!60 &-5524105407188813252
 PolygonCollider2D:
@@ -225,6 +227,40 @@ PolygonCollider2D:
       - {x: 0.124008685, y: -0.03393527}
       - {x: 0.116412155, y: -0.041757137}
 --- !u!114 &6147167744190782110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398456057378765359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76a80b5eb6964244b18bb4257498493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1000
+--- !u!50 &-7431202113774995081
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398456057378765359}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &698733965942267880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

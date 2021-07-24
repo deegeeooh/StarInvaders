@@ -39,11 +39,14 @@ public class Player : MonoBehaviour
     float yMin;
     float yMax;
 
+    
+
+
     // Start is called before the first frame update
     void Start()
-    {
+    {                
         SetupMoveBoundaries();
-       
+        
     }
 
     
@@ -154,6 +157,7 @@ public class Player : MonoBehaviour
             {
                 DestructionHit(gameObject.transform.position);
                 Destroy(gameObject);
+                FindObjectOfType<Levels>().LoadGameOverScene();
             }
         }
     }

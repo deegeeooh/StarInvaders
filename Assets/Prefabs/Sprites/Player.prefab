@@ -99,13 +99,13 @@ MonoBehaviour:
   movementRestrictionX: 0.56
   movementRestrictionY_Top: 3.49
   movementRestrictionY_Bottom: 2.27
-  health: 1000
-  lifes: 1
+  health: 400
+  lifes: 2
   laserPrefab: {fileID: 3682606363366131455, guid: f99df37d1c3daf24ea985cec09090b1b,
     type: 3}
   projectileSpeed: 10.81
   projectileFiringPeriod: 0.13
-  maxNumberOfBullitsOnScreen: 13
+  maxNumberOfBullitsOnScreen: 4
   autoFire: 1
   offsetLaser: 1.24
   damage1_sprite_FacingDOWN: {fileID: 1136389360311973083, guid: 588ebf30c3b0ab14a87bcc4821df87ee,
@@ -117,8 +117,10 @@ MonoBehaviour:
   durationOfdamage1: 2
   durationOfdamage2: 2
   maxDamageSpritesActive: 5
-  damage1_sound: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
-  destruction_sound: {fileID: 8300000, guid: 7353f243e0f08f7419f64986782e3786, type: 3}
+  sound_Damage: {fileID: 8300000, guid: 6f00a18e7c5fb984b9ce0979c3faa377, type: 3}
+  volume_sound_Damage: 0.715
+  sound_Destruction: {fileID: 8300000, guid: 0b460d04ae73f6a419a0229f2c6e5eb0, type: 3}
+  volume_sound_Destruction: 0.824
 --- !u!58 &-4339803981895821414
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
+{   
+    [Header("Enemy stats")]
     [SerializeField] float health = 100;
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots =0.2f;
     [SerializeField] float maxTimeBetweenShots =3f;
+    [Header("Projectile stats")]
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 8f;
     [SerializeField] float randomFactor = 1f;
+    [SerializeField] bool shootAtPlayerPos = true;
+    [Header("VFX")]
     [SerializeField] GameObject explosion_1_VFX;
     [SerializeField] float durationOfExplosion = 2f;
     [SerializeField] GameObject explosion_kill;
@@ -19,11 +23,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] float durationOfdamage1 = 2f;
     [SerializeField] float durationOfdamage2 = 2f;
     [SerializeField] int maxDamageSpritesActive = 5;
-    [SerializeField] bool shootAtPlayerPos = true;
+    [Header("Sound settings")]
     [SerializeField] AudioClip soundHit;
     [SerializeField] AudioClip soundDestroyed;
     [SerializeField] AudioClip soundShoot;
-    [Range(0f, 1f)] [SerializeField] float volumeHit = 1f;
+    [Range(0f, 1f)] [SerializeField] float volumeHit = 1f;                      // cap the range
     [Range(0f, 1f)] [SerializeField] float volumeExplosion = 1f;
 
     Player player;
@@ -49,22 +53,45 @@ public class Enemy : MonoBehaviour
         shotCounter -= Time.deltaTime;
         if (shotCounter <= 0f)
         {
-            Fire();
+            if (shootAtPlayerPos)
+            {
+                FireTowardsPlayer();
+            }
+            else
+            {
+                FireNormal();
+            }
+            
             shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
             AudioSource.PlayClipAtPoint(soundShoot, Camera.main.transform.position,volumeHit);
         }
 
     }
 
-    private void Fire()
+    private void FireNormal()
     {
         GameObject shot = Instantiate(
-            projectile,
-            transform.position,
-            Quaternion.identity) as GameObject;
+                    projectile,
+                    transform.position,
+                    Quaternion.identity) as GameObject;
+
+            shot.GetComponent<Rigidbody2D>().velocity =
+            new Vector2(Random.Range(0, randomFactor),
+            -projectileSpeed - Random.Range(0, randomFactor));
+            
+
+    }
+
+    private void FireTowardsPlayer()
+    {
+
+        GameObject shot = Instantiate(
+                    projectile,
+                    transform.position,
+                    Quaternion.identity) as GameObject;
 
 
-            if (FindObjectsOfType<Player>().Length == 0)                    
+        if (FindObjectsOfType<Player>().Length == 0)                    
             {
                          shot.GetComponent<Rigidbody2D>().velocity =
                          new Vector2(Random.Range(0, randomFactor),
@@ -78,12 +105,13 @@ public class Enemy : MonoBehaviour
         var playerVectorX = transform.position.x - playerPosX;
         var playerVectorY = transform.position.y - playerposY;
         shot.GetComponent<Rigidbody2D>().velocity =
-            
+        
+        
         new Vector2(-playerVectorX + Random.Range(-randomFactor,randomFactor),       // shoot at player position
         -playerVectorY + Random.Range(-randomFactor, randomFactor));
 
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
@@ -123,6 +151,7 @@ public class Enemy : MonoBehaviour
 
             GameObject killExplosion = Instantiate(explosion_kill, transform.position, transform.rotation);
             Destroy(killExplosion,durationOfExplosion);
+            
             AudioSource.PlayClipAtPoint(soundDestroyed, Camera.main.transform.position,volumeExplosion);
             Destroy(gameObject);
 

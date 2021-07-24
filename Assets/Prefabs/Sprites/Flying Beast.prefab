@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -8932152830659532036}
   - component: {fileID: -4522664293234995988}
   - component: {fileID: 1100774369277438059}
+  - component: {fileID: -8952105495649931534}
+  - component: {fileID: -4188394109874487781}
   m_Layer: 9
   m_Name: Flying Beast
   m_TagString: Untagged
@@ -137,6 +139,7 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 2
   randomFactor: 1
+  shootAtPlayerPos: 1
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -149,6 +152,11 @@ MonoBehaviour:
   durationOfdamage1: 1
   durationOfdamage2: 1
   maxDamageSpritesActive: 5
+  soundHit: {fileID: 0}
+  soundDestroyed: {fileID: 0}
+  soundShoot: {fileID: 0}
+  volumeHit: 0.529
+  volumeExplosion: 1
 --- !u!60 &1100774369277438059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +167,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -234,3 +242,37 @@ PolygonCollider2D:
       - {x: 0.050439637, y: -0.0135189295}
       - {x: 0.08441401, y: -0.008314103}
       - {x: 0.10861845, y: -0.00483042}
+--- !u!50 &-8952105495649931534
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247516117301631739}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-4188394109874487781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247516117301631739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76a80b5eb6964244b18bb4257498493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1000

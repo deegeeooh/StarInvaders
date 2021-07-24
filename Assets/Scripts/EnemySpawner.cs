@@ -12,9 +12,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int numberOfSingleLoops = 1;
     int startingWave = 0;
     // WaveConfig waveconfig;  
-   
+
     // Start is called before the first frame update
+
+    
+
+
    public IEnumerator Start()
+
+    
     {
         do
         {
@@ -34,13 +40,17 @@ public class EnemySpawner : MonoBehaviour
                         loop++;
                     }
                     while (loop < nmberofLoops);
+
+
+
                     // will the current waves be looped infinitely?
                 }
 
             }
-
+            
         }
-        while (infiniteLoop); 
+        while (infiniteLoop);
+        Debug.Log("end level");
     }
 
     // Update is called once per frame
