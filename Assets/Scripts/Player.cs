@@ -52,13 +52,28 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        CheckSingleton();
         gameSession = FindObjectOfType<GameSession>();
         healthRemaining = health;                                   // introducing healtRemaining so we can reset to health;
         SetupMoveBoundaries();                                      // when dying
         
     }
 
-    
+    private void CheckSingleton()
+    {
+        if (FindObjectsOfType<GameSession>().Length > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
