@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {   
     [Header("Enemy stats")]
     [SerializeField] float health = 100;
+    [SerializeField] int enemyScoreValue = 100;
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots =0.2f;
     [SerializeField] float maxTimeBetweenShots =3f;
@@ -33,6 +34,8 @@ public class Enemy : MonoBehaviour
 
     Player player;
     AudioSource myAudiosource;
+    GameSession gamesession;
+    ScoreDisplay scoreDisplay;
      
 
     // Start is called before the first frame updatea
@@ -42,6 +45,7 @@ public class Enemy : MonoBehaviour
         // myAudiosource.volume = volume;
         player = FindObjectOfType<Player>();
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        gamesession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -77,7 +81,7 @@ public class Enemy : MonoBehaviour
                     transform.position,
                     Quaternion.identity) as GameObject;
 
-            shot.GetComponent<Rigidbody2D>().velocity =
+            shot.GetComponent<Rigidbody2D>().velocity =                             // shoot down with random.range
             new Vector2(Random.Range(0, randomFactor),
             -projectileSpeed - Random.Range(0, randomFactor));
             
@@ -106,9 +110,9 @@ public class Enemy : MonoBehaviour
         var playerposY = player.transform.position.y;
         var playerVectorX = transform.position.x - playerPosX;
         var playerVectorY = transform.position.y - playerposY;
+        
         shot.GetComponent<Rigidbody2D>().velocity =
-        
-        
+               
         new Vector2(-playerVectorX + Random.Range(-randomFactor,randomFactor),       // shoot at player position
         -playerVectorY + Random.Range(-randomFactor, randomFactor));
 
@@ -123,6 +127,7 @@ public class Enemy : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer)
     {
+        gamesession.AddToNumberOfHits();
         damageDealer.Hit();                             //destroy gameobject which dealth damage.
         health -= damageDealer.GetDamage();
         Vector3 locationOther = damageDealer.transform.position;            // Get position of laserhit
@@ -151,16 +156,23 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
 
+
+
+            // transform.DetachChildren(); to detach children when object is a parent, children will stop moving though;
             GameObject killExplosion = Instantiate(explosion_kill, transform.position, transform.rotation);
             Destroy(killExplosion,durationOfExplosion);
             
             AudioSource.PlayClipAtPoint(soundDestroyed, Camera.main.transform.position,volumeExplosion);
-            // RollLoot();
+            // RollLoot(); 
+
+
+
             Destroy(gameObject);
+            gamesession.AddToscore(enemyScoreValue);
+            gamesession.AddToNumberOfKills();
+            ///TODO: addtoScore and count totalkilled in Singleton
 
-            ///TODO: addtoScore maybe count totalkilled
 
-            
 
 
         }

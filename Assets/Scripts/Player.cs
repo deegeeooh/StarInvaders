@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [Header("Player stats")]
     [SerializeField] int health = 200;
     [SerializeField] int lifes = 3;
+    [SerializeField] bool invulnerable = false;
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 10f;                                                                       // how fast do projectiles travel
@@ -33,25 +34,31 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip sound_Destruction;
     [Range(0f, 1f)] [SerializeField] float volume_sound_Destruction = 1f;
 
+    //state variables
+
     bool isFiring; // standard = false;
     float xMin;
     float xMax;
     float yMin;
     float yMax;
+    int healthRemaining;                                        // you initialise here but can't assign, that's in a method 
 
-    
+    //cache references
+
+    GameSession gameSession;
+
 
 
     // Start is called before the first frame update
     void Start()
-    {                
-        SetupMoveBoundaries();
+    {
+        gameSession = FindObjectOfType<GameSession>();
+        healthRemaining = health;                                   // introducing healtRemaining so we can reset to health;
+        SetupMoveBoundaries();                                      // when dying
         
     }
 
     
-
-
     // Update is called once per frame
     void Update()
     {
@@ -65,7 +72,7 @@ public class Player : MonoBehaviour
     {
         int numberofSpawners = FindObjectsOfType<EnemySpawner>().Length;            
         int numberofEnemiesLeft = FindObjectsOfType<Enemy>().Length;
-        Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
+        // Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
         if (numberofEnemiesLeft + numberofSpawners == 0)
         {
             FindObjectOfType<Levels>().LoadNextScene();
@@ -97,6 +104,7 @@ public class Player : MonoBehaviour
         if (bullitcount < maxNumberOfBullitsOnScreen)
         {
             FirePrimaryLaser();
+            gameSession.AddToNumberOfShots();
         }
 
         yield return new WaitForSeconds(projectileFiringPeriod);
@@ -112,6 +120,8 @@ public class Player : MonoBehaviour
             if (bullitcount < maxNumberOfBullitsOnScreen)
             {
                 FirePrimaryLaser();
+                gameSession.AddToNumberOfShots();
+
             }
 
             yield return new WaitForSeconds(projectileFiringPeriod);
@@ -154,22 +164,30 @@ public class Player : MonoBehaviour
         
         DamageDealer damagedealer = other.gameObject.GetComponent<DamageDealer>();
         if (!damagedealer) { return; }                                             // protect agains null
-        ProcessHit(damagedealer);
+        if (!invulnerable)
+        {
+            ProcessHit(damagedealer);
+        }
+        
     }
 
     private void ProcessHit(DamageDealer damageDealer)
     {
         damageDealer.Hit();                     //destroy gameobject which dealth damage.
-        health -= damageDealer.GetDamage();
+        Debug.Log("Health remaining: " + healthRemaining + " Lifes remaining: " + lifes);
+        
+        healthRemaining -= damageDealer.GetDamage();    
         //Vector3 locationOther = damageDealer.transform.position;
         DamageHitLight(damageDealer.transform.position);
-        if (health <= 0)
+        if (healthRemaining <= 0)
         {
             lifes = lifes - 1;
-            health = 200;
-            Debug.Log("Lifes remaining: " + lifes);
-            if (lifes == 0)
-            {
+            FindObjectOfType<GameSession>().UpdateLivesRemaining(-1);
+            healthRemaining = health;
+
+            
+            if (lifes == 0)                                 // TODO: this needs to go elsewhere so we can destroy player and
+            {                                               // re instantiate the player instead of destroy the gameObject here
                 DestructionHit(gameObject.transform.position);
                 Destroy(gameObject);
                 FindObjectOfType<Levels>().LoadGameOverScene();
@@ -179,7 +197,7 @@ public class Player : MonoBehaviour
 
     private void DestructionHit(Vector3 hitlocation)
     {
-        GameObject destructionSprite1 = Instantiate(destructionSprite , hitlocation, transform.rotation);
+        GameObject destructionSprite1 = Instantiate(destructionSprite , hitlocation, Quaternion.identity);
         AudioSource.PlayClipAtPoint(sound_Destruction, Camera.main.transform.position,volume_sound_Destruction);
         Destroy(destructionSprite1, 1.1f);
     }
@@ -189,7 +207,7 @@ public class Player : MonoBehaviour
     {
        
         GameObject damageSprite1 = Instantiate(damage1_sprite_FacingDOWN , hitLocation, Quaternion.identity);
-        damageSprite1.transform.parent = gameObject.transform;                        // attach damage sprite to parent( this enemy)
+        damageSprite1.transform.parent = gameObject.transform;                    // attach damage sprite to parent( this player object)
         AudioSource.PlayClipAtPoint(sound_Damage, Camera.main.transform.position,volume_sound_Damage );
     }
 }
