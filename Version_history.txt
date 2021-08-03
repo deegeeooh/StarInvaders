@@ -4,14 +4,26 @@ Star Invaders
 
 Basic functionalities:
 
+0.1_Alpha
+
 - Using animated sprites (addition to the course, using multiple frame sprites as animations)
 - Multiple scene game loop
 - Enemy spawner which instantiates configurable waves of enemies with variable pathing
 - Single and infinite loop posssibilities per wave
 - Scrolling and looping background
 - Particle effects for starfield background
-- Particle effects for hits 
+- Particle effects for hits using sprite sheets
 - Explosion animations 
 - Damage GFX as child on impacted parent 
 - audio clips for OnTrigger events
 - Looped music per scene 
+
+0.2_Alpha (03/08/2021)
+
+- Added singleton 'GameSession' to track scores and stats across scenes to be called 
+- Added Score display scripts for startscreen, levels and gameover screen
+- Add player unvulnerability option
+- Added CheckRemainingEnemies()  to check for level clearance (in player.cs)
+- Single and autofire modes for player
+- Enemy firing mode toward player 
+- GUI elements for score and player info on all scenes
