@@ -101,6 +101,7 @@ MonoBehaviour:
   movementRestrictionY_Bottom: 2.27
   health: 400
   lifes: 2
+  invulnerable: 0
   laserPrefab: {fileID: 3682606363366131455, guid: f99df37d1c3daf24ea985cec09090b1b,
     type: 3}
   projectileSpeed: 10.81

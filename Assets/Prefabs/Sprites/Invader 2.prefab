@@ -131,15 +131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1761a5a66fddaf345bce085e357822d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
-  projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
+  lootTable: {fileID: 0}
+  projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 2
   randomFactor: 1
-  shootAtPlayerPos: 1
+  shootAtPlayerPos: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -147,13 +148,14 @@ MonoBehaviour:
     type: 3}
   damage1_sprite_FacingUP: {fileID: 7030025870239296413, guid: 5791a094aa6b54d429c01d7234efc679,
     type: 3}
-  damage2_sprite_FacingUP: {fileID: 0}
+  damage2_sprite_FacingUP: {fileID: 7030025870239296413, guid: 5791a094aa6b54d429c01d7234efc679,
+    type: 3}
   durationOfdamage1: 1
   durationOfdamage2: 1
   maxDamageSpritesActive: 5
-  soundHit: {fileID: 0}
-  soundDestroyed: {fileID: 0}
-  soundShoot: {fileID: 0}
+  soundHit: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
+  soundDestroyed: {fileID: 8300000, guid: 343ef11374bc6bd43a425dd2c462438d, type: 3}
+  soundShoot: {fileID: 8300000, guid: 0ebf4c40e77d76142b20a5955a107247, type: 3}
   volumeHit: 1
   volumeExplosion: 1
 --- !u!60 &1509477757783898579

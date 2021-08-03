@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
-  m_Name: SilentBeast
+  m_Name: Silentinvader 4row singles
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4977162207543096736, guid: 12af460b00bfd2244802c76ac6f60301,
+  enemyPrefab: {fileID: 22600141371153099, guid: 77a32340ff01d244a93852f1f8469b17,
     type: 3}
-  pathPrefab: {fileID: 9165213600147034302, guid: 4ae3f111eed9d7147a8f23b5dd798345,
+  pathPrefab: {fileID: 7637790578073030351, guid: c1fb7460d8ee74b44a7bb7565794f50e,
     type: 3}
-  timeBetweenSpawns: 1
-  waypointToLoopFrom: 1
+  timeBetweenSpawns: 0.2
+  waypointToLoopFrom: 0
   spawnRandomFactor: 0.3
-  numberOfEnemies: 1
-  moveSpeed: 2.51
+  numberOfEnemies: 4
+  moveSpeed: 4
   numberOfWaves: 1

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3702769461444168781}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.46, y: 7.11, z: 5.05}
+  m_LocalPosition: {x: -0.46, y: 7.11, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.48
+      scalar: 5
       minScalar: 0.06
       maxCurve:
         serializedVersion: 2
@@ -168,8 +168,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 0.64
+      scalar: 0.06
+      minScalar: 0.02
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -225,24 +225,24 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.23529413, g: 0.23529413, b: 0.23529413, a: 0.9490196}
-        key1: {r: 1, g: 0.8553898, b: 0.36320752, a: 0.9476701}
-        key2: {r: 1, g: 0.22524968, b: 0.015686274, a: 0.7607843}
+        key0: {r: 0.5372549, g: 0.5372549, b: 0.5372549, a: 0.9490196}
+        key1: {r: 1, g: 0.8553898, b: 0.36320752, a: 0.21960784}
+        key2: {r: 1, g: 0.22524968, b: 0.015686274, a: 0.22745098}
         key3: {r: 1, g: 0.015686274, b: 0.14707771, a: 1}
-        key4: {r: 1, g: 0, b: 0.9675422, a: 1}
-        key5: {r: 1, g: 0, b: 0.9675422, a: 1}
-        key6: {r: 1, g: 0, b: 0.9675422, a: 0}
+        key4: {r: 1, g: 0.6413793, b: 0, a: 1}
+        key5: {r: 1, g: 0, b: 0.9320464, a: 1}
+        key6: {r: 0, g: 0.9888339, b: 1, a: 0}
         key7: {r: 1, g: 0, b: 0.9675422, a: 0}
         ctime0: 11951
         ctime1: 30647
         ctime2: 54356
         ctime3: 65535
-        ctime4: 60716
-        ctime5: 60716
-        ctime6: 60716
+        ctime4: 36815
+        ctime5: 42212
+        ctime6: 53199
         ctime7: 60716
         atime0: 0
-        atime1: 1735
+        atime1: 65535
         atime2: 65535
         atime3: 28913
         atime4: 44911
@@ -251,7 +251,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 4
-        m_NumAlphaKeys: 3
+        m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -606,7 +606,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.44
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -659,7 +659,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 17
+    type: 4
     angle: 20
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 142.24
+      scalar: 290.16
       minScalar: 10
       maxCurve:
         serializedVersion: 2

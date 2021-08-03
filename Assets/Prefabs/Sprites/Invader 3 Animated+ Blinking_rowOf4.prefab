@@ -133,6 +133,7 @@ MonoBehaviour:
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 10.42
+  lootTable: {fileID: 0}
   projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 2
@@ -333,6 +334,7 @@ MonoBehaviour:
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 10.42
+  lootTable: {fileID: 0}
   projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 2
@@ -352,8 +354,8 @@ MonoBehaviour:
   soundHit: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
   soundDestroyed: {fileID: 8300000, guid: 343ef11374bc6bd43a425dd2c462438d, type: 3}
   soundShoot: {fileID: 8300000, guid: 0ebf4c40e77d76142b20a5955a107247, type: 3}
-  volumeHit: 0.166
-  volumeExplosion: 1
+  volumeHit: 0.514
+  volumeExplosion: 0.769
 --- !u!60 &8697351551223815326
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -530,6 +532,7 @@ MonoBehaviour:
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 10.42
+  lootTable: {fileID: 0}
   projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 2
@@ -727,6 +730,7 @@ MonoBehaviour:
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 10.42
+  lootTable: {fileID: 0}
   projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 2

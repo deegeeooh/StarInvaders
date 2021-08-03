@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
+  enemyScoreValue: 200
   shotCounter: 0
   minTimeBetweenShots: 0.1
   maxTimeBetweenShots: 1.6
@@ -137,7 +138,7 @@ MonoBehaviour:
   soundHit: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
   soundDestroyed: {fileID: 8300000, guid: 343ef11374bc6bd43a425dd2c462438d, type: 3}
   soundShoot: {fileID: 8300000, guid: 6a97a6a687c00b44a99bdd29df9f23cb, type: 3}
-  volumeHit: 0.535
+  volumeHit: 0.541
   volumeExplosion: 0.718
 --- !u!60 &3002388634625764737
 PolygonCollider2D:
