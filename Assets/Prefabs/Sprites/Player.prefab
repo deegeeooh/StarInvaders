@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4339803981895821414}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,14 +99,14 @@ MonoBehaviour:
   movementRestrictionX: 0.56
   movementRestrictionY_Top: 3.49
   movementRestrictionY_Bottom: 2.27
-  health: 400
-  lifes: 2
-  invulnerable: 0
+  health: 100
+  lifes: 3
+  invulnerable: 1
   laserPrefab: {fileID: 3682606363366131455, guid: f99df37d1c3daf24ea985cec09090b1b,
     type: 3}
   projectileSpeed: 10.81
   projectileFiringPeriod: 0.13
-  maxNumberOfBullitsOnScreen: 4
+  maxNumberOfBullitsOnScreen: 10
   autoFire: 1
   offsetLaser: 1.24
   damage1_sprite_FacingDOWN: {fileID: 1136389360311973083, guid: 588ebf30c3b0ab14a87bcc4821df87ee,

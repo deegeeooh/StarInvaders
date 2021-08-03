@@ -29,11 +29,22 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
     // cache references
        
     GameSession gameSession;
+    GameObject player;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        if (FindObjectsOfType<Player>().Length == 1)             // if there's a player left, destroy it
+        {
+
+            Debug.Log("PLayer found");
+            player = GameObject.FindWithTag("Player");
+            Destroy(player);
+        }
+        
+
         gameSession = FindObjectOfType<GameSession>();
         if (gameSession.CheckHighscore())
         {

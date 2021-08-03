@@ -130,9 +130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 300
+  enemyScoreValue: 100
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 5.93
+  lootTable: {fileID: 0}
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
   projectileSpeed: 2
@@ -373,12 +375,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
+  enemyScoreValue: 100
   shotCounter: 0
   minTimeBetweenShots: 0.013
   maxTimeBetweenShots: 18.81
+  lootTable: {fileID: 0}
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
-  projectileSpeed: 9.4
+  projectileSpeed: 10.18
   randomFactor: 2
   shootAtPlayerPos: 1
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
@@ -609,9 +613,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 300
+  enemyScoreValue: 100
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 5.93
+  lootTable: {fileID: 0}
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
   projectileSpeed: 2

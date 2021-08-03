@@ -53,23 +53,28 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-        CheckSingleton();
+        CheckSingleton();                                           // added a singleton so the player with attributes survives between levels
         gameSession = FindObjectOfType<GameSession>();
         healthRemaining = health;                                   // introducing healtRemaining so we can reset to health;
         SetupMoveBoundaries();                                      // when dying
         
     }
-
+    
     private void CheckSingleton()
     {
-        if (FindObjectsOfType<GameSession>().Length > 1)
+        if (FindObjectsOfType<Player>().Length > 1)
         {
+                     
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
         else
         {
+                       
+            
             DontDestroyOnLoad(gameObject);
+           
+                
         }
 
     }
@@ -90,9 +95,11 @@ public class Player : MonoBehaviour
         // Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
         if (numberofEnemiesLeft + numberofSpawners == 0)
         {
-            FindObjectOfType<Levels>().LoadNextScene();
+            FindObjectOfType<Levels>().LoadNextScene();     // TODO: Add musicplayer Singleton for music to keep playing between levels
+            
 
         }
+        
 
     }
 
@@ -159,7 +166,6 @@ public class Player : MonoBehaviour
         var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * player_MovementSpeed;
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);                                            // Mathf.Clamp to limit range
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
-               
         transform.position = new Vector2(newXPos, newYPos);                                                              // Update player movement every frame
 
     }
