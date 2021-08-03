@@ -18,7 +18,7 @@ Basic functionalities:
 - audio clips for OnTrigger events
 - Looped music per scene 
 
-0.2_Alpha
+0.2_Alpha (03/08/2021)
 
 - Added singleton 'GameSession' to track scores and stats across scenes to be called 
 - Added Score display scripts for startscreen, levels and gameover screen
