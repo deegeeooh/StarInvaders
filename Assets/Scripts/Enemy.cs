@@ -44,7 +44,9 @@ public class Enemy : MonoBehaviour
     ScoreDisplay scoreDisplay;
 
     float positiveX, positiveY;
-    
+    float playerVectorX, playerVectorY;
+    Vector2 normalisedVectorToPlayer;
+
 
 
     // Start is called before the first frame updatea
@@ -74,7 +76,7 @@ public class Enemy : MonoBehaviour
             }
             else if (shootThreeWay)
             {
-                FireMultiple(numberOfProjectiles, shootThreeWayUp, shootThreeWayDown, shootThreeWayRound);
+                FireMultiple(numberOfProjectiles, shootThreeWayUp, shootThreeWayDown, shootThreeWayRound, shootAtPlayerPos);
             }
             else
             {
@@ -87,12 +89,23 @@ public class Enemy : MonoBehaviour
         }
 
     }
+    private Vector2 GetNormalisedVector2Player()
+    {
+        var playerPosX = player.transform.position.x;
+        var playerposY = player.transform.position.y;
+        playerVectorX = transform.position.x - playerPosX + Random.Range(-randomFactor, randomFactor);
+        playerVectorY = transform.position.y - playerposY + Random.Range(-randomFactor, randomFactor);
 
-    
+        // playerVectorX, Y now have velocity relative to the distance between the two objects
+        // that's why we use .normalised, to multiply with projectileSpeed
 
-    
+        Vector2 vectorToPlayer = new Vector2(playerVectorX, playerVectorY).normalized;
+        return vectorToPlayer;
 
-    private void GetPlayerVector(out float playerVectorX, out float playerVectorY)
+    }
+
+
+    private void GetPlayerVector(out float playerVectorX, out float playerVectorY) // Old routine 
     {
         var playerPosX = player.transform.position.x;
         var playerposY = player.transform.position.y;
@@ -111,7 +124,6 @@ public class Enemy : MonoBehaviour
         new Vector2(Random.Range(0, randomFactor),
         -projectileSpeed - Random.Range(0, randomFactor));
 
-
     }
 
     private void FireTowardsPlayer()
@@ -123,7 +135,7 @@ public class Enemy : MonoBehaviour
                     Quaternion.identity) as GameObject;
 
 
-        if (FindObjectsOfType<Player>().Length == 0)
+        if (FindObjectsOfType<Player>().Length == 0)                    // player dead?
         {
             shot.GetComponent<Rigidbody2D>().velocity =
             new Vector2(Random.Range(0, randomFactor),
@@ -131,36 +143,46 @@ public class Enemy : MonoBehaviour
             return;
 
         }
+        
+        
+        // GetPlayerVector(out playerVectorX, out playerVectorY);   This will get the unnormalized vectors
 
-        float playerVectorX, playerVectorY;
-        GetPlayerVector(out playerVectorX, out playerVectorY);
-        Debug.Log("playervectorx: " + playerVectorX + "playerVectorY: " + playerVectorY);
+        normalisedVectorToPlayer = GetNormalisedVector2Player();
+        
+        var distance = Vector2.Distance(player.transform.position, transform.position);
+        Debug.Log("playervectorx: " + playerVectorX + "playerVectorY: " + playerVectorY+"distance "+distance+" Normalisedvector " + normalisedVectorToPlayer);
 
 
-        playerVectorX = Mathf.Clamp(playerVectorX *3, -projectileSpeed, projectileSpeed);
-        playerVectorY = Mathf.Clamp(playerVectorY *3, -projectileSpeed, projectileSpeed);
 
-        shot.GetComponent<Rigidbody2D>().velocity =
-
-        new Vector2(-playerVectorX + Random.Range(-randomFactor, randomFactor),       // shoot at player position
-        -playerVectorY + Random.Range(-randomFactor, randomFactor));
+        shot.GetComponent<Rigidbody2D>().velocity = -normalisedVectorToPlayer * projectileSpeed;
+            
+        
+        //new Vector2(-playerVectorX + Random.Range(-randomFactor, randomFactor),       // shoot at player position
+        //-playerVectorY + Random.Range(-randomFactor, randomFactor));
 
     }
 
-    private void FireMultiple(int numberOfProjectiles, bool up, bool down, bool round)
+    private void FireMultiple(int numberOfProjectiles, bool up, bool down, bool round, bool atPlayer)
     {
         
+
         for (int shotFired = 0; shotFired < numberOfProjectiles; shotFired++)
         {
-            GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+
+            //if (atPlayer) { normalisedVectorToPlayer = GetNormalisedVector2Player(); }
+            //else { normalisedVectorToPlayer = new Vector2(1,1); }
             
+
+            GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+
+
             if (round)
             {
                 
-                if (Random.Range(-1, 1) < 0) { positiveX = -1; } else { positiveX = 1; }
+                if (Random.Range(-1, 1) < 0) { positiveX = -1; } else { positiveX = 1; }        // gives me a 1 or -1
                 if (Random.Range(-1, 1) < 0) { positiveY = -1; } else { positiveY = 1; }
 
-                Debug.Log("x , y "+positiveX+ positiveY);
+                Debug.Log("x , y "+ positiveX + positiveY);
 
 
                 shot.GetComponent<Rigidbody2D>().velocity =
@@ -177,16 +199,16 @@ public class Enemy : MonoBehaviour
             }
             else if (down)
             {
-                shot.GetComponent<Rigidbody2D>().velocity =
+                shot.GetComponent<Rigidbody2D>().velocity = 
 
-                new Vector2(projectileSpeed * Random.Range(-spread, spread),
-                - projectileSpeed - Random.Range(-randomFactor, randomFactor));
+                new Vector2(projectileSpeed * Random.Range(-randomFactor, randomFactor),
+                -projectileSpeed - Random.Range(-randomFactor, randomFactor));
             }
 
 
         }
-
     }
+
 
 
 

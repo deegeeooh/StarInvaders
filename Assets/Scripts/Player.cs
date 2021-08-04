@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         // Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
         if (numberofEnemiesLeft + numberofSpawners == 0)
         {
-            FindObjectOfType<Levels>().LoadNextScene();     // TODO: Add musicplayer Singleton for music to keep playing between levels
+            FindObjectOfType<Levels>().LoadNextScene();     
             
 
         }
