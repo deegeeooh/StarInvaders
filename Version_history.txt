@@ -27,3 +27,15 @@ Basic functionalities:
 - Single and autofire modes for player
 - Enemy firing mode toward player 
 - GUI elements for score and player info on all scenes
+
+0.3_Alpha
+
+- Added Singletons for musicplayer during levels
+- Added Singleton for background scroller and effects
+- Added delay per waveconfig and between loading scenes
+
+ bugs:
+- Dont add level when going to GameOver Screen
+- Destroy player on GameOver Screen
+
+

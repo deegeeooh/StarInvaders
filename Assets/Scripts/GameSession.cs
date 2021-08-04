@@ -13,6 +13,9 @@ public class GameSession : MonoBehaviour
     [SerializeField] int shipsRemaining = 3;
     [SerializeField] int numberOfShotsFired = 0;
     [SerializeField] int numberOfHits = 0;
+    [SerializeField] int pointsPerHit = 5;
+    //[SerializeField] int numberOfMissed = 0;
+    
 
     // state variables
 
@@ -88,6 +91,12 @@ public class GameSession : MonoBehaviour
         // Debug.Log(numberOfKills);
     }
 
+    //public void AddToNumberOfMissed()
+    //{
+    //    numberOfMissed++;
+    //    // Debug.Log(numberOfKills);
+    //}
+
     public void AddToNumberOfShots()
     {
         numberOfShotsFired ++;
@@ -97,6 +106,7 @@ public class GameSession : MonoBehaviour
     public void AddToNumberOfHits()
     {
         numberOfHits ++;
+        AddToscore(pointsPerHit);
 
     }
 

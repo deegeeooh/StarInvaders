@@ -130,14 +130,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  enemyScoreValue: 100
   shotCounter: 0
   minTimeBetweenShots: 0.01
   maxTimeBetweenShots: 74.31
+  lootTable: {fileID: 11400000, guid: a9966eff39f98a84eade878f8cf413e0, type: 2}
   projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 11.35
+  numberOfProjectiles: 1
   randomFactor: 2.23
+  spread: 0
   shootAtPlayerPos: 0
+  shootThreeWay: 0
+  shootThreeWayUp: 0
+  shootThreeWayDown: 0
+  shootThreeWayRound: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1

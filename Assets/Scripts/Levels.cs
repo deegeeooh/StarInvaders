@@ -6,14 +6,18 @@ using UnityEngine.SceneManagement;
 public class Levels : MonoBehaviour
 {
 
-    [SerializeField] float delayInSeconds = 4f;
+    [SerializeField] float delayInSeconds = 4.5f;
 
    
     public void LoadNextScene()
     {
+
+
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
-        FindObjectOfType<GameSession>().AddToLevel();
+        StartCoroutine(WaitSecondsAndLoadScene(currentSceneIndex + 1));
+        ;
+        
+            
         
     }
 
@@ -28,7 +32,10 @@ public class Levels : MonoBehaviour
     public void LoadGameOverScene()
 
     {
-        StartCoroutine(WaitSeconds());
+
+        Debug.Log("SceneCount"+SceneManager.sceneCountInBuildSettings);
+        StartCoroutine(WaitSecondsAndLoadScene(SceneManager.sceneCountInBuildSettings - 1));
+        
     }
 
     public void QuitGame()
@@ -36,10 +43,15 @@ public class Levels : MonoBehaviour
         Application.Quit();
     }
 
-    public IEnumerator WaitSeconds()
+    public IEnumerator WaitSecondsAndLoadScene(int scene)
     {
         yield return new WaitForSeconds(delayInSeconds);
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene(scene);
+        if (scene < SceneManager.sceneCountInBuildSettings - 1)         // if not GameOver Screen
+        {
+            FindObjectOfType<GameSession>().AddToLevel();                               // increase level
+        }
+
     }
 
     public string GetCurrentSceneName()
@@ -47,5 +59,10 @@ public class Levels : MonoBehaviour
         return SceneManager.GetActiveScene().name;
     }
 
+    public void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(1);
+        FindObjectOfType<GameSession>().AddToLevel();
 
+    }
 }

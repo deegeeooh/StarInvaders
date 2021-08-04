@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
-  m_Name: Silentinvader 4row
+  m_Name: Silentinvader 4row 1
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3086303745451488807, guid: f596fd8ef77640e49845104b1571631d,
     type: 3}
   pathPrefab: {fileID: 7637790578073030351, guid: c1fb7460d8ee74b44a7bb7565794f50e,
     type: 3}
   timeBetweenSpawns: 1
+  timeBeforeStarting: 1.5
   waypointToLoopFrom: 0
   spawnRandomFactor: 0.3
   numberOfEnemies: 1

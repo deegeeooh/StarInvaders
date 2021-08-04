@@ -30,6 +30,7 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
        
     GameSession gameSession;
     GameObject player;
+    GameObject music;
 
 
     // Start is called before the first frame update
@@ -43,7 +44,14 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
             player = GameObject.FindWithTag("Player");
             Destroy(player);
         }
-        
+
+        if (FindObjectsOfType<MusicPlayerLevel>().Length == 1)
+        {
+            music = GameObject.Find("MusicPlayerLevel");
+            Destroy(music);
+
+        }
+
 
         gameSession = FindObjectOfType<GameSession>();
         if (gameSession.CheckHighscore())

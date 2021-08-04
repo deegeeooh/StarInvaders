@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
-  m_Name: invaders X only 3
+  m_Name: spread360
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4398456057378765359, guid: 357b56304b935fc4782316f7a9631e62,
+  enemyPrefab: {fileID: 8247516117301631739, guid: 32d346f54c87ad8468328b1c37b58655,
     type: 3}
-  pathPrefab: {fileID: 5177991161331285527, guid: 638a7843b4ef1f64ea7d76b17d2618d6,
+  pathPrefab: {fileID: 293487463296583756, guid: 981d1b41b4bd7d04b8cbf6f97afbd528,
     type: 3}
-  timeBetweenSpawns: 8.52
+  timeBetweenSpawns: 0.28
   timeBeforeStarting: 1.5
-  waypointToLoopFrom: 1
+  waypointToLoopFrom: 0
   spawnRandomFactor: 0.3
   numberOfEnemies: 1
-  moveSpeed: 1
+  moveSpeed: 4
   numberOfWaves: 1

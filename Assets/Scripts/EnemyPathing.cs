@@ -69,6 +69,7 @@ public class EnemyPathing : MonoBehaviour
                 {
                     //loopsCompleted = 0;
                     Destroy(gameObject);
+                    
                 }
             }
 

@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] bool infiniteLoop = false;                                                     // all waves in this spawner will be repeated infinitely
     [SerializeField] bool singleLoop = false;                                                       // for a single repeated loop for a number of times
     [SerializeField] int numberOfSingleLoops = 1;
+   
     int startingWave = 0;
     // WaveConfig waveconfig;  
 
@@ -21,8 +22,12 @@ public class EnemySpawner : MonoBehaviour
    public IEnumerator Start()
     
     {
+                
         do
         {
+            var timeBeforeStarting = waveConfigs[0].GetTimeBeforeStarting();
+            yield return new WaitForSeconds(timeBeforeStarting);
+
             for (startingWave = 0; startingWave < waveConfigs.Count; startingWave++)
             {
                 var currentWave = waveConfigs[startingWave];
@@ -54,7 +59,10 @@ public class EnemySpawner : MonoBehaviour
     }                                                 // the scene is completed in player.cs when no spawners are left
 
     // Update is called once per frame
+
     
+
+
     public IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)
     {
         
