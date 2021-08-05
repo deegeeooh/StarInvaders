@@ -10,11 +10,12 @@ public class GameSession : MonoBehaviour
     [SerializeField] int currentScore = 0;
     [SerializeField] int currentLevel = 0;
     [SerializeField] int numberOfKills = 0;
-    [SerializeField] int shipsRemaining = 3;
+    [SerializeField] int healthRemaining = 600;
     [SerializeField] int numberOfShotsFired = 0;
     [SerializeField] int numberOfHits = 0;
     [SerializeField] int pointsPerHit = 5;
-    //[SerializeField] int numberOfMissed = 0;
+    [SerializeField] int escapedEnemies = 0;
+    [SerializeField] int goldValue = 0;
     
 
     // state variables
@@ -42,7 +43,7 @@ public class GameSession : MonoBehaviour
     {
         CheckHighscore();
         AddToscore(0);
-        UpdateLivesRemaining(0);
+        AddToHealthRemaining(0);
         
     }
 
@@ -65,13 +66,24 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.DownArrow))            // reset highscore
+        {
+            PlayerPrefs.SetInt("highScore", 0);
+            highScore = 0;
+        }
     }
     public void AddToscore(int score)
     {
         currentScore += score;
         
     }
+
+    public void AddToGold(int value)
+    {
+        goldValue += value;
+
+    }
+
 
     public void ResetGame()                                 //  reset gameStatus by destroying this object
     {
@@ -91,11 +103,11 @@ public class GameSession : MonoBehaviour
         // Debug.Log(numberOfKills);
     }
 
-    //public void AddToNumberOfMissed()
-    //{
-    //    numberOfMissed++;
-    //    // Debug.Log(numberOfKills);
-    //}
+    public void AddToNumberOfEscaped()
+    {
+        escapedEnemies++;
+        // Debug.Log(numberOfKills);
+    }
 
     public void AddToNumberOfShots()
     {
@@ -122,19 +134,25 @@ public class GameSession : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
     
-    public void UpdateLivesRemaining(int lives)
+    public void AddToHealthRemaining(int health)
     {
-        shipsRemaining += lives;
+        healthRemaining += health;
+
+    }
+
+    public void SetHealthRemaining(int health)
+    {
+        healthRemaining = health;
 
     }
 
     public int GetScore() { return currentScore; }
 
-    public int GetShipsRemaining () { return shipsRemaining; }
+    public int GetShipsRemaining () { return healthRemaining; }
 
     public int GetHighScore () { return highScore; }
 
-    public int GetLivesRemaining () { return shipsRemaining; }
+    public int GetHealthRemaining () { return healthRemaining; }
     
     public int GetNumberOfShotsFired () { return numberOfShotsFired; }
 
@@ -144,6 +162,9 @@ public class GameSession : MonoBehaviour
 
     public int GetNumberOfHits() { return numberOfHits; }
 
+    public int GetTotalGold() { return goldValue; }
+
+    public int GetEnemiesEscaped() { return escapedEnemies; }
 
 
 }

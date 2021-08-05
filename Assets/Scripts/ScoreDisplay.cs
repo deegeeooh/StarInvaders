@@ -51,7 +51,7 @@ public class ScoreDisplay : MonoBehaviour
 
     public void PrintLivesRemaining()
     {
-        shipsRemainingText.text = gameSession.GetLivesRemaining().ToString();
+        shipsRemainingText.text = gameSession.GetHealthRemaining().ToString();
     }
 
     public void PrintLevel()

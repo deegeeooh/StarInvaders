@@ -15,7 +15,7 @@ public class WaveConfig : ScriptableObject
     [SerializeField] int numberOfEnemies = 5;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] int numberOfWaves;
-
+    
 
     public GameObject GetEnemyPrefab() { return enemyPrefab; }
     public List<Transform> GetWayPoints() 
@@ -24,7 +24,9 @@ public class WaveConfig : ScriptableObject
 
         foreach (Transform child in pathPrefab.transform)
         {
-            //Debug.Log(child);
+            // Debug.Log("child "+child);
+            
+            
             waveWayPoints.Add(child);
         }
 
@@ -36,10 +38,10 @@ public class WaveConfig : ScriptableObject
     public int GetNumberOfEnemies() { return numberOfEnemies; }
     public float GetMoveSpeed() { return moveSpeed; }
     public int GetNumberOfLoops () { return numberOfWaves; }
-
     public int GetWayPointToLoopFrom () { return waypointToLoopFrom; }
-
     public float GetTimeBeforeStarting () { return timeBeforeStarting; }
+    
+    
    
    
 

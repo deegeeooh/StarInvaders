@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int numberOfProjectiles = 1;
     [SerializeField] float randomFactor = 1f;
     [SerializeField] float spread = 0;
-    [SerializeField] bool shootAtPlayerPos = true;
+    [SerializeField] bool shootAtPlayerPos = false;
     [SerializeField] bool shootThreeWay = false;
     [SerializeField] bool shootThreeWayUp = false;
     [SerializeField] bool shootThreeWayDown = false;
@@ -27,9 +27,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] float durationOfExplosion = 2f;
     [SerializeField] GameObject explosion_kill;
     [SerializeField] GameObject damage1_sprite_FacingUP;
-    [SerializeField] GameObject damage2_sprite_FacingUP;
+    //[SerializeField] GameObject damage2_sprite_FacingUP;
     [SerializeField] float durationOfdamage1 = 2f;
-    [SerializeField] float durationOfdamage2 = 2f;
+    //[SerializeField] float durationOfdamage2 = 2f;
     [SerializeField] int maxDamageSpritesActive = 5;
     [Header("Sound settings")]
     [SerializeField] AudioClip soundHit;
@@ -46,6 +46,8 @@ public class Enemy : MonoBehaviour
     float positiveX, positiveY;
     float playerVectorX, playerVectorY;
     Vector2 normalisedVectorToPlayer;
+    
+
 
 
 
@@ -62,7 +64,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CountDownAndShoot();
+        CountDownAndShoot();                                    // TODO Sprite rotation
+        //Vector3 moveDirection = gameObject.transform.position;           
+
+        //if (moveDirection != Vector3.left && moveDirection != Vector3.right)
+        //{
+        //    float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg + -90 ;
+        //    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //}
     }
 
     private void CountDownAndShoot()
@@ -70,11 +79,11 @@ public class Enemy : MonoBehaviour
         shotCounter -= Time.deltaTime;
         if (shotCounter <= 0f)
         {
-            if (shootAtPlayerPos)
-            {
-                FireTowardsPlayer();
-            }
-            else if (shootThreeWay)
+            //if (shootAtPlayerPos)
+            //{
+            //    FireTowardsPlayer();
+            //}
+            if (shootThreeWay)
             {
                 FireMultiple(numberOfProjectiles, shootThreeWayUp, shootThreeWayDown, shootThreeWayRound, shootAtPlayerPos);
             }
@@ -169,8 +178,11 @@ public class Enemy : MonoBehaviour
         for (int shotFired = 0; shotFired < numberOfProjectiles; shotFired++)
         {
 
-            //if (atPlayer) { normalisedVectorToPlayer = GetNormalisedVector2Player(); }
-            //else { normalisedVectorToPlayer = new Vector2(1,1); }
+            if (atPlayer && FindObjectsOfType<Player>().Length > 0)
+            {
+                normalisedVectorToPlayer = GetNormalisedVector2Player(); 
+            }
+            
             
 
             GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
@@ -199,21 +211,23 @@ public class Enemy : MonoBehaviour
             }
             else if (down)
             {
-                shot.GetComponent<Rigidbody2D>().velocity = 
+                if (atPlayer && FindObjectsOfType<Player>().Length > 0)
+                {
+                    shot.GetComponent<Rigidbody2D>().velocity = -normalisedVectorToPlayer *
+                        (projectileSpeed + Random.Range(-randomFactor, randomFactor));
+                }
+                else
+                {
+                    shot.GetComponent<Rigidbody2D>().velocity = 
 
-                new Vector2(projectileSpeed * Random.Range(-randomFactor, randomFactor),
-                -projectileSpeed - Random.Range(-randomFactor, randomFactor));
+                    new Vector2(projectileSpeed * Random.Range(-randomFactor, randomFactor),
+                    -projectileSpeed - Random.Range(-randomFactor, randomFactor));
+                }
             }
 
 
         }
     }
-
-
-
-
-
-
 
 
 
@@ -256,44 +270,49 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
 
-
-
             // transform.DetachChildren(); to detach children when object is a parent, children will stop moving though;
             GameObject killExplosion = Instantiate(explosion_kill, transform.position, transform.rotation);
             Destroy(killExplosion,durationOfExplosion);
             
             AudioSource.PlayClipAtPoint(soundDestroyed, Camera.main.transform.position,volumeExplosion);
-            // RollLoot(); 
+            RollLoot(); 
 
-
-
-            Destroy(gameObject);
+            // Destroy(gameObject,0.1f);
             gamesession.AddToscore(enemyScoreValue);
             gamesession.AddToNumberOfKills();
-            ///TODO: addtoScore and count totalkilled in Singleton
-
-
-
 
         }
     }
 
     private void RollLoot()
     {
+        
+
+        List<LootItem> lootitems;
+        lootitems = lootTable.GetLootItems();
         var lootTableDropChance = lootTable.GetLootTableDropChance();
-        List<ScriptableObject> lootItems = lootTable.GetLootItems();
+        var numberOfLootitems = lootitems.Count;
 
-        Debug.Log("LootItems "+ lootItems.Count);
+        //LootItem item = FindObjectOfType <LootItem>();
 
-        for (int startItem = 0; startItem < lootItems.Count; startItem++)
+        for (int startItem = 0; startItem < numberOfLootitems; startItem++)
         {
-            Debug.Log(lootItems[startItem].name);
+            GameObject itemGameObject = lootitems[startItem].GetLootItem();
+            var weight = lootitems[startItem].GetItemWeight();
+            float weigthedDropChance = (weight * lootTableDropChance);
+            // Debug.Log("lootitem " + startItem + ": " + itemGameObject + " Chance: " + weigthedDropChance);
+
+            float calculateDrop = Random.Range(0, 10001);
+            if (calculateDrop <= weigthedDropChance)
+            {
+                // Debug.Log("calculateDrop  " + calculateDrop);
+                GameObject dropItem = Instantiate(itemGameObject, transform.position, transform.rotation);
+                dropItem.GetComponent<Rigidbody2D>().velocity = new Vector2(0,-lootitems[startItem].GetItemdropSpeed());
+            }
+
         }
-
-    
-
-
-
+        Destroy(gameObject, 0.1f);
+        
 
 
     }

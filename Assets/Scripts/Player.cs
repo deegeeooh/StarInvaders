@@ -6,21 +6,24 @@ public class Player : MonoBehaviour
 {
     // configuration parameters
     [Header("Player Movement")]
-    [SerializeField] float player_MovementSpeed = 11f;
+    [SerializeField] float player_MovementSpeed = 9f;
     [SerializeField] float movementRestrictionX;                                                                        // movement restrictions for player ship
     [SerializeField] float movementRestrictionY_Top;
     [SerializeField] float movementRestrictionY_Bottom;
     [Header("Player stats")]
-    [SerializeField] int health = 200;
-    [SerializeField] int lifes = 3;
+    //[SerializeField] int health = 200;
+    [SerializeField] int health = 3;
     [SerializeField] bool invulnerable = false;
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
-    [SerializeField] float projectileSpeed = 10f;                                                                       // how fast do projectiles travel
-    [SerializeField] float projectileFiringPeriod = 2f;                                                                 
+    [SerializeField] float projectileSpeed = 8f;                                                                       // how fast do projectiles travel
+    [SerializeField] float projectileFiringPeriod =0.15f;                                                                 
     [SerializeField] int maxNumberOfBullitsOnScreen = 4;
     [SerializeField] bool autoFire = true;
     [SerializeField] float offsetLaser = 0.3f;
+    [SerializeField] bool singleLaser = true;
+    [SerializeField] bool doubleLaser = false;
+    [SerializeField] bool tripleLaser = false;
     [Header("DamageSprites")]
     [SerializeField] GameObject damage1_sprite_FacingDOWN;
     [SerializeField] GameObject damage2_sprite_FacingDOWN;
@@ -55,7 +58,7 @@ public class Player : MonoBehaviour
 
         CheckSingleton();                                           // added a singleton so the player with attributes survives between levels
         gameSession = FindObjectOfType<GameSession>();
-        healthRemaining = health;                                   // introducing healtRemaining so we can reset to health;
+        healthRemaining = gameSession.GetHealthRemaining();                                 // introducing healtRemaining so we can reset to health;
         SetupMoveBoundaries();                                      // when dying
         
     }
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour
     {
         int numberofSpawners = FindObjectsOfType<EnemySpawner>().Length;            
         int numberofEnemiesLeft = FindObjectsOfType<Enemy>().Length;
-        // Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
+        //Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
         if (numberofEnemiesLeft + numberofSpawners == 0)
         {
             FindObjectOfType<Levels>().LoadNextScene();     
@@ -153,6 +156,7 @@ public class Player : MonoBehaviour
 
     private void FirePrimaryLaser()
     {
+        
         GameObject laser = Instantiate(
                         laserPrefab,
                         new Vector3(transform.position.x,transform.position.y+offsetLaser,0),
@@ -184,35 +188,100 @@ public class Player : MonoBehaviour
     {
         
         DamageDealer damagedealer = other.gameObject.GetComponent<DamageDealer>();
-        if (!damagedealer) { return; }                                             // protect agains null
-        if (!invulnerable)
+        if (!damagedealer)
+        {
+            if (other.gameObject.GetComponent<Loot>() != null)
+            {
+                Debug.Log("LOOT GEVANGEN");
+
+                CheckCatchedLoot(other);
+
+            }
+        }                                             // protect agains null
+        if (!invulnerable && damagedealer)
         {
             ProcessHit(damagedealer);
         }
         
     }
 
+    private void CheckCatchedLoot(Collider2D other)
+    {
+        Loot loot = other.gameObject.GetComponent<Loot>();
+        var value = loot.GetItemValue();
+        if (loot.IsGold())
+        {
+            gameSession.AddToGold(value);
+            loot.PlaySound();
+            loot.DestroyLootItem();
+        }
+        else if (loot.IsShooter_3way())
+        {
+
+        }
+        else if (loot.IsShooter_Double())
+        {
+
+        }
+        else if (loot.IsHealth())
+        {
+            gameSession.AddToHealthRemaining(value);
+            healthRemaining = gameSession.GetHealthRemaining();
+            
+
+
+        }
+
+        else if (loot.IsLife())
+        {
+
+        }
+        else if (loot.IsBonusScore())
+        {
+
+        }
+        else if (loot.IsPowerUp())
+        {
+            player_MovementSpeed += Mathf.Clamp(0.2f, 0, 13);
+            projectileSpeed += Mathf.Clamp(0.2f, 0, 11);
+            maxNumberOfBullitsOnScreen += Mathf.Clamp(1, 0, 10);
+            projectileFiringPeriod -= Mathf.Clamp(0.005f, 0.12f, 0.20f);
+            Debug.Log("Bullits on screen: " + maxNumberOfBullitsOnScreen + " proj speed " + projectileSpeed + " projectlifetime " + projectileFiringPeriod);
+
+        }
+
+
+        loot.PlaySound();
+        loot.DestroyLootItem();
+
+    }
+
     private void ProcessHit(DamageDealer damageDealer)
     {
         damageDealer.Hit();                     //destroy gameobject which dealth damage.
-        Debug.Log("Health remaining: " + healthRemaining + " Lifes remaining: " + lifes);
-        
-        healthRemaining -= damageDealer.GetDamage();    
-        //Vector3 locationOther = damageDealer.transform.position;
-        DamageHitLight(damageDealer.transform.position);
+        Debug.Log("Health remaining: " + healthRemaining );
+
+        healthRemaining = healthRemaining-damageDealer.GetDamage();
+
         if (healthRemaining <= 0)
         {
-            lifes = lifes - 1;
-            FindObjectOfType<GameSession>().UpdateLivesRemaining(-1);
-            healthRemaining = health;
-
-            
-            if (lifes == 0)                                 // TODO: this needs to go elsewhere so we can destroy player and
-            {                                               // re instantiate the player instead of destroy the gameObject here
+            gameSession.SetHealthRemaining(0);
+        }
+        else
+        {
+            gameSession.AddToHealthRemaining(-damageDealer.GetDamage());
+        }
+        
+                
+        DamageHitLight(damageDealer.transform.position);
+        
+        if (healthRemaining <= 0)
+        {
+                healthRemaining = 0;
                 DestructionHit(gameObject.transform.position);
-                Destroy(gameObject);
-                FindObjectOfType<Levels>().LoadGameOverScene();
-            }
+                Destroy(gameObject,0.2f);
+                FindObjectOfType<Levels>().LoadGameOverScene(); 
+            
         }
     }
 

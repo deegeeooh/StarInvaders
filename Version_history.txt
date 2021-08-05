@@ -38,4 +38,7 @@ Basic functionalities:
 - Dont add level when going to GameOver Screen
 - Destroy player on GameOver Screen
 
-
+added features:
+- multiple projectile shooting: at player +  up, down, round + multiple projectiles
+- random waves via EnemySpawner bool
+- added Loot table and loot items

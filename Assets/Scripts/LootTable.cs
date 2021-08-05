@@ -6,17 +6,29 @@ using UnityEngine;
 
 public class LootTable : ScriptableObject
 {
-    [SerializeField] List<ScriptableObject> lootItem;
+    [SerializeField] List<LootItem> lootItem;               // LootItem is a scriptableObject
     [Range(0, 100)] [SerializeField] int dropChance;
 
 
-public List<ScriptableObject> GetLootItems()
+public List<LootItem> GetLootItems()
     {
+        var items = new List<LootItem>();
 
-        return lootItem;
+        foreach (LootItem child in lootItem)
+        {
+            items.Add(child);
+        }
+        return items;
     }
 
 public int GetLootTableDropChance () { return dropChance;  }
+
+//public GameObject GetLootItem(ScriptableObject item, int index)
+//    {
+//       lootItem[0].GetLootItem
+                
+//        return 
+//    }
 
 
 

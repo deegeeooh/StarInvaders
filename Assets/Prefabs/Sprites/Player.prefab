@@ -101,14 +101,17 @@ MonoBehaviour:
   movementRestrictionY_Bottom: 2.27
   health: 100
   lifes: 3
-  invulnerable: 1
+  invulnerable: 0
   laserPrefab: {fileID: 3682606363366131455, guid: f99df37d1c3daf24ea985cec09090b1b,
     type: 3}
-  projectileSpeed: 10.81
-  projectileFiringPeriod: 0.13
-  maxNumberOfBullitsOnScreen: 10
+  projectileSpeed: 8
+  projectileFiringPeriod: 0.2
+  maxNumberOfBullitsOnScreen: 4
   autoFire: 1
   offsetLaser: 1.24
+  singleLaser: 1
+  doubleLaser: 0
+  tripleLaser: 0
   damage1_sprite_FacingDOWN: {fileID: 1136389360311973083, guid: 588ebf30c3b0ab14a87bcc4821df87ee,
     type: 3}
   damage2_sprite_FacingDOWN: {fileID: 820556967208674087, guid: 283a3af73e1681f4b81ac50bf312a2b4,

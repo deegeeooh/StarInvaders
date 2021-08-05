@@ -47,6 +47,9 @@ MonoBehaviour:
   currentScore: 0
   currentLevel: 0
   numberOfKills: 0
-  shipsRemaining: 3
+  healthRemaining: 600
   numberOfShotsFired: 0
   numberOfHits: 0
+  pointsPerHit: 5
+  numberOfMissed: 0
+  goldValue: 0

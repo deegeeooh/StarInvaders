@@ -18,7 +18,7 @@ TagManager:
   - Enemy
   - Player Projectlle
   - Enemy Projectile
-  - 
+  - Loot
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
     locked: 0
   - name: Impacthits
     uniqueID: 3320122007
+    locked: 0
+  - name: Loot
+    uniqueID: 2074279703
     locked: 0
