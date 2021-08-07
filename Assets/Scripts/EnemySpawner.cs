@@ -66,10 +66,10 @@ public class EnemySpawner : MonoBehaviour
         for (int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++)
         {
             var currentWave = waveConfigs[waveIndex];
-            //if (randomizeWaves)
-            //{
-            //    currentWave = waveConfigs[Random.Range(0, waveConfigs.Count - 1)];
-            //}
+            if (randomizeWaves)
+            {
+                currentWave = waveConfigs[Random.Range(0, waveConfigs.Count - 1)];
+            }
             Debug.Log("WaveConfigs.count: " + waveConfigs.Count + "waveindex " + waveIndex);
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
         }

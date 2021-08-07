@@ -142,7 +142,7 @@ MonoBehaviour:
   projectileSpeed: 7
   numberOfProjectiles: 4
   randomFactor: 1
-  spread: 0
+  spread: 1.29
   shootAtPlayerPos: 0
   shootUP: 0
   shootDown: 1

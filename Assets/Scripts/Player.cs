@@ -171,6 +171,7 @@ public class Player : MonoBehaviour
                             new Vector3(transform.position.x, transform.position.y + offsetLaserY, 0),
                             Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            // laser.transform.parent = this.transform;
         }
         else if (doubleLaser)
         {
@@ -266,6 +267,7 @@ public class Player : MonoBehaviour
         if (loot.IsGold())
         {
             gameSession.AddToGold(value);
+            Debug.Log("value: " + value);
             loot.PlaySound();
             loot.DestroyLootItem();
         }

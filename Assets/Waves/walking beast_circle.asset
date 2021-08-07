@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
+  m_Name: walking beast_circle
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 6488780349241756240, guid: 6b2d5329c670e9e4396abffc44f16d29,
+    type: 3}
+  pathPrefab: {fileID: 858866149342692061, guid: 933945ae5f272e44db5613ac0523d5d2,
+    type: 3}
+  timeBetweenSpawns: 2
+  timeBeforeStarting: 1.5
+  waypointToLoopFrom: 0
+  spawnRandomFactor: 0.3
+  numberOfEnemies: 2
+  moveSpeed: 2
+  numberOfWaves: 0

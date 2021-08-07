@@ -95,7 +95,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6488780349241756240}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68aac0fee69ff474db047302ad241e76, type: 3}
   m_Name: 
@@ -112,22 +112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1761a5a66fddaf345bce085e357822d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  enemyScoreValue: 100
+  health: 500
+  enemyScoreValue: 300
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
   lootTable: {fileID: 11400000, guid: 3d61ab50da1b2f648bcb90f6991f7a53, type: 2}
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
-  projectileSpeed: 2
-  numberOfProjectiles: 1
-  randomFactor: 1
-  spread: 0
+  projectileSpeed: 6
+  numberOfProjectiles: 20
+  randomFactor: 0
+  spread: 1
   shootAtPlayerPos: 0
   shootUP: 0
-  shootDown: 1
-  shootCircle: 0
+  shootDown: 0
+  shootCircle: 1
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1

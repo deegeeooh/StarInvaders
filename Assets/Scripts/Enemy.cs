@@ -174,7 +174,7 @@ public class Enemy : MonoBehaviour
         Destroy(explosion, durationOfExplosion);
               
         GameObject damageSprite1 = Instantiate(damage1_sprite_FacingUP, locationOther, transform.rotation);
-        damageSprite1.transform.parent = this.transform;                        // attach damage sprite to parent( this enemy)
+        damageSprite1.transform.parent = this.transform;                        // attach damage sprite transform to parent( this enemy)
 
         AudioSource.PlayClipAtPoint(soundHit, Camera.main.transform.position,volumeHit);
 

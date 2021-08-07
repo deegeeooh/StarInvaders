@@ -11,6 +11,15 @@ public class laser : MonoBehaviour
     AudioSource myAudiosource;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        //if (FindObjectsOfType<laser>().Length > 1)
+        //{ 
+        //    DontDestroyOnLoad(gameObject);
+        //}
+    }
+
+
     void Start()
     {
         myAudiosource = GetComponent<AudioSource>();

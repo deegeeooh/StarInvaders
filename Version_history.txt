@@ -33,6 +33,8 @@ Basic functionalities:
 - Added Singletons for musicplayer during levels
 - Added Singleton for background scroller and effects
 - Added delay per waveconfig and between loading scenes
+- Added routine to create normalised vectors to player
+
 
  bugs:
 - object reference not found during enemy spawn; this was due to Rigidbody2D's and Damage dealer missing components on enemies
@@ -41,6 +43,12 @@ Basic functionalities:
 
 added features:
 - multiple projectile shooting: at player +  up, down, round + multiple projectiles
-- added nested Loot table and loot items
-- random waves via EnemySpawner bool)
-- added double and triple shot
+- added nested Loot table and loot item types:
+	- gold (with value)
+	- powerup
+	- health
+	- twin shot
+	- triple shot
+	
+- random waves option for EnemySpawner 
+

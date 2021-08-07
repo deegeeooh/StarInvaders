@@ -24,9 +24,9 @@ public class Levels : MonoBehaviour
     public void LoadStartScene()
 
     {
-        SceneManager.LoadScene(0);
+        FindObjectOfType<GameSession>().UnLockMouseCursor();
         FindObjectOfType<GameSession>().ResetGame();                    // Destroy singletonwith scores progres
-
+        SceneManager.LoadScene(0);
     }
 
     public void LoadGameOverScene()
@@ -40,6 +40,7 @@ public class Levels : MonoBehaviour
 
     public void QuitGame()
     {
+        FindObjectOfType<GameSession>().UnLockMouseCursor();
         Application.Quit();
     }
 
@@ -61,6 +62,7 @@ public class Levels : MonoBehaviour
 
     public void LoadFirstLevel()
     {
+        FindObjectOfType<GameSession>().LockMouseCursor();
         SceneManager.LoadScene(1);
         FindObjectOfType<GameSession>().AddToLevel();
 

@@ -57,13 +57,13 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
             Destroy(music);
 
         }
-
+        FindObjectOfType<GameSession>().UnLockMouseCursor();
 
         gameSession = FindObjectOfType<GameSession>();
 
 
         healthText.text = gameSession.GetHealthRemaining().ToString();
-        goldBonus.text = (gameSession.GetTotalGold()*50).ToString();
+        goldBonus.text = (gameSession.GetTotalGold()).ToString();
         levelText.text = gameSession.GetCurrentLevel().ToString();
         numberOfKillsText.text = gameSession.GetNumberOfKills().ToString();
         numberOfEnemiesEscaped.text = gameSession.GetEnemiesEscaped().ToString();
@@ -81,12 +81,12 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
         accuracyBonus.text = Mathf.RoundToInt(accuracy * 25+gameSession.GetCurrentLevel()*250).ToString();                    //TODO: make better score bonuses
         healthBonus.text = (gameSession.GetHealthRemaining() * 20).ToString();
         var total = (gameSession.GetScore() +
-                         gameSession.GetTotalGold() * 50 +
+                         gameSession.GetTotalGold() +
                          gameSession.GetHealthRemaining() * 20 +
                          Mathf.RoundToInt(accuracy * 25));
 
         Debug.Log(gameSession.GetScore() +" "+
-                         gameSession.GetTotalGold() * 50 +" "+
+                         gameSession.GetTotalGold() +" "+
                          gameSession.GetHealthRemaining() * 20 +" "+
                          Mathf.RoundToInt(accuracy * 25));
         
