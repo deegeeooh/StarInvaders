@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
   m_Name: Invaders horizontal 4
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8916122114276531718, guid: 0c545979f1d23ed45aaa3c8fbe138735,
+  enemyPrefab: {fileID: 8247516117301631739, guid: 32d346f54c87ad8468328b1c37b58655,
     type: 3}
   pathPrefab: {fileID: 4154934065071644837, guid: 6610619cb4bfd88479d93dea2b470c0f,
     type: 3}
@@ -20,6 +20,6 @@ MonoBehaviour:
   timeBeforeStarting: 1.5
   waypointToLoopFrom: 0
   spawnRandomFactor: 0.3
-  numberOfEnemies: 5
+  numberOfEnemies: 3
   moveSpeed: 4.5
   numberOfWaves: 0

@@ -271,8 +271,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
         type: 3}
+      propertyPath: doubleLaser
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: singleLaser
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: tripleLaser
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
       propertyPath: invulnerable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: offsetLaserTriple_Y
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: player_MovementSpeed
+      value: 6.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: projectileFiringPeriod
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: offsetLaserDouble_Left_X
+      value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: offsetLaserTriple_Left_X
+      value: -0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: offsetLaserDouble_Right_X
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: offsetLaserTriple_Right_X
+      value: 0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640661433284644910, guid: 984c84ad4874ce740b8485bbcf0707a3,
+        type: 3}
+      propertyPath: maxNumberOfBullitsOnScreen
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 984c84ad4874ce740b8485bbcf0707a3, type: 3}
@@ -608,12 +663,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveConfigs:
+  - {fileID: 11400000, guid: 6ad58f817e2226d43a629766683d710d, type: 2}
+  - {fileID: 11400000, guid: c5a98e5b368f4b44fbab4801716560ed, type: 2}
   - {fileID: 11400000, guid: a9b933342ea66694fa44673d85debbb7, type: 2}
   - {fileID: 11400000, guid: f5864dcb8b22e3240ac109f0af79a7c3, type: 2}
-  - {fileID: 11400000, guid: f5864dcb8b22e3240ac109f0af79a7c3, type: 2}
   - {fileID: 11400000, guid: a9b933342ea66694fa44673d85debbb7, type: 2}
   - {fileID: 11400000, guid: f5864dcb8b22e3240ac109f0af79a7c3, type: 2}
-  timeBetweenWaves: 1
+  - {fileID: 11400000, guid: cb432241024e6994c83688a9efa864d8, type: 2}
+  - {fileID: 11400000, guid: 6f5a5cee2e86f144bb61598403a011ed, type: 2}
+  timeBetweenWaves: 5
   infiniteLoop: 0
   singleLoop: 0
   numberOfSingleLoops: 2

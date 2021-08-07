@@ -264,6 +264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
         type: 3}
+      propertyPath: randomizeWaves
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
+        type: 3}
       propertyPath: timeBetweenWaves
       value: 2
       objectReference: {fileID: 0}

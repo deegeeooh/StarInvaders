@@ -125,10 +125,9 @@ MonoBehaviour:
   randomFactor: 1
   spread: 0.11
   shootAtPlayerPos: 0
-  shootThreeWay: 1
-  shootThreeWayUp: 0
-  shootThreeWayDown: 1
-  shootThreeWayRound: 0
+  shootUP: 0
+  shootDown: 1
+  shootCircle: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -136,10 +135,7 @@ MonoBehaviour:
     type: 3}
   damage1_sprite_FacingUP: {fileID: 7030025870239296413, guid: 5791a094aa6b54d429c01d7234efc679,
     type: 3}
-  damage2_sprite_FacingUP: {fileID: 2301495072138391924, guid: fcfe1cd8e074b1e43af80b4cddfe7969,
-    type: 3}
   durationOfdamage1: 1
-  durationOfdamage2: 1
   maxDamageSpritesActive: 5
   soundHit: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
   soundDestroyed: {fileID: 8300000, guid: 343ef11374bc6bd43a425dd2c462438d, type: 3}

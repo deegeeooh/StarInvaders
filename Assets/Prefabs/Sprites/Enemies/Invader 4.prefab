@@ -142,10 +142,9 @@ MonoBehaviour:
   randomFactor: 2.23
   spread: 0
   shootAtPlayerPos: 0
-  shootThreeWay: 0
-  shootThreeWayUp: 0
-  shootThreeWayDown: 0
-  shootThreeWayRound: 0
+  shootUP: 0
+  shootDown: 0
+  shootCircle: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -353,10 +352,9 @@ MonoBehaviour:
   randomFactor: 2.23
   spread: 0
   shootAtPlayerPos: 0
-  shootThreeWay: 0
-  shootThreeWayUp: 0
-  shootThreeWayDown: 0
-  shootThreeWayRound: 0
+  shootUP: 0
+  shootDown: 0
+  shootCircle: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -564,10 +562,9 @@ MonoBehaviour:
   randomFactor: 2.23
   spread: 0
   shootAtPlayerPos: 0
-  shootThreeWay: 0
-  shootThreeWayUp: 0
-  shootThreeWayDown: 0
-  shootThreeWayRound: 0
+  shootUP: 0
+  shootDown: 0
+  shootCircle: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -780,10 +777,9 @@ MonoBehaviour:
   randomFactor: 0.81
   spread: 0
   shootAtPlayerPos: 0
-  shootThreeWay: 1
-  shootThreeWayUp: 0
-  shootThreeWayDown: 1
-  shootThreeWayRound: 0
+  shootUP: 0
+  shootDown: 1
+  shootCircle: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1

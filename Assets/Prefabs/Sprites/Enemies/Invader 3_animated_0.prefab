@@ -141,14 +141,13 @@ MonoBehaviour:
   projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 8
-  numberOfProjectiles: 1
+  numberOfProjectiles: 2
   randomFactor: 1
-  spread: 0
+  spread: 0.72
   shootAtPlayerPos: 0
-  shootThreeWay: 0
-  shootThreeWayUp: 0
-  shootThreeWayDown: 0
-  shootThreeWayRound: 0
+  shootUP: 0
+  shootDown: 1
+  shootCircle: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1

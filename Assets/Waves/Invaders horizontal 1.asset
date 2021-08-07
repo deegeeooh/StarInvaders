@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
   m_Name: Invaders horizontal 1
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8247516117301631739, guid: 32d346f54c87ad8468328b1c37b58655,
+  enemyPrefab: {fileID: 3856025223149978401, guid: d7c635cf2c395ea46970100407cf77be,
     type: 3}
   pathPrefab: {fileID: 1711363984288798910, guid: bddca8853676d8f49a137287293d7ab8,
     type: 3}

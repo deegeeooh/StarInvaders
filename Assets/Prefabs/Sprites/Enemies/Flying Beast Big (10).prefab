@@ -132,23 +132,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1761a5a66fddaf345bce085e357822d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 1500
   enemyScoreValue: 350
   shotCounter: 0
-  minTimeBetweenShots: 0.15
-  maxTimeBetweenShots: 2.53
+  minTimeBetweenShots: 0.81
+  maxTimeBetweenShots: 1.5
   lootTable: {fileID: 11400000, guid: 3d61ab50da1b2f648bcb90f6991f7a53, type: 2}
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
-  projectileSpeed: 8.28
-  numberOfProjectiles: 1
-  randomFactor: 0.57
-  spread: 10
+  projectileSpeed: 8.43
+  numberOfProjectiles: 5
+  randomFactor: 2.93
+  spread: 0.89
   shootAtPlayerPos: 1
-  shootThreeWay: 1
-  shootThreeWayUp: 0
-  shootThreeWayDown: 1
-  shootThreeWayRound: 0
+  shootUP: 0
+  shootDown: 1
+  shootCircle: 0
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 1
@@ -156,10 +155,7 @@ MonoBehaviour:
     type: 3}
   damage1_sprite_FacingUP: {fileID: 7030025870239296413, guid: 5791a094aa6b54d429c01d7234efc679,
     type: 3}
-  damage2_sprite_FacingUP: {fileID: 2301495072138391924, guid: fcfe1cd8e074b1e43af80b4cddfe7969,
-    type: 3}
   durationOfdamage1: 1
-  durationOfdamage2: 2
   maxDamageSpritesActive: 5
   soundHit: {fileID: 8300000, guid: 4e3d6b3060f014240950cfb69ab2e6e9, type: 3}
   soundDestroyed: {fileID: 8300000, guid: 7353f243e0f08f7419f64986782e3786, type: 3}

@@ -137,11 +137,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 0
-  shooter_3way: 1
+  shooter_3way: 0
   shooter_double: 0
   life: 0
   health: 0
   bonusScore: 0
+  powerUp: 1
   value: 1
   lootSound: {fileID: 8300000, guid: b96d2e5d7a2dcc341a289cc71b8b771b, type: 3}
   volume: 1

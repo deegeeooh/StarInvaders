@@ -35,10 +35,12 @@ Basic functionalities:
 - Added delay per waveconfig and between loading scenes
 
  bugs:
+- object reference not found during enemy spawn; this was due to Rigidbody2D's and Damage dealer missing components on enemies
 - Dont add level when going to GameOver Screen
 - Destroy player on GameOver Screen
 
 added features:
 - multiple projectile shooting: at player +  up, down, round + multiple projectiles
-- random waves via EnemySpawner bool
-- added Loot table and loot items
+- added nested Loot table and loot items
+- random waves via EnemySpawner bool)
+- added double and triple shot

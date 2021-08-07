@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     // configuration parameters
     [Header("Player Movement")]
-    [SerializeField] float player_MovementSpeed = 9f;
+    [SerializeField] float player_MovementSpeed = 8f;
     [SerializeField] float movementRestrictionX;                                                                        // movement restrictions for player ship
     [SerializeField] float movementRestrictionY_Top;
     [SerializeField] float movementRestrictionY_Bottom;
@@ -17,10 +17,16 @@ public class Player : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 8f;                                                                       // how fast do projectiles travel
-    [SerializeField] float projectileFiringPeriod =0.15f;                                                                 
+    [SerializeField] float projectileFiringPeriod =0.13f;                                                                 
     [SerializeField] int maxNumberOfBullitsOnScreen = 4;
     [SerializeField] bool autoFire = true;
-    [SerializeField] float offsetLaser = 0.3f;
+    [SerializeField] float offsetLaserY = 0.3f;
+    [SerializeField] float offsetLaserDouble_Left_X = -0.2f;
+    [SerializeField] float offsetLaserDouble_Right_X = 0.2f;
+    [SerializeField] float offsetLaserDouble_Y = 0.3f;
+    [SerializeField] float offsetLaserTriple_Left_X = -0.4f;
+    [SerializeField] float offsetLaserTriple_Right_X = 0.4f;
+    [SerializeField] float offsetLaserTriple_Y = 0.1f;
     [SerializeField] bool singleLaser = true;
     [SerializeField] bool doubleLaser = false;
     [SerializeField] bool tripleLaser = false;
@@ -45,6 +51,8 @@ public class Player : MonoBehaviour
     float yMin;
     float yMax;
     int healthRemaining;                                        // you initialise here but can't assign, that's in a method 
+    int projectilesPerShot = 1;
+
 
     //cache references
 
@@ -55,7 +63,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         CheckSingleton();                                           // added a singleton so the player with attributes survives between levels
         gameSession = FindObjectOfType<GameSession>();
         healthRemaining = gameSession.GetHealthRemaining();                                 // introducing healtRemaining so we can reset to health;
@@ -129,7 +137,7 @@ public class Player : MonoBehaviour
         if (bullitcount < maxNumberOfBullitsOnScreen)
         {
             FirePrimaryLaser();
-            gameSession.AddToNumberOfShots();
+            gameSession.AddToNumberOfShots(projectilesPerShot);
         }
 
         yield return new WaitForSeconds(projectileFiringPeriod);
@@ -145,7 +153,7 @@ public class Player : MonoBehaviour
             if (bullitcount < maxNumberOfBullitsOnScreen)
             {
                 FirePrimaryLaser();
-                gameSession.AddToNumberOfShots();
+                gameSession.AddToNumberOfShots(projectilesPerShot);
 
             }
 
@@ -156,12 +164,58 @@ public class Player : MonoBehaviour
 
     private void FirePrimaryLaser()
     {
-        
-        GameObject laser = Instantiate(
-                        laserPrefab,
-                        new Vector3(transform.position.x,transform.position.y+offsetLaser,0),
-                        Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
-        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+        if (singleLaser)
+        {
+            GameObject laser = Instantiate(
+                            laserPrefab,
+                            new Vector3(transform.position.x, transform.position.y + offsetLaserY, 0),
+                            Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+        }
+        else if (doubleLaser)
+        {
+            GameObject laserLeft = Instantiate(
+                           laserPrefab,
+                           new Vector3(transform.position.x + offsetLaserDouble_Left_X , transform.position.y + offsetLaserY, 0),
+                           Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
+            laserLeft.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            
+            GameObject laserRight = Instantiate(
+                           laserPrefab,
+                           new Vector3(transform.position.x + offsetLaserDouble_Right_X , transform.position.y + offsetLaserY, 0),
+                           Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
+            laserRight.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+
+        }
+
+
+        else if (tripleLaser)
+        {
+
+            GameObject laser = Instantiate(
+                            laserPrefab,
+                            new Vector3(transform.position.x, transform.position.y + offsetLaserY, 0),
+                            Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+
+            GameObject laserLeft = Instantiate(
+                           laserPrefab,
+                           new Vector3(transform.position.x + offsetLaserTriple_Left_X , transform.position.y +offsetLaserTriple_Y , 0),
+                           Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
+            laserLeft.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+
+            GameObject laserRight = Instantiate(
+                           laserPrefab,
+                           new Vector3(transform.position.x + offsetLaserTriple_Right_X , transform.position.y + offsetLaserTriple_Y , 0),
+                           Quaternion.identity) as GameObject;                                                              // IDK what the fuck Quaternion does, but here we instantiate the lasersprite prefab at the center of the player
+            laserRight.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+
+
+
+
+        }
+
+
     }
 
     private void Move()
@@ -217,11 +271,25 @@ public class Player : MonoBehaviour
         }
         else if (loot.IsShooter_3way())
         {
-
+            if (!tripleLaser)
+            {
+                singleLaser = false;
+                doubleLaser = false;
+                tripleLaser = true;
+                projectilesPerShot = 3;                
+            }
         }
         else if (loot.IsShooter_Double())
         {
-
+            if (!doubleLaser && !tripleLaser)
+            {
+                singleLaser = false;
+                doubleLaser = true;
+                tripleLaser = false;
+                projectilesPerShot = 2;
+                
+            }
+            
         }
         else if (loot.IsHealth())
         {
@@ -245,7 +313,7 @@ public class Player : MonoBehaviour
             player_MovementSpeed += Mathf.Clamp(0.2f, 0, 13);
             projectileSpeed += Mathf.Clamp(0.2f, 0, 11);
             maxNumberOfBullitsOnScreen += Mathf.Clamp(1, 0, 10);
-            projectileFiringPeriod -= Mathf.Clamp(0.005f, 0.12f, 0.20f);
+            //projectileFiringPeriod -= Mathf.Clamp(0.005f, 0.12f, 0.20f);
             Debug.Log("Bullits on screen: " + maxNumberOfBullitsOnScreen + " proj speed " + projectileSpeed + " projectlifetime " + projectileFiringPeriod);
 
         }

@@ -109,7 +109,7 @@ public class GameSession : MonoBehaviour
         // Debug.Log(numberOfKills);
     }
 
-    public void AddToNumberOfShots()
+    public void AddToNumberOfShots(int shots)
     {
         numberOfShotsFired ++;
         // Debug.Log(numberOfShotsFired);
