@@ -117,7 +117,7 @@ MonoBehaviour:
   shotCounter: 0
   minTimeBetweenShots: 1.04
   maxTimeBetweenShots: 4.05
-  lootTable: {fileID: 11400000, guid: a9966eff39f98a84eade878f8cf413e0, type: 2}
+  lootTable: {fileID: 11400000, guid: 3d61ab50da1b2f648bcb90f6991f7a53, type: 2}
   projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
   projectileSpeed: 8

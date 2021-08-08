@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootItem:
   - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
   - {fileID: 11400000, guid: eabb19a892ae3e4418c00c00fd4d46bc, type: 2}
-  dropChance: 10
+  dropChance: 100

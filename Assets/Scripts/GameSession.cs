@@ -16,6 +16,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] int pointsPerHit = 5;
     [SerializeField] int escapedEnemies = 0;
     [SerializeField] int goldValue = 0;
+    [SerializeField] bool music = true;                 //TODO make music selectable
     
 
     // state variables
@@ -81,7 +82,6 @@ public class GameSession : MonoBehaviour
     public void AddToGold(int value)
     {
         goldValue += value;
-
     }
 
 
@@ -111,7 +111,7 @@ public class GameSession : MonoBehaviour
 
     public void AddToNumberOfShots(int shots)
     {
-        numberOfShotsFired ++;
+        numberOfShotsFired += shots;
         // Debug.Log(numberOfShotsFired);
     }
 
@@ -166,5 +166,6 @@ public class GameSession : MonoBehaviour
 
     public int GetEnemiesEscaped() { return escapedEnemies; }
 
+    public bool MusicOn() { return music; }
 
 }

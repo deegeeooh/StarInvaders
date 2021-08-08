@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -7431202113774995081}
   - component: {fileID: 698733965942267880}
   m_Layer: 9
-  m_Name: Flying Beast Big (10)
+  m_Name: Flying Beast Big _ Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 5783819534458543071, guid: 047201a7cded291439ab9c2f62876caa,
     type: 3}
-  m_Color: {r: 0.36754912, g: 0.85882354, b: 0.20784311, a: 1}
+  m_Color: {r: 0.8962264, g: 0.84917915, b: 0.114142045, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,19 +132,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1761a5a66fddaf345bce085e357822d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
+  health: 1500
   enemyScoreValue: 350
   shotCounter: 0
   minTimeBetweenShots: 0.81
   maxTimeBetweenShots: 1.5
-  lootTable: {fileID: 11400000, guid: 1985e3ca111dab145851d3f3ac219fee, type: 2}
+  lootTable: {fileID: 11400000, guid: a9966eff39f98a84eade878f8cf413e0, type: 2}
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
   projectileSpeed: 8.43
   numberOfProjectiles: 5
   randomFactor: 2.93
   spread: 0.89
-  shootAtPlayerPos: 1
+  shootAtPlayerPos: 0
   shootUP: 0
   shootDown: 1
   shootCircle: 0

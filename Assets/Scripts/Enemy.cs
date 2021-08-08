@@ -231,7 +231,12 @@ public class Enemy : MonoBehaviour
             {
                 // Debug.Log("calculateDrop  " + calculateDrop);
                 GameObject dropItem = Instantiate(itemGameObject, transform.position, transform.rotation);
-                dropItem.GetComponent<Rigidbody2D>().velocity = new Vector2(0,-lootitems[startItem].GetItemdropSpeed());
+                dropItem.GetComponent<Rigidbody2D>().velocity = new Vector2(0 + Random.Range(-0.8f,0.8f) , -lootitems[startItem].GetItemdropSpeed()); // TODO: Serialize random Xvector for loot
+                dropItem.transform.localScale = new Vector3(1.5f,1.5f ,1.5f);
+                if (!lootTable.CanMultipleDropPerRoll())
+                {
+                    break;  //exit for loop, only 1 drop per roll
+                }
             }
 
         }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootItem: {fileID: 1541449745176046491, guid: 2c62e03d65a716a4b8db4100f09248e1,
     type: 3}
-  weight: 50
+  weight: 20
   itemDropSpeed: 3.82

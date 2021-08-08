@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: AllDrops
   m_EditorClassIdentifier: 
   lootItem:
-  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
-  - {fileID: 11400000, guid: eabb19a892ae3e4418c00c00fd4d46bc, type: 2}
-  - {fileID: 11400000, guid: 8c08e1beed92bf947a0751ad4eeae55f, type: 2}
+  - {fileID: 11400000, guid: 1cd8a8197c8ddf043950237f8b8b5514, type: 2}
   - {fileID: 11400000, guid: d0d828a6487be814c884c5f968108aec, type: 2}
   - {fileID: 11400000, guid: 5ab87341ccb52c34390d21991853f6f1, type: 2}
-  - {fileID: 11400000, guid: 1cd8a8197c8ddf043950237f8b8b5514, type: 2}
+  - {fileID: 11400000, guid: eabb19a892ae3e4418c00c00fd4d46bc, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  - {fileID: 11400000, guid: 70a266c3450ffec4c9b54c98cacd22fe, type: 2}
+  multipleDropsPerRoll: 0
   dropChance: 10

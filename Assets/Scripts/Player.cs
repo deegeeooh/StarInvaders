@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     float yMax;
     int healthRemaining;                                        // you initialise here but can't assign, that's in a method 
     int projectilesPerShot = 1;
+    int extraBullitsOnScreen = 0;
 
 
     //cache references
@@ -134,7 +135,7 @@ public class Player : MonoBehaviour
     IEnumerator FireSingle()
     {
         int bullitcount = FindObjectsOfType<laser>().Length;                                                            // how many laser are alive ? > dependant on bullitLifeTime = 1.5f; 
-        if (bullitcount < maxNumberOfBullitsOnScreen)
+        if (bullitcount < maxNumberOfBullitsOnScreen + extraBullitsOnScreen)
         {
             FirePrimaryLaser();
             gameSession.AddToNumberOfShots(projectilesPerShot);
@@ -150,7 +151,7 @@ public class Player : MonoBehaviour
         while (Input.GetButton("Fire1"))
         {
             int bullitcount = FindObjectsOfType<laser>().Length;                                                        // how many laser are alive ? > dependant on bullitLifeTime = 1.5f; 
-            if (bullitcount < maxNumberOfBullitsOnScreen)
+            if (bullitcount < maxNumberOfBullitsOnScreen + extraBullitsOnScreen)
             {
                 FirePrimaryLaser();
                 gameSession.AddToNumberOfShots(projectilesPerShot);
@@ -278,7 +279,9 @@ public class Player : MonoBehaviour
                 singleLaser = false;
                 doubleLaser = false;
                 tripleLaser = true;
-                projectilesPerShot = 3;                
+                projectilesPerShot = 3;
+                extraBullitsOnScreen = 0;       // reset extra bullits when you get upgrade
+                maxNumberOfBullitsOnScreen = maxNumberOfBullitsOnScreen * 3 + extraBullitsOnScreen * 3;
             }
         }
         else if (loot.IsShooter_Double())
@@ -289,16 +292,18 @@ public class Player : MonoBehaviour
                 doubleLaser = true;
                 tripleLaser = false;
                 projectilesPerShot = 2;
-                
+                extraBullitsOnScreen = 0;
+                maxNumberOfBullitsOnScreen = maxNumberOfBullitsOnScreen * 2 + extraBullitsOnScreen * 2;
             }
             
         }
         else if (loot.IsHealth())
         {
-            gameSession.AddToHealthRemaining(value);
-            healthRemaining = gameSession.GetHealthRemaining();
-            
-
+            if (healthRemaining < 800)
+            {
+                gameSession.AddToHealthRemaining(value);
+                healthRemaining = gameSession.GetHealthRemaining();
+            }
 
         }
 
@@ -314,7 +319,8 @@ public class Player : MonoBehaviour
         {
             player_MovementSpeed += Mathf.Clamp(0.2f, 0, 13);
             projectileSpeed += Mathf.Clamp(0.2f, 0, 11);
-            maxNumberOfBullitsOnScreen += Mathf.Clamp(1, 0, 10);
+            Mathf.Clamp(extraBullitsOnScreen++,0,2);
+            // maxNumberOfBullitsOnScreen += extraBullitsOnScreen;
             //projectileFiringPeriod -= Mathf.Clamp(0.005f, 0.12f, 0.20f);
             Debug.Log("Bullits on screen: " + maxNumberOfBullitsOnScreen + " proj speed " + projectileSpeed + " projectlifetime " + projectileFiringPeriod);
 

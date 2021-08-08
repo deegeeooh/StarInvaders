@@ -11,14 +11,8 @@ public class Levels : MonoBehaviour
    
     public void LoadNextScene()
     {
-
-
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         StartCoroutine(WaitSecondsAndLoadScene(currentSceneIndex + 1));
-        ;
-        
-            
-        
     }
 
     public void LoadStartScene()
