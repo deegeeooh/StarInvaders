@@ -73,3 +73,25 @@ Basic functionalities:
 - added level 5 with multiple gold drops
 
 
+
+
+
+
+TODO:
+
+features:
+
+Splash screen
+credits screen
+attract screen	
+
+bonus stage > hit all enemies, gold run
+
+level start screen
+
+different background per X levels
+
+
+
+Ideas: bonus levels 
+
