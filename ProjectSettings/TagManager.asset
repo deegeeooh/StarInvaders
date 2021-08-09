@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Background
+  - Coin_100_GoldPot
+  - Coin_1000_GoldPot
   layers:
   - Default
   - TransparentFX

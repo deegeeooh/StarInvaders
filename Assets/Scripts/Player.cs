@@ -57,18 +57,21 @@ public class Player : MonoBehaviour
     //cache references
 
     GameSession gameSession;
+    GoldPot goldPot;
+
     private void Awake()
     {
-        CheckSingleton();
-        
+        CheckSingleton();  // added a singleton so the player with attributes survives between levels
+
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
-                                                  // added a singleton so the player with attributes survives between levels
+
+       
+        goldPot = FindObjectOfType<GoldPot>();
         gameSession = FindObjectOfType<GameSession>();
         healthRemaining = gameSession.GetHealthRemaining();                                 // introducing healtRemaining so we can reset to health;
         SetupMoveBoundaries();                                      // when dying
@@ -272,10 +275,22 @@ public class Player : MonoBehaviour
         Loot loot = other.gameObject.GetComponent<Loot>();
         var value = loot.GetItemValue();
         if (loot.IsGold())
-        {
+        { 
             gameSession.AddToGold(value);
             loot.PlaySound();
             loot.DestroyLootItem();
+            
+            if (value > 100)                    // spawn coin above GoldPot
+            {
+                goldPot.Add1000Coin();    
+                
+            }
+            else
+                
+            {
+                goldPot.Add100Coin();
+            }
+
         }
         else if (loot.IsShooter_3way())
         {

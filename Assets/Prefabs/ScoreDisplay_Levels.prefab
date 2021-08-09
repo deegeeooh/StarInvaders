@@ -46,3 +46,4 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   levelText: {fileID: 0}
   shipsRemainingText: {fileID: 0}
+  goldText: {fileID: 0}

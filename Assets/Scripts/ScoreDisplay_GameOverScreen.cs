@@ -8,6 +8,7 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI finalScoreText;
+    [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI goldBonus;
     [SerializeField] TextMeshProUGUI accuracyBonus;
     [SerializeField] TextMeshProUGUI healthBonus;
@@ -63,7 +64,8 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
 
 
         healthText.text = gameSession.GetHealthRemaining().ToString();
-        goldBonus.text = (gameSession.GetTotalGold()).ToString();
+        goldText.text = gameSession.GetTotalGold().ToString();                  // text under Goldpot
+        goldBonus.text = (gameSession.GetTotalGold()).ToString();               // text in score summary
         levelText.text = gameSession.GetCurrentLevel().ToString();
         numberOfKillsText.text = gameSession.GetNumberOfKills().ToString();
         numberOfEnemiesEscaped.text = gameSession.GetEnemiesEscaped().ToString();

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class ScoreDisplay : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] TextMeshProUGUI shipsRemainingText;
+    [SerializeField] TextMeshProUGUI goldText;
 
     // init variables
 
@@ -40,8 +42,14 @@ public class ScoreDisplay : MonoBehaviour
         PrintScore();
         PrintLevel();
         PrintLivesRemaining();
+        PrintGold();
 
         
+    }
+
+    private void PrintGold()
+    {
+        goldText.text = gameSession.GetTotalGold().ToString();
     }
 
     public void PrintScore()
