@@ -59,14 +59,12 @@ public class EnemySpawner : MonoBehaviour
     }                                                 // the scene is completed in player.cs when no spawners are left
 
 
-    private IEnumerator SpawnAllWaves()
+    private IEnumerator SpawnAllWaves()     //TODO: add single waves, time between waves, time before start
     {
-       
-
         for (int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++)
         {
             var currentWave = waveConfigs[waveIndex];
-            if (randomizeWaves)
+            if (randomizeWaves)                                     // TODO: The same waves can spawn multiple times..
             {
                 currentWave = waveConfigs[Random.Range(0, waveConfigs.Count - 1)];
             }
@@ -75,11 +73,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    
 
 
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)
     {
-            
         for (int enemyCount = 0; enemyCount < waveConfig.GetNumberOfEnemies(); enemyCount++)
         {
             //Debug.Log("NumberofEnemies " + waveConfig.GetNumberOfEnemies());
@@ -93,7 +91,6 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig,singleLoop,numberOfSingleLoops);
                 
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
-                               
         }
     }
 }

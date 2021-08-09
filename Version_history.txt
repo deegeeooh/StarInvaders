@@ -1,4 +1,5 @@
 Star Invaders
+=============
 
 2D shooter prototype as part of the GameWeb.TV Unity 2D /C# course
 
@@ -9,7 +10,7 @@ Basic functionalities:
 - Using animated sprites (addition to the course, using multiple frame sprites as animations)
 - Multiple scene game loop
 - Enemy spawner which instantiates configurable waves of enemies with variable pathing
-- Single and infinite loop posssibilities per wave
+- Single and infinite loop posssibilities per wave (disabled in 0.3 too buggy) 
 - Scrolling and looping background
 - Particle effects for starfield background
 - Particle effects for hits using sprite sheets
@@ -20,7 +21,7 @@ Basic functionalities:
 
 0.2_Alpha (03/08/2021)
 
-- Added singleton 'GameSession' to track scores and stats across scenes to be called 
+- Added singleton 'GameSession' to track scores and stats  to be called across scenes
 - Added Score display scripts for startscreen, levels and gameover screen
 - Add player unvulnerability option
 - Added CheckRemainingEnemies()  to check for level clearance (in player.cs)
@@ -56,6 +57,9 @@ Basic functionalities:
 [bugs]
 - corrected number of shots fired (double and triple laser wasnt't taken into account in Gamesession.cs
 - added isDead bool to the health <= 0 check in Enemy.cs to prevent additional hits enter the lootroll method
+- singleton for player projectiles
+- corrected accuracy bonus calculation in Gameover canvas
+
 
 [features]
 - scaled dropitem sprites with: dropItem.transform.localScale = new Vector3(1.5f,1.5f ,1.5f);
@@ -64,7 +68,6 @@ Basic functionalities:
 - normalzed enemy shooting before multiplying before acceleration in enemy.cs
 		- now we can spawn projectiles evenly. one single method for all firing types : up/down/circle/toward player
 - added joystick support
-
 
 [gameplay] (for testing purposes still only):
 - added level 5 with multiple gold drops

@@ -83,7 +83,7 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
            accuracy = 0;
         }
         accuracyText.text = accuracy.ToString("000")+"%";
-        accuracyBonus.text = Mathf.RoundToInt(accuracy * 25+gameSession.GetCurrentLevel()*250).ToString();                    //TODO: make better score bonuses
+        accuracyBonus.text = Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel()*250).ToString();                    //TODO: make better score bonuses
         
         
         healthBonus.text = (gameSession.GetHealthRemaining() * 20).ToString();
@@ -91,12 +91,12 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
         var total = (gameSession.GetScore() +
                          gameSession.GetTotalGold() +
                          gameSession.GetHealthRemaining() * 20 +
-                         Mathf.RoundToInt(accuracy * 25));
+                         Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel() * 250));
 
         Debug.Log(gameSession.GetScore() +" "+
                          gameSession.GetTotalGold() +" "+
                          gameSession.GetHealthRemaining() * 20 +" "+
-                         Mathf.RoundToInt(accuracy * 25));
+                         Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel() * 250));
         
         finalScoreText.text = total.ToString();
 
