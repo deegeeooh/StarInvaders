@@ -35,13 +35,12 @@ Basic functionalities:
 - Added delay per waveconfig and between loading scenes
 - Added routine to create normalised vectors to player
 
-
- bugs:
+[bugs]
 - object reference not found during enemy spawn; this was due to Rigidbody2D's and Damage dealer missing components on enemies
 - Dont add level when going to GameOver Screen
 - Destroy player on GameOver Screen
 
-added features:
+[features]
 - multiple projectile shooting: at player +  up, down, round + multiple projectiles
 - added nested Loot table and loot item types:
 	- gold (with value)
@@ -51,4 +50,23 @@ added features:
 	- triple shot
 	
 - random waves option for EnemySpawner 
+
+0.4_alpha 9/8/2021
+
+[bugs]
+- corrected number of shots fired (double and triple laser wasnt't taken into account in Gamesession.cs
+- added isDead bool to the health <= 0 check in Enemy.cs to prevent additional hits enter the lootroll method
+
+[features]
+- scaled dropitem sprites with: dropItem.transform.localScale = new Vector3(1.5f,1.5f ,1.5f);
+- added configurable number of drops per roll per loottable | one or multiple
+- maximized extra bullits on screen after powerup via extraBullitsOnScreen var in player
+- normalzed enemy shooting before multiplying before acceleration in enemy.cs
+		- now we can spawn projectiles evenly. one single method for all firing types : up/down/circle/toward player
+- added joystick support
+
+
+[gameplay] (for testing purposes still only):
+- added level 5 with multiple gold drops
+
 

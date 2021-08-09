@@ -72,6 +72,7 @@ public class GameSession : MonoBehaviour
             PlayerPrefs.SetInt("highScore", 0);
             highScore = 0;
         }
+       
     }
     public void AddToscore(int score)
     {

@@ -13,10 +13,10 @@ public class laser : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        //if (FindObjectsOfType<laser>().Length > 1)
-        //{ 
-        //    DontDestroyOnLoad(gameObject);
-        //}
+        if (FindObjectsOfType<laser>().Length > 1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
 
@@ -33,10 +33,6 @@ public class laser : MonoBehaviour
     {
         
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)           laser is destroyed by DamageDealer.hit on collision
-    //{
-    //    Destroy(gameObject);
-    //}
+    
 
 }

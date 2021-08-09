@@ -46,6 +46,12 @@ public class Levels : MonoBehaviour
         {
             FindObjectOfType<GameSession>().AddToLevel();                               // increase level
         }
+        // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        // Wait until the asynchronous scene fully loads
+        //while (!asyncLoad.isDone)
+        //{
+        //    yield return null;
+        //}
 
     }
 

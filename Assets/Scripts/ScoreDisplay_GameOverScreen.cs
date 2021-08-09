@@ -71,15 +71,23 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
         numberOfHitsText.text = gameSession.GetNumberOfHits().ToString();
         scoreText.text = gameSession.GetScore().ToString();
 
-        
+        float accuracy;
         int a = gameSession.GetNumberOfHits();
         float b = gameSession.GetNumberOfShotsFired();
-        float accuracy = ((a / b) * 100);
+        if (b != 0)
+        {
+            accuracy = ((a / b) * 100);
+        }
+        else
+        {
+           accuracy = 0;
+        }
         accuracyText.text = accuracy.ToString("000")+"%";
-        
-        
         accuracyBonus.text = Mathf.RoundToInt(accuracy * 25+gameSession.GetCurrentLevel()*250).ToString();                    //TODO: make better score bonuses
+        
+        
         healthBonus.text = (gameSession.GetHealthRemaining() * 20).ToString();
+       
         var total = (gameSession.GetScore() +
                          gameSession.GetTotalGold() +
                          gameSession.GetHealthRemaining() * 20 +

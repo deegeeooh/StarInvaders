@@ -42,6 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Projectiles
+    uniqueID: 1271141963
+    locked: 0
+  - name: Sprites
+    uniqueID: 3566199603
+    locked: 0
   - name: Impacthits
     uniqueID: 3320122007
     locked: 0

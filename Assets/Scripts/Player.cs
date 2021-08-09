@@ -54,18 +54,21 @@ public class Player : MonoBehaviour
     int projectilesPerShot = 1;
     int extraBullitsOnScreen = 0;
 
-
     //cache references
 
     GameSession gameSession;
-
+    private void Awake()
+    {
+        CheckSingleton();
+        
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
         
-        CheckSingleton();                                           // added a singleton so the player with attributes survives between levels
+                                                  // added a singleton so the player with attributes survives between levels
         gameSession = FindObjectOfType<GameSession>();
         healthRemaining = gameSession.GetHealthRemaining();                                 // introducing healtRemaining so we can reset to health;
         SetupMoveBoundaries();                                      // when dying
@@ -83,6 +86,7 @@ public class Player : MonoBehaviour
         else
         {
                        
+
             
             DontDestroyOnLoad(gameObject);
            
@@ -117,19 +121,20 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        if (Input.GetButtonDown("Fire1") && !isFiring)                                                                   // Are we pressing a button and are we not firing already 
-        {                                                                                                                // so the Coroutine is called simultaneously multiple times
-            if (autoFire)
-            {
-                StartCoroutine(FireContinuously());
-            }
-            else
-            {
-                StartCoroutine(FireSingle());                                                                           //  Stopcoroutine (routinename) to stop specific
+
+            if (Input.GetButtonDown("Fire1") && !isFiring)                                                                   // Are we pressing a button and are we not firing already 
+            {                                                                                                                // so the Coroutine is called simultaneously multiple times
+                if (autoFire)
+                {
+                    StartCoroutine(FireContinuously());
+                }
+                else
+                {
+                    StartCoroutine(FireSingle());                                                                           //  Stopcoroutine (routinename) to stop specific
+                }
+
             }
 
-        }
-                
     }
 
     IEnumerator FireSingle()
@@ -150,6 +155,7 @@ public class Player : MonoBehaviour
 
         while (Input.GetButton("Fire1"))
         {
+
             int bullitcount = FindObjectsOfType<laser>().Length;                                                        // how many laser are alive ? > dependant on bullitLifeTime = 1.5f; 
             if (bullitcount < maxNumberOfBullitsOnScreen + extraBullitsOnScreen)
             {
@@ -248,7 +254,7 @@ public class Player : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Loot>() != null)
             {
-                Debug.Log("LOOT GEVANGEN");
+                //Debug.Log("LOOT GEVANGEN");
 
                 CheckCatchedLoot(other);
 
@@ -268,7 +274,6 @@ public class Player : MonoBehaviour
         if (loot.IsGold())
         {
             gameSession.AddToGold(value);
-            Debug.Log("value: " + value);
             loot.PlaySound();
             loot.DestroyLootItem();
         }
@@ -322,7 +327,7 @@ public class Player : MonoBehaviour
             Mathf.Clamp(extraBullitsOnScreen++,0,2);
             // maxNumberOfBullitsOnScreen += extraBullitsOnScreen;
             //projectileFiringPeriod -= Mathf.Clamp(0.005f, 0.12f, 0.20f);
-            Debug.Log("Bullits on screen: " + maxNumberOfBullitsOnScreen + " proj speed " + projectileSpeed + " projectlifetime " + projectileFiringPeriod);
+            //Debug.Log("Bullits on screen: " + maxNumberOfBullitsOnScreen + " proj speed " + projectileSpeed + " projectlifetime " + projectileFiringPeriod);
 
         }
 
@@ -335,7 +340,7 @@ public class Player : MonoBehaviour
     private void ProcessHit(DamageDealer damageDealer)
     {
         damageDealer.Hit();                     //destroy gameobject which dealth damage.
-        Debug.Log("Health remaining: " + healthRemaining );
+        //Debug.Log("Health remaining: " + healthRemaining );
 
         healthRemaining = healthRemaining-damageDealer.GetDamage();
 

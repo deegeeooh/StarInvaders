@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -728767693
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 90bed1df83449664eacfbfce8bd9476d, type: 3}
   m_Color: {r: 0.94257885, g: 0.90334636, b: 0.9433962, a: 1}
@@ -100,7 +100,6 @@ MonoBehaviour:
   movementRestrictionY_Top: 3.49
   movementRestrictionY_Bottom: 2.27
   health: 100
-  lifes: 3
   invulnerable: 0
   laserPrefab: {fileID: 3682606363366131455, guid: f99df37d1c3daf24ea985cec09090b1b,
     type: 3}
@@ -108,7 +107,13 @@ MonoBehaviour:
   projectileFiringPeriod: 0.2
   maxNumberOfBullitsOnScreen: 4
   autoFire: 1
-  offsetLaser: 1.24
+  offsetLaserY: 0.3
+  offsetLaserDouble_Left_X: 0
+  offsetLaserDouble_Right_X: 0
+  offsetLaserDouble_Y: 0
+  offsetLaserTriple_Left_X: 0
+  offsetLaserTriple_Right_X: 0
+  offsetLaserTriple_Y: 0
   singleLaser: 1
   doubleLaser: 0
   tripleLaser: 0

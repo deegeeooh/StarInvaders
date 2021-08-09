@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
             //
         }
         while (infiniteLoop);
-        Debug.Log("end level");
+        //Debug.Log("end level");
         Destroy(gameObject);                          // When the spawner is done, destroy the spawner so we can check if 
     }                                                 // the scene is completed in player.cs when no spawners are left
 
@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 currentWave = waveConfigs[Random.Range(0, waveConfigs.Count - 1)];
             }
-            Debug.Log("WaveConfigs.count: " + waveConfigs.Count + "waveindex " + waveIndex);
+            //Debug.Log("WaveConfigs.count: " + waveConfigs.Count + "waveindex " + waveIndex);
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
         }
     }

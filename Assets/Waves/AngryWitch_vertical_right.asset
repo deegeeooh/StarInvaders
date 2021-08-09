@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
-  m_Name: BigBeastsVertical_Left
+  m_Name: AngryWitch_vertical_right
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4398456057378765359, guid: 357b56304b935fc4782316f7a9631e62,
+  enemyPrefab: {fileID: 8916122114276531718, guid: 0c545979f1d23ed45aaa3c8fbe138735,
     type: 3}
-  pathPrefab: {fileID: 858866149342692061, guid: 933945ae5f272e44db5613ac0523d5d2,
+  pathPrefab: {fileID: 9210805777325293209, guid: f4f35e784b7c2954d8fa0263edfb53f5,
     type: 3}
-  timeBetweenSpawns: 6.55
+  timeBetweenSpawns: 7.1
   timeBeforeStarting: 1.5
   waypointToLoopFrom: 0
   spawnRandomFactor: 0.3
-  numberOfEnemies: 2
-  moveSpeed: 2.53
+  numberOfEnemies: 1
+  moveSpeed: 1
   numberOfWaves: 0

@@ -7,7 +7,7 @@ using UnityEngine;
 public class LootTable : ScriptableObject
 {
     [SerializeField] List<LootItem> lootItem;               // LootItem is a scriptableObject
-    [SerializeField] bool multipleDropsPerRoll = true;
+    [SerializeField] bool multipleDropsPerRoll = false;
     [Range(0, 100)] [SerializeField] int dropChance;
 
 

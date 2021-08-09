@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
     float positiveX, positiveY;
     float playerVectorX, playerVectorY;
     Vector2 normalisedVectorToPlayer;
+    bool isDead = false;
     
 
     // Start is called before the first frame updatea
@@ -78,7 +79,21 @@ public class Enemy : MonoBehaviour
             
     private void FireProjectile(int numberOfProjectiles, bool up, bool down, bool round, bool atPlayer)
     {
+
+        int numberOfShotChoices = 0;
+
+        if (up) { numberOfShotChoices++; }
+        if (down) { numberOfShotChoices++; }
+        if (round) { numberOfShotChoices++; }
+        if (atPlayer) { numberOfShotChoices++; }
+
+        if (numberOfShotChoices > 1)
+        {
+            var randomShotChoice = Random.Range(1, numberOfShotChoices);
+        }
         
+
+
 
         for (int shotFired = 0; shotFired < numberOfProjectiles; shotFired++)
         {
@@ -96,16 +111,21 @@ public class Enemy : MonoBehaviour
                 if (Random.Range(-1, 1) < 0) { positiveX = -1; } else { positiveX = 1; }        // gives me a 1 or -1
                 if (Random.Range(-1, 1) < 0) { positiveY = -1; } else { positiveY = 1; }
 
-                Debug.Log("x , y "+ positiveX + positiveY);
+                //Debug.Log("x , y "+ positiveX + positiveY);
 
+
+                float xComponent = (positiveX + Random.Range(-spread, spread));
+                float yComponent = (positiveY + Random.Range(-spread, spread));
 
                 shot.GetComponent<Rigidbody2D>().velocity =
 
-                new Vector2((projectileSpeed + Random.Range(0, randomFactor)) * (positiveX + Random.Range(-spread, spread)),            // randomfactor for speed, spread for spread
-                ((projectileSpeed + Random.Range(0, randomFactor)) * (positiveY + Random.Range(-spread, spread))));
+                //new Vector2((projectileSpeed + Random.Range(0, randomFactor)) * (positiveX + Random.Range(-spread, spread)),            // randomfactor for speed, spread for spread
+                //((projectileSpeed + Random.Range(0, randomFactor)) * (positiveY + Random.Range(-spread, spread))));
+
+                new Vector2(xComponent, yComponent).normalized * (projectileSpeed + Random.Range(0, randomFactor));
 
             }
-            else if (up)
+            else if (up) 
             {
                 if (atPlayer && FindObjectsOfType<Player>().Length > 0)
                 {
@@ -115,10 +135,10 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    float upX = 0 + Random.Range(-spread, spread);
+                    float upX = Random.Range(-spread, spread);
                     float upY = projectileSpeed + Random.Range(0, randomFactor);
 
-                    shot.GetComponent<Rigidbody2D>().velocity = new Vector2(upX, upY);
+                    shot.GetComponent<Rigidbody2D>().velocity = new Vector2(upX, upY).normalized * (projectileSpeed + Random.Range(0, randomFactor)); 
                 }
             }
             else if (down)
@@ -129,10 +149,10 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    float downX = 0 + Random.Range(-spread, spread);
+                    float downX = Random.Range(-spread, spread);
                     float downY = -projectileSpeed + Random.Range(0, randomFactor);
 
-                    shot.GetComponent<Rigidbody2D>().velocity = new Vector2(downX, downY);
+                    shot.GetComponent<Rigidbody2D>().velocity = new Vector2(downX, downY).normalized * (projectileSpeed + Random.Range(0, randomFactor));
                 }
             }
 
@@ -191,9 +211,9 @@ public class Enemy : MonoBehaviour
 
         
         
-        if (health <= 0)
+        if (health <= 0 && !isDead)                 // IsDead to ensure another bullithit can't enter this method
         {
-
+            isDead = true;
             // transform.DetachChildren(); to detach children when object is a parent, children will stop moving though;
             GameObject killExplosion = Instantiate(explosion_kill, transform.position, transform.rotation);
             Destroy(killExplosion,durationOfExplosion);
@@ -204,7 +224,7 @@ public class Enemy : MonoBehaviour
             // Destroy(gameObject,0.1f);
             gamesession.AddToscore(enemyScoreValue);
             gamesession.AddToNumberOfKills();
-
+            Destroy(gameObject);
         }
     }
 
@@ -235,12 +255,13 @@ public class Enemy : MonoBehaviour
                 dropItem.transform.localScale = new Vector3(1.5f,1.5f ,1.5f);
                 if (!lootTable.CanMultipleDropPerRoll())
                 {
+                    Debug.Log("Dropped Loot, exit For Loop");
                     break;  //exit for loop, only 1 drop per roll
                 }
             }
 
         }
-        Destroy(gameObject);
+       // Destroy(gameObject);
         
 
 
