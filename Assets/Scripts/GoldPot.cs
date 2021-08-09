@@ -30,28 +30,20 @@ public class GoldPot : MonoBehaviour
 
     public void Add100Coin()
     {
-        GameObject GoldPotCoin = Instantiate(coin_100, new Vector3(Random.Range(6.4f, 6.9f), -0.75f, 0), Quaternion.identity);
+        GameObject GoldPotCoin = Instantiate(coin_100, new Vector3(Random.Range(6.5f, 6.9f), -0.75f, 0), Quaternion.identity);
         GoldPotCoin.transform.SetParent(gameObject.transform);
     }
     
     public void Add1000Coin()
     {
-        GameObject GoldPotCoin = Instantiate(coin_1000, new Vector3(Random.Range(6.4f, 6.9f), -0.75f, 0), Quaternion.identity);
+        GameObject GoldPotCoin = Instantiate(coin_1000, new Vector3(Random.Range(6.5f, 6.9f), -0.75f, 0), Quaternion.identity);
         GoldPotCoin.transform.SetParent(gameObject.transform);
     }
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void ResetGoldPot()
     {
-        
+        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
         
-    }
 }

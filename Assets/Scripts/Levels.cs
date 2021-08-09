@@ -20,6 +20,7 @@ public class Levels : MonoBehaviour
     {
         FindObjectOfType<GameSession>().UnLockMouseCursor();
         FindObjectOfType<GameSession>().ResetGame();                    // Destroy singletonwith scores progres
+        FindObjectOfType<GoldPot>().ResetGoldPot();
         SceneManager.LoadScene(0);
     }
 

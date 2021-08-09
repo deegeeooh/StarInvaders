@@ -68,9 +68,11 @@ Basic functionalities:
 - normalzed enemy shooting before multiplying before acceleration in enemy.cs
 		- now we can spawn projectiles evenly. one single method for all firing types : up/down/circle/toward player
 - added joystick support
+- added GoldPot to visualise accumulated gold 
 
 [gameplay] (for testing purposes still only):
 - added level 5 with multiple gold drops
+
 
 
 
