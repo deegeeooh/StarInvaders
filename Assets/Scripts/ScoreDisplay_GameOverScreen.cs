@@ -116,6 +116,10 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        
+    }
 
 
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootItem:
   - {fileID: 11400000, guid: 1cd8a8197c8ddf043950237f8b8b5514, type: 2}
+  - {fileID: 11400000, guid: f80db0f91b8af8642a66fada20abd624, type: 2}
   - {fileID: 11400000, guid: d0d828a6487be814c884c5f968108aec, type: 2}
   - {fileID: 11400000, guid: 5ab87341ccb52c34390d21991853f6f1, type: 2}
   - {fileID: 11400000, guid: eabb19a892ae3e4418c00c00fd4d46bc, type: 2}

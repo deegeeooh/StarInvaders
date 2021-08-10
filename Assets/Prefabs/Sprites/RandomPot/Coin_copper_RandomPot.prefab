@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1212818071839946476
+--- !u!1 &7174189094472681880
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1212818071839946482}
-  - component: {fileID: 1212818071839946483}
-  - component: {fileID: 1212818071839946481}
-  - component: {fileID: 1212818071839946480}
-  m_Layer: 0
-  m_Name: Goldpot
+  - component: {fileID: 9021793116736460586}
+  - component: {fileID: 6125230573392804273}
+  - component: {fileID: -3335716244976477226}
+  - component: {fileID: 4545656378660135873}
+  m_Layer: 5
+  m_Name: Coin_copper_RandomPot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1212818071839946482
+--- !u!4 &9021793116736460586
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212818071839946476}
+  m_GameObject: {fileID: 7174189094472681880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.74, y: -4.899, z: -0.86}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.04469, y: 22.04973, z: -8.262292}
+  m_LocalScale: {x: 0.40502188, y: 0.40502188, z: 0.40502188}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1212818071839946483
+--- !u!212 &6125230573392804273
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212818071839946476}
+  m_GameObject: {fileID: 7174189094472681880}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -69,53 +69,55 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2074279703
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c5e20f344dc3fd745ae51e5ca1ec8331, type: 3}
-  m_Color: {r: 0.9716981, g: 0.96754515, b: 0, a: 0.1764706}
+  m_Sprite: {fileID: -265948833439250573, guid: 666bc86201cd46548b83c5542f9c46f0,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 2.56}
+  m_Size: {x: 0.08, y: 0.18}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &1212818071839946481
-EdgeCollider2D:
+--- !u!58 &-3335716244976477226
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212818071839946476}
+  m_GameObject: {fileID: 7174189094472681880}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 3f3ff2c853a2828469106e6cd69a8517, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.31133825, y: 1.9639549}
-  - {x: -0.310565, y: -1.9914577}
-  - {x: 0.30206203, y: -1.9911666}
-  - {x: 0.3035267, y: 1.971957}
---- !u!114 &1212818071839946480
-MonoBehaviour:
+  m_Offset: {x: 0, y: -0.00039390504}
+  serializedVersion: 2
+  m_Radius: 0.16708061
+--- !u!50 &4545656378660135873
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212818071839946476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cdbf534b8f468240aa9389006e70c38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coin_100: {fileID: 4886553203281670849, guid: 34223d90fa6304d42be885782605cbc2,
-    type: 3}
-  coin_1000: {fileID: 4886553203281670849, guid: bda4bbd4dda767e409be6cb78b50da67,
-    type: 3}
+  m_GameObject: {fileID: 7174189094472681880}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1.37
+  m_LinearDrag: 0.06
+  m_AngularDrag: 0.05
+  m_GravityScale: 0.75
+  m_Material: {fileID: 6200000, guid: 3f3ff2c853a2828469106e6cd69a8517, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

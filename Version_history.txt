@@ -74,6 +74,10 @@ Basic functionalities:
 - added level 5 with multiple gold drops
 
 
+0.5 alpha
+
+- added Random Pot game element
+- found bug that increased the level; it was the random routine in enemy spawner 
 
 
 
@@ -96,4 +100,7 @@ different background per X levels
 
 
 Ideas: bonus levels 
+
+
+The coins you find can be spent to acquire new levels, enemytypes, enemy density, upgrades, 
 

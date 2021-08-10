@@ -11,6 +11,7 @@ public class Loot : MonoBehaviour
     [SerializeField] bool health;
     [SerializeField] bool bonusScore;
     [SerializeField] bool powerUp;
+    [SerializeField] bool special;
     [SerializeField] int value = 10;                     // value for either gold/health or life.
     [SerializeField] AudioClip lootSound;
     [Range(0f, 1f)] [SerializeField] float volume = 1f;
@@ -44,6 +45,7 @@ public class Loot : MonoBehaviour
 
     public bool IsPowerUp() { return powerUp; }
 
+    public bool IsSpecial() { return special; }
     public int GetItemValue() { return value; }
 
     public void DestroyLootItem() { Destroy(gameObject);}

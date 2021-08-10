@@ -346,6 +346,11 @@ public class Player : MonoBehaviour
 
         }
 
+        else if (loot.IsSpecial())
+        {
+            FindObjectOfType<RandomPot>().AddSpecialCoin();
+        }
+
 
         loot.PlaySound();
         loot.DestroyLootItem();
