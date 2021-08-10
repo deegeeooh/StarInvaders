@@ -66,7 +66,7 @@ public class EnemySpawner : MonoBehaviour
             var currentWave = waveConfigs[waveIndex];
             if (randomizeWaves)                                     // TODO: The same waves can spawn multiple times..
             {
-                currentWave = waveConfigs[Random.Range(0, waveConfigs.Count - 1)];
+                currentWave = waveConfigs[Random.Range(0, waveConfigs.Count)];
             }
             //Debug.Log("WaveConfigs.count: " + waveConfigs.Count + "waveindex " + waveIndex);
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
