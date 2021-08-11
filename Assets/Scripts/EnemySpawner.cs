@@ -7,14 +7,21 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] List<WaveConfig> waveConfigs;
     [SerializeField] float timeBetweenWaves = 2f;
+    [SerializeField] float timeBeforeStarting = 0;
     [SerializeField] bool infiniteLoop = false;                                                     // all waves in this spawner will be repeated infinitely
     [SerializeField] bool singleLoop = false;                                                       // for a single repeated loop for a number of times
     [SerializeField] int numberOfSingleLoops = 1;
+    [Header("Wave Randomizer Settings")]
     [SerializeField] bool randomizeWaves = false;
-    [SerializeField] float timeBeforeStarting = 0;
+    [SerializeField] bool rngTimeBetweenWaves = false;
+    [SerializeField] float mintimeBetweenWaves = 0.5f;
+    [SerializeField] bool rngNumberOfEnemies = false;
+    [SerializeField] int minExtraEnemies = 1;
+    [SerializeField] int maxnExtraEnemies = 1;
 
     // initialise variables
     int startingWave = 0;
+    int numberOfEnemiesToSpawn;
     // public int loop = 0;
     
 
@@ -24,19 +31,6 @@ public class EnemySpawner : MonoBehaviour
         do
         {
             yield return StartCoroutine(WaitForSeconds(timeBeforeStarting));
-            //var timeBeforeStarting = waveConfigs[0].GetTimeBeforeStarting();
-            //yield return new WaitForSeconds(timeBeforeStarting);
-
-            //for (startingWave = 0; startingWave < waveConfigs.Count; startingWave++)
-            //{
-            //    var currentWave = waveConfigs[startingWave];
-
-            //    // Debug.Log("random waves " + randomizeWaves);
-            //    //if (randomizeWaves)
-            //    //{
-            //    //    currentWave = waveConfigs[Random.Range(0, waveConfigs.Count-1)];
-            //    //}
-
             yield return StartCoroutine(SpawnAllWaves());
 
             //    //var nmberofLoops = waveConfigs[startingWave].GetNumberOfLoops();                 // number of loops from the current Wave
@@ -73,6 +67,12 @@ public class EnemySpawner : MonoBehaviour
             }
             //Debug.Log("WaveConfigs.count: " + waveConfigs.Count + "waveindex " + waveIndex);
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
+            
+            if (rngTimeBetweenWaves)
+            {
+                timeBetweenWaves = Random.Range(mintimeBetweenWaves, timeBetweenWaves);
+            }
+
             yield return StartCoroutine(WaitForSeconds(timeBetweenWaves));
         }
     }
@@ -82,7 +82,14 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)
     {
-        for (int enemyCount = 0; enemyCount < waveConfig.GetNumberOfEnemies(); enemyCount++)
+        numberOfEnemiesToSpawn = waveConfig.GetNumberOfEnemies();
+        
+        if (rngNumberOfEnemies)
+        {
+            numberOfEnemiesToSpawn += Random.Range(minExtraEnemies, maxnExtraEnemies + 1);
+        }
+
+        for (int enemyCount = 0; enemyCount < numberOfEnemiesToSpawn; enemyCount++)
         {
             //Debug.Log("NumberofEnemies " + waveConfig.GetNumberOfEnemies());
             var newEnemy = Instantiate(
