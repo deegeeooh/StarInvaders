@@ -63,6 +63,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++)
         {
+            
             var currentWave = waveConfigs[waveIndex];
             if (randomizeWaves)                                     // TODO: The same waves can spawn multiple times..
             {
@@ -70,6 +71,7 @@ public class EnemySpawner : MonoBehaviour
             }
             //Debug.Log("WaveConfigs.count: " + waveConfigs.Count + "waveindex " + waveIndex);
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
+            yield return StartCoroutine(WaitForSeconds(timeBetweenWaves));
         }
     }
 
@@ -93,4 +95,12 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
         }
     }
+
+    private IEnumerator WaitForSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        
+
+    }
+
 }
