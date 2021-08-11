@@ -76,15 +76,31 @@ Basic functionalities:
 
 0.5 alpha
 
-- added Random Pot game element
+[gameplay]
+- added Random Pot game element, extra coin to drop not sure what to do with it yet
+
+[features]
+
+Enemy Spawner:
+	- added time between waves
+added shredder all directions to kill off screen projectiles
+- add placeholder introduction of enemies on start screen
+
+- added Margy's new sprites as prefabs, Jellyyellow and JellyGreen
+
+
+[bugs]
 - found bug that increased the level; it was the random routine in enemy spawner 
+			currentWave = waveConfigs[Random.Range(0, waveConfigs.Count) -1 ]; the -1 one was removed
 
 
 
 
 
-TODO:
-
+			
+			
+TODO // Ideas
+====
 features:
 
 Splash screen
@@ -92,15 +108,19 @@ credits screen
 attract screen	
 
 bonus stage > hit all enemies, gold run
-
-level start screen
+levelup inbetween screens
 
 different background per X levels
 
-
-
 Ideas: bonus levels 
+The coins you find can be spent to acquire new levels, enemytypes, enemy density, upgrades in between X levels in
+a kinda shop where you fly over things.
+
+Boss levels
+Bosses
+
+make the spawning of waves completely scriptable 
 
 
-The coins you find can be spent to acquire new levels, enemytypes, enemy density, upgrades, 
+
 

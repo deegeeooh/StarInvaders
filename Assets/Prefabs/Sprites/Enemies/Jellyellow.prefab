@@ -119,22 +119,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1761a5a66fddaf345bce085e357822d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  enemyScoreValue: 100
+  health: 1200
+  enemyScoreValue: 500
   shotCounter: 0
-  minTimeBetweenShots: 0.2
-  maxTimeBetweenShots: 3
-  lootTable: {fileID: 0}
+  minTimeBetweenShots: 0.4
+  maxTimeBetweenShots: 2
+  lootTable: {fileID: 11400000, guid: 1654367303d120a4bb03018e3069ede3, type: 2}
   projectile: {fileID: 9029418155950957411, guid: 6080101f7efd3414887f125ef2215829,
     type: 3}
-  projectileSpeed: 8
-  numberOfProjectiles: 1
-  randomFactor: 1
-  spread: 0
+  projectileSpeed: 2.92
+  numberOfProjectiles: 40
+  randomFactor: 0
+  spread: 0.9
   shootAtPlayerPos: 0
   shootUP: 0
-  shootDown: 1
-  shootCircle: 0
+  shootDown: 0
+  shootCircle: 1
   explosion_1_VFX: {fileID: 3702769461444168781, guid: 02a0ed276bf250c4ab82b8a191bb06e4,
     type: 3}
   durationOfExplosion: 2

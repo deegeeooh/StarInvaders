@@ -7338,7 +7338,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5864dcb8b22e3240ac109f0af79a7c3, type: 2}
   - {fileID: 11400000, guid: a9b933342ea66694fa44673d85debbb7, type: 2}
   - {fileID: 11400000, guid: f5864dcb8b22e3240ac109f0af79a7c3, type: 2}
-  timeBetweenWaves: 3
+  timeBetweenWaves: 1
   infiniteLoop: 0
   singleLoop: 0
   numberOfSingleLoops: 2

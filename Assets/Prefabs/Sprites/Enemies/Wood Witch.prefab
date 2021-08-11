@@ -131,17 +131,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1761a5a66fddaf345bce085e357822d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
-  enemyScoreValue: 400
+  health: 500
+  enemyScoreValue: 300
   shotCounter: 0
   minTimeBetweenShots: 1
-  maxTimeBetweenShots: 3
-  lootTable: {fileID: 11400000, guid: 3d61ab50da1b2f648bcb90f6991f7a53, type: 2}
+  maxTimeBetweenShots: 2.47
+  lootTable: {fileID: 11400000, guid: 1654367303d120a4bb03018e3069ede3, type: 2}
   projectile: {fileID: 5075008099431466191, guid: 21a4f10c82a86aa40a1d02f2c7780ae2,
     type: 3}
-  projectileSpeed: 7.38
-  numberOfProjectiles: 1
-  randomFactor: 0.04
+  projectileSpeed: 7.77
+  numberOfProjectiles: 2
+  randomFactor: 1.58
   spread: 1
   shootAtPlayerPos: 1
   shootUP: 0

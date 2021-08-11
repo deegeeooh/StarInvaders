@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
-  m_Name: BigBeastsVertical_Right
+  m_Name: JellyYellow
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4398456057378765359, guid: 357b56304b935fc4782316f7a9631e62,
+  enemyPrefab: {fileID: 172698224160833380, guid: 6a44fcbf1d8853647ac39919438c271d,
     type: 3}
-  pathPrefab: {fileID: 9210805777325293209, guid: f4f35e784b7c2954d8fa0263edfb53f5,
+  pathPrefab: {fileID: 2560498729989643585, guid: 2dcdf60d57d379d4a9dc9b711ad7b165,
     type: 3}
-  timeBetweenSpawns: 7.1
+  timeBetweenSpawns: 0
   timeBeforeStarting: 0
   waypointToLoopFrom: 0
   spawnRandomFactor: 0.3
-  numberOfEnemies: 2
-  moveSpeed: 2.73
+  numberOfEnemies: 1
+  moveSpeed: 2
   numberOfWaves: 0
