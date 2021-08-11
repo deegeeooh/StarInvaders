@@ -11,17 +11,19 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] bool singleLoop = false;                                                       // for a single repeated loop for a number of times
     [SerializeField] int numberOfSingleLoops = 1;
     [SerializeField] bool randomizeWaves = false;
-   
+    [SerializeField] float timeBeforeStarting = 0;
+
     // initialise variables
     int startingWave = 0;
     // public int loop = 0;
-    //WaveConfig waveconfig;
+    
 
    public IEnumerator Start()
     
     {
         do
         {
+            yield return StartCoroutine(WaitForSeconds(timeBeforeStarting));
             //var timeBeforeStarting = waveConfigs[0].GetTimeBeforeStarting();
             //yield return new WaitForSeconds(timeBeforeStarting);
 
