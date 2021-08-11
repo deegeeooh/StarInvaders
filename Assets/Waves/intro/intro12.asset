@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc4be9da76e99c4f9e03181ef2f5983, type: 3}
+  m_Name: intro12
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 4398456057378765359, guid: 357b56304b935fc4782316f7a9631e62,
+    type: 3}
+  pathPrefab: {fileID: 1142655209887256567, guid: 0fefceaeb9179ba47a5a87a5e09d421d,
+    type: 3}
+  timeBetweenSpawns: 0.5
+  timeBeforeStarting: 1.5
+  waypointToLoopFrom: 0
+  spawnRandomFactor: 0.3
+  numberOfEnemies: 1
+  moveSpeed: 5
+  numberOfWaves: 0
