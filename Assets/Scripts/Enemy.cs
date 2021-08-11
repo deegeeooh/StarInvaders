@@ -123,7 +123,6 @@ public class Enemy : MonoBehaviour
                 //((projectileSpeed + Random.Range(0, randomFactor)) * (positiveY + Random.Range(-spread, spread))));
 
                 new Vector2(xComponent, yComponent).normalized * (projectileSpeed + Random.Range(0, randomFactor));
-
             }
             else if (up) 
             {
@@ -155,7 +154,13 @@ public class Enemy : MonoBehaviour
                     shot.GetComponent<Rigidbody2D>().velocity = new Vector2(downX, downY).normalized * (projectileSpeed + Random.Range(0, randomFactor));
                 }
             }
-
+            
+            Vector2 moveDirection = shot.GetComponent<Rigidbody2D>().velocity;              // Rotate projectile sprite in direction it is moving
+            if (moveDirection != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90;
+                shot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
 
         }
     }
