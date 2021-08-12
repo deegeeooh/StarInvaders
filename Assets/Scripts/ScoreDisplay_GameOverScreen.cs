@@ -32,6 +32,7 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
 
 
     int counter;
+    int currentGameLoop;
 
     // cache references
        
@@ -43,7 +44,9 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        gameSession = FindObjectOfType<GameSession>();
+        currentGameLoop = gameSession.GetCurrentGameLoop();
         if (FindObjectsOfType<Player>().Length == 1)             // if there's a player left, destroy it
         {
 
@@ -60,7 +63,7 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
         }
         FindObjectOfType<GameSession>().UnLockMouseCursor();
 
-        gameSession = FindObjectOfType<GameSession>();
+        
 
 
         healthText.text = gameSession.GetHealthRemaining().ToString();
@@ -85,24 +88,24 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
            accuracy = 0;
         }
         accuracyText.text = accuracy.ToString("000")+"%";
-        accuracyBonus.text = Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel()*250).ToString();                    //TODO: make better score bonuses
+        accuracyBonus.text = Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel()*250*currentGameLoop).ToString();                    //TODO: make better score bonuses
         
         
-        healthBonus.text = (gameSession.GetHealthRemaining() * 20).ToString();
+        healthBonus.text = (gameSession.GetHealthRemaining() * 20 * currentGameLoop).ToString();
        
         var total = (gameSession.GetScore() +
                          gameSession.GetTotalGold() +
-                         gameSession.GetHealthRemaining() * 20 +
-                         Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel() * 250));
+                         gameSession.GetHealthRemaining() * 20 * currentGameLoop +
+                         Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel() * 250 * currentGameLoop));
 
         Debug.Log(gameSession.GetScore() +" "+
                          gameSession.GetTotalGold() +" "+
-                         gameSession.GetHealthRemaining() * 20 +" "+
-                         Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel() * 250));
+                         gameSession.GetHealthRemaining() * 20 * currentGameLoop + " "+
+                         Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel() * 250 * currentGameLoop));
         
         finalScoreText.text = total.ToString();
 
-        gameSession.AddToscore(total - gameSession.GetScore());
+        gameSession.SetScore(total);
 
         if (gameSession.CheckHighscore())
         {

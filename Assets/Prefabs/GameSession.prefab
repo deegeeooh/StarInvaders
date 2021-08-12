@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1625827977894139384}
   - component: {fileID: 794572438569084339}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameSession
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,5 +51,14 @@ MonoBehaviour:
   numberOfShotsFired: 0
   numberOfHits: 0
   pointsPerHit: 5
-  numberOfMissed: 0
+  escapedEnemies: 0
   goldValue: 0
+  music: 1
+  loopGame: 1
+  gameSpeedFactor: 0.01
+  movementspeedFactor: 0.1
+  shootingspeedFactor: 0.3
+  scoringMultiplier: 0.4
+  multiplier: 3
+  gameLoopSprite: {fileID: 6789920920407963298, guid: 874afc1ecbb89be4cba968c9e39778a2,
+    type: 3}

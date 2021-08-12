@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 4925904148727297882, guid: e6098c9d9fe65ec49b5467445d1bf264,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4925904148727297884, guid: e6098c9d9fe65ec49b5467445d1bf264,
         type: 3}
       propertyPath: m_RootOrder
@@ -197,16 +202,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2493187597406328998, guid: d6ca43413dcebb741b6acb7968067b72,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -26.150024
-      objectReference: {fileID: 0}
-    - target: {fileID: 2493187597406328998, guid: d6ca43413dcebb741b6acb7968067b72,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 51.700073
-      objectReference: {fileID: 0}
     - target: {fileID: 5116012968269480852, guid: d6ca43413dcebb741b6acb7968067b72,
         type: 3}
       propertyPath: m_Pivot.x
@@ -358,6 +353,18 @@ MonoBehaviour:
 --- !u!114 &79249992 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5116012968194513080, guid: d6ca43413dcebb741b6acb7968067b72,
+    type: 3}
+  m_PrefabInstance: {fileID: 79249988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &79249993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6169228565826438705, guid: d6ca43413dcebb741b6acb7968067b72,
     type: 3}
   m_PrefabInstance: {fileID: 79249988}
   m_PrefabAsset: {fileID: 0}
@@ -520,6 +527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
         type: 3}
+      propertyPath: rngNumberOfEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 829335900991751231, guid: a408e96d805b9014e8a9562fb8ca0f91,
+        type: 3}
       propertyPath: waveConfigs.Array.size
       value: 8
       objectReference: {fileID: 0}
@@ -655,6 +667,11 @@ PrefabInstance:
       propertyPath: shipsRemainingText
       value: 
       objectReference: {fileID: 79249990}
+    - target: {fileID: 761269741190621842, guid: 75e78fcaf9d3b9b4da3ea444732e7c38,
+        type: 3}
+      propertyPath: scoreGameLoopMultiplierText
+      value: 
+      objectReference: {fileID: 79249993}
     - target: {fileID: 761269741190621843, guid: 75e78fcaf9d3b9b4da3ea444732e7c38,
         type: 3}
       propertyPath: m_Name

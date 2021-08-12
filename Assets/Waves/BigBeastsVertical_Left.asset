@@ -20,6 +20,6 @@ MonoBehaviour:
   timeBeforeStarting: 0
   waypointToLoopFrom: 0
   spawnRandomFactor: 0.3
-  numberOfEnemies: 2
+  numberOfEnemies: 1
   moveSpeed: 2.53
   numberOfWaves: 0

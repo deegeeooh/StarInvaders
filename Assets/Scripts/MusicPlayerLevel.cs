@@ -5,6 +5,9 @@ using UnityEngine;
 public class MusicPlayerLevel : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    bool sound = true;
+
     void Start()
     {
         CheckSingleton();
@@ -32,6 +35,20 @@ public class MusicPlayerLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        //if (Input.GetKeyDown(KeyCode.M ))            // reset highscore
+        //{
+        //    if (sound)
+        //    {
+        //        sound = false;
+        //    }
+        //    else if (!sound)
+        //    {
+        //        sound = true;
+        //    }
+
+        //    gameObject.GetComponent<AudioSource>().mute = sound;
+        //    //Camera.main.GetComponent<AudioListener>().enabled = sound;
+        //    //gameObject.SetActive(sound);
+        //}
     }
 }

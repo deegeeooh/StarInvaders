@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
+  scoreGameLoopMultiplierText: {fileID: 0}
   levelText: {fileID: 0}
   shipsRemainingText: {fileID: 0}
   goldText: {fileID: 0}
