@@ -79,14 +79,43 @@ Basic functionalities:
 [gameplay]
 - added Random Pot game element, extra coin to drop not sure what to do with it yet
 
+=============================
+temp gameplay: LOOP the game
+=============================
+Hooks:
+config:
+{
+- Levels.cs (current gamespeedfactor etc)
+- gameSession 
+	multipliers and bool yes/no gamneloop
+	Checks if level is completed (CheckIfLevelCompleted)// it was in player in Update but this caused problems when true; it spammed the Coroutines in Levels
+		- Keeps track of number of spawners (Added and subtracted via EnemySpawners.cs
+		- Keeps track of spawned enemies (via Enemy.cs kills, enemypathing.cs )
+	gameloopsprite instantiation (as a child of gameSession so it will be destroyed with it
+
+application of multipliers:
+- backgroundScroller (scrollingspeed)
+- Enemypathing.cs (enemy movement speed)
+- Enemy.cs (shooting speed)
+- gamesession (Add to Score)
+- scoredisplay for gameloop multiplier text
+}
+
 [features]
 
 Enemy Spawner:
 	- added time between waves
-added shredder all directions to kill off screen projectiles
-- add placeholder introduction of enemies on start screen
+	- added time before starting wave (added timeBeforeStart to waveconfig)
+	- Added scalig with gameloop number of enemies
+	- added min/max additional random enemies per wave
+	- added rng of the spawn time
+	
+	added shredder all directions to kill off screen projectiles
 
+- add placeholder introduction of enemies on start screen
 - added Margy's new sprites as prefabs, Jellyyellow and JellyGreen
+- added rotation routine for the Enemy projectiles
+- added keys to disable music/invulnarability/skip level in gameSession()
 
 
 [bugs]
@@ -94,11 +123,6 @@ added shredder all directions to kill off screen projectiles
 			currentWave = waveConfigs[Random.Range(0, waveConfigs.Count) -1 ]; the -1 one was removed
 
 
-
-
-
-			
-			
 TODO // Ideas
 ====
 features:
@@ -120,6 +144,32 @@ Boss levels
 Bosses
 
 make the spawning of waves completely scriptable 
+
+=============================
+temp gameplay: LOOP the game
+=============================
+Hooks:
+- Levels.cs (current gamespeedfactor etc)
+- gameSession (multipliers and bool yes/no)
+- backgroundScroller (scrollingspeed)
+- Enemypathing.cs (enemy movement speed)
+- Enemy.cs
+
+
+Reloopfactor for:
+
+gameSession:
+	bool yes/no
+	gamespeed factor 
+
+check in load levels: life left before gameover screen
+
+
+
+Enemy fly speed (in enemypathing.cs)
+Faster spawntime between waves (Enemyspawner.cs)
+faster shooting speed (in enemy.cs)
+
 
 
 
