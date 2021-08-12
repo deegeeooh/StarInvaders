@@ -37,16 +37,23 @@ public class Enemy : MonoBehaviour
     [Range(0f, 1f)] [SerializeField] float volumeHit = 1f;                      // cap the range
     [Range(0f, 1f)] [SerializeField] float volumeExplosion = 1f;
 
-    Player player;
-    AudioSource myAudiosource;
-    GameSession gamesession;
-    ScoreDisplay scoreDisplay;
-
+    //init variables
     float positiveX, positiveY;
     float playerVectorX, playerVectorY;
     Vector2 normalisedVectorToPlayer;
     bool isDead = false;
+    //gameLoop multiplier variables
+    float gameLoopShootingSpeedFactor;
+    bool levelCleared;
+
+
+    //cache references
+    Player player;
+    AudioSource myAudiosource;
+    GameSession gamesession;
+    ScoreDisplay scoreDisplay;
     
+
 
     // Start is called before the first frame updatea
     void Start()
@@ -56,6 +63,8 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<Player>();
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
         gamesession = FindObjectOfType<GameSession>();
+        gameLoopShootingSpeedFactor = gamesession.GetLoopShootingSpeedFactor();
+
     }
 
     // Update is called once per frame
@@ -80,17 +89,17 @@ public class Enemy : MonoBehaviour
     private void FireProjectile(int numberOfProjectiles, bool up, bool down, bool round, bool atPlayer)
     {
 
-        int numberOfShotChoices = 0;
+        //int numberOfShotChoices = 0;                  //TODO enemy shooting: select multiple options simultanuously
 
-        if (up) { numberOfShotChoices++; }
-        if (down) { numberOfShotChoices++; }
-        if (round) { numberOfShotChoices++; }
-        if (atPlayer) { numberOfShotChoices++; }
+        //if (up) { numberOfShotChoices++; }
+        //if (down) { numberOfShotChoices++; }
+        //if (round) { numberOfShotChoices++; }
+        //if (atPlayer) { numberOfShotChoices++; }
 
-        if (numberOfShotChoices > 1)
-        {
-            var randomShotChoice = Random.Range(1, numberOfShotChoices);
-        }
+        //if (numberOfShotChoices > 1)
+        //{
+        //    var randomShotChoice = Random.Range(1, numberOfShotChoices);
+        //}
         
 
 
@@ -122,14 +131,14 @@ public class Enemy : MonoBehaviour
                 //new Vector2((projectileSpeed + Random.Range(0, randomFactor)) * (positiveX + Random.Range(-spread, spread)),            // randomfactor for speed, spread for spread
                 //((projectileSpeed + Random.Range(0, randomFactor)) * (positiveY + Random.Range(-spread, spread))));
 
-                new Vector2(xComponent, yComponent).normalized * (projectileSpeed + Random.Range(0, randomFactor));
+                new Vector2(xComponent, yComponent).normalized * (projectileSpeed + Random.Range(0, randomFactor) + gameLoopShootingSpeedFactor);
             }
             else if (up) 
             {
                 if (atPlayer && FindObjectsOfType<Player>().Length > 0)
                 {
 
-                    shot.GetComponent<Rigidbody2D>().velocity = -normalisedVectorToPlayer * (projectileSpeed + Random.Range(0, randomFactor));
+                    shot.GetComponent<Rigidbody2D>().velocity = -normalisedVectorToPlayer * (projectileSpeed + Random.Range(0, randomFactor) + gameLoopShootingSpeedFactor);
 
                 }
                 else
@@ -137,21 +146,21 @@ public class Enemy : MonoBehaviour
                     float upX = Random.Range(-spread, spread);
                     float upY = projectileSpeed + Random.Range(0, randomFactor);
 
-                    shot.GetComponent<Rigidbody2D>().velocity = new Vector2(upX, upY).normalized * (projectileSpeed + Random.Range(0, randomFactor)); 
+                    shot.GetComponent<Rigidbody2D>().velocity = new Vector2(upX, upY).normalized * (projectileSpeed + Random.Range(0, randomFactor) + gameLoopShootingSpeedFactor); 
                 }
             }
             else if (down)
             {
                 if (atPlayer && FindObjectsOfType<Player>().Length > 0)
                 {
-                    shot.GetComponent<Rigidbody2D>().velocity = -normalisedVectorToPlayer * (projectileSpeed+ Random.Range(0, randomFactor));
+                    shot.GetComponent<Rigidbody2D>().velocity = -normalisedVectorToPlayer * (projectileSpeed+ Random.Range(0, randomFactor) + gameLoopShootingSpeedFactor);
                 }
                 else
                 {
                     float downX = Random.Range(-spread, spread);
                     float downY = -projectileSpeed + Random.Range(0, randomFactor);
 
-                    shot.GetComponent<Rigidbody2D>().velocity = new Vector2(downX, downY).normalized * (projectileSpeed + Random.Range(0, randomFactor));
+                    shot.GetComponent<Rigidbody2D>().velocity = new Vector2(downX, downY).normalized * (projectileSpeed + Random.Range(0, randomFactor) + gameLoopShootingSpeedFactor);
                 }
             }
             
@@ -226,12 +235,34 @@ public class Enemy : MonoBehaviour
             AudioSource.PlayClipAtPoint(soundDestroyed, Camera.main.transform.position,volumeExplosion);
             RollLoot(); 
 
-            // Destroy(gameObject,0.1f);
             gamesession.AddToscore(enemyScoreValue);
             gamesession.AddToNumberOfKills();
+
+            gamesession.AddToEnemiesKilledInLevel();
+            gamesession.CheckIfLevelCompleted();
             Destroy(gameObject);
+            
+
         }
     }
+
+    //public bool CheckRemainingEnemies()                        // Did we kill everything in the current Scene?
+    //{
+    //    int numberofSpawners = FindObjectsOfType<EnemySpawner>().Length;
+    //    int numberofEnemiesLeft = FindObjectsOfType<Enemy>().Length;
+    //    //Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
+
+    //    if (numberofEnemiesLeft + numberofSpawners == 0)
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+
+    //}
+
 
     private void RollLoot()
     {
