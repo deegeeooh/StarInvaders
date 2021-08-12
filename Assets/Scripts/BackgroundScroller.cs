@@ -5,9 +5,11 @@ using UnityEngine;
 public class BackgroundScroller : MonoBehaviour
 {
 
-    [SerializeField] float backgroundScrollSpeed = 5.0f;
+    [SerializeField] float backgroundScrollSpeed = 0.01f;
     Material myMaterial;
     Vector2 offSet;
+    float loopGameSpeed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,4 +39,16 @@ public class BackgroundScroller : MonoBehaviour
     {
         myMaterial.mainTextureOffset += offSet * Time.deltaTime;
     }
+
+    public void SetGameSpeed(float gamespeed)
+    {
+        offSet = new Vector2(0f, gamespeed);
+    }
+
+    public void Reset()
+    {
+        Destroy(gameObject);
+    }
+
+
 }
