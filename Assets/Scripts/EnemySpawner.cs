@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] bool singleLoop = false;                                                       // for a single repeated loop for a number of times
     [SerializeField] int numberOfSingleLoops = 1;
     [Header("Wave Randomizer Settings")]
+    [SerializeField] bool scaleWithLoops = false;
     [SerializeField] bool randomizeWaves = false;
     [SerializeField] bool rngTimeBetweenWaves = false;
     [SerializeField] float mintimeBetweenWaves = 0.5f;
@@ -23,11 +24,14 @@ public class EnemySpawner : MonoBehaviour
     int startingWave = 0;
     int numberOfEnemiesToSpawn;
     // public int loop = 0;
-    
+    GameSession gameSession;
 
    public IEnumerator Start()
     
     {
+        gameSession = FindObjectOfType<GameSession>();
+        gameSession.AddToSpawnersInLevel(1);
+        gameSession.CheckIfLevelCompleted();
         do
         {
             yield return StartCoroutine(WaitForSeconds(timeBeforeStarting));
@@ -50,9 +54,14 @@ public class EnemySpawner : MonoBehaviour
             //
         }
         while (infiniteLoop);
-        //Debug.Log("end level");
-        Destroy(gameObject);                          // When the spawner is done, destroy the spawner so we can check if 
-    }                                                 // the scene is completed in player.cs when no spawners are left
+        Debug.Log("end level");
+        gameSession.AddToSpawnersInLevel(-1);
+        gameSession.CheckIfLevelCompleted();
+        Destroy(gameObject);
+        
+        
+        
+    }                                                 
 
 
     private IEnumerator SpawnAllWaves()     //TODO: add single waves, time between waves, time before start
@@ -89,6 +98,12 @@ public class EnemySpawner : MonoBehaviour
             numberOfEnemiesToSpawn += Random.Range(minExtraEnemies, maxnExtraEnemies + 1);
         }
 
+        if (scaleWithLoops)
+        {
+            
+            numberOfEnemiesToSpawn += gameSession.GetCurrentGameLoop()-1;
+        }
+
         for (int enemyCount = 0; enemyCount < numberOfEnemiesToSpawn; enemyCount++)
         {
             //Debug.Log("NumberofEnemies " + waveConfig.GetNumberOfEnemies());
@@ -100,7 +115,7 @@ public class EnemySpawner : MonoBehaviour
             // Debug.Log("Enemy instantiated: " + enemyCount + " of: " + waveConfig.GetNumberOfEnemies());
 
             newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig,singleLoop,numberOfSingleLoops);
-                
+            gameSession.AddToEnemiesSpawnedInLevel();                // Add 1 to enemies in level     
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
         }
     }
