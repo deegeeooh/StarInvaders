@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField] float movementRestrictionY_Top;
     [SerializeField] float movementRestrictionY_Bottom;
     [Header("Player stats")]
-    //[SerializeField] int health = 200;
-    [SerializeField] int health = 3;
     [SerializeField] bool invulnerable = false;
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
@@ -53,6 +51,8 @@ public class Player : MonoBehaviour
     int healthRemaining;                                        // you initialise here but can't assign, that's in a method 
     int projectilesPerShot = 1;
     int extraBullitsOnScreen = 0;
+    bool levelCleared;
+
 
     //cache references
 
@@ -69,10 +69,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-       
-        goldPot = FindObjectOfType<GoldPot>();
         gameSession = FindObjectOfType<GameSession>();
+        invulnerable = gameSession.IsPlayerInvulnarable();
+        
+        goldPot = FindObjectOfType<GoldPot>();
         healthRemaining = gameSession.GetHealthRemaining();                                 // introducing healtRemaining so we can reset to health;
         SetupMoveBoundaries();                                      // when dying
         
@@ -88,39 +88,47 @@ public class Player : MonoBehaviour
         }
         else
         {
-                       
-
-            
             DontDestroyOnLoad(gameObject);
-           
                 
         }
 
     }
+
+    public void SetPlayerInvulnerable(bool isplayerinvulnarable)
+    {
+        invulnerable = isplayerinvulnarable;
+    }
+
+
 
     // Update is called once per frame
     void Update()
     {
         Move();
         Fire();
-        CheckRemainingEnemies();
-    }
-
-    
-    private void CheckRemainingEnemies()                        // Did we kill everything in the current Scene?
-    {
-        int numberofSpawners = FindObjectsOfType<EnemySpawner>().Length;            
-        int numberofEnemiesLeft = FindObjectsOfType<Enemy>().Length;
-        //Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
-        if (numberofEnemiesLeft + numberofSpawners == 0)
+        if (Input.GetKeyDown(KeyCode.Alpha3 ))
         {
-            FindObjectOfType<Levels>().LoadNextScene();     
-            
-
+            tripleLaser = true;
+            doubleLaser = false;
+            singleLaser = false;
         }
-        
-
+        //CheckRemainingEnemies();
     }
+
+    //private void CheckRemainingEnemies()                        // Did we kill everything in the current Scene?
+    //{
+    //    int numberofSpawners = FindObjectsOfType<EnemySpawner>().Length;
+    //    int numberofEnemiesLeft = FindObjectsOfType<Enemy>().Length;
+    //    //Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
+
+    //    if (numberofEnemiesLeft + numberofSpawners == 0 && !levelCleared)
+    //    {
+    //        levelCleared = true;
+    //        FindObjectOfType<Levels>().LoadNextScene();
+    //    }
+
+    //}
+
 
     private void Fire()
     {
