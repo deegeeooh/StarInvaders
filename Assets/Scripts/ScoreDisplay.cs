@@ -7,16 +7,15 @@ using System;
 public class ScoreDisplay : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI scoreGameLoopMultiplierText;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] TextMeshProUGUI shipsRemainingText;
     [SerializeField] TextMeshProUGUI goldText;
 
     // init variables
 
-    //[SerializeField] int currentScore;
-    //[SerializeField] int currentLevel;
-    //[SerializeField] int shipsRemaining;
-
+    int currentGameLoop = 1;
+    string scoringMultiplier;
     int counter;
 
     // cache references
@@ -28,6 +27,8 @@ public class ScoreDisplay : MonoBehaviour
     void Start()
     {
         gameSession = FindObjectOfType<GameSession>();
+        scoringMultiplier = gameSession.GetLoopScoringMultiplier().ToString();
+        PrintGameLoopMultiplier();
 
     }
 
@@ -65,6 +66,11 @@ public class ScoreDisplay : MonoBehaviour
     public void PrintLevel()
     {
         levelText.text = gameSession.GetCurrentLevel().ToString();
+    }
+
+    public void PrintGameLoopMultiplier()
+    {
+        scoreGameLoopMultiplierText.text = scoringMultiplier + " x";
     }
 
 
