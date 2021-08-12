@@ -7,20 +7,27 @@ using Random = UnityEngine.Random;
 public class EnemyPathing : MonoBehaviour
 {
     WaveConfig waveConfig;
+    GameSession gameSession;
     int waypointIndex = 0;
     List<Transform> waypoints;
 
     int loopsCompleted = 0;
     bool singleLoop;
     int numberOfLoops;
+    // gameLoop variables
+    float gameLoopMovementspeedFactor = 0;
 
 
     // Player player;                                                       *** for player position
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
+        gameSession = FindObjectOfType<GameSession>();
+        gameLoopMovementspeedFactor = gameSession.GetLoopMovementSpeedFactor();          // gameLoop speedfactor
+
+
         // player = FindObjectOfType<Player>();                               *** for player position
         waypoints = waveConfig.GetWayPoints();
         // int a = waypoints.Count;
@@ -53,7 +60,7 @@ public class EnemyPathing : MonoBehaviour
             //Vector3 targetPosition = MoveToNextWaypoint();
             
             var targetPosition = waypoints[waypointIndex].transform.position;   //TODO add randomization to targetposition.
-            var movementThisFrame = waveConfig.GetMoveSpeed() * Time.deltaTime;                                                 // using Time.deltaTime which is the interval time since the last frame update
+            var movementThisFrame = (waveConfig.GetMoveSpeed()+gameLoopMovementspeedFactor) * Time.deltaTime;                                                 // using Time.deltaTime which is the interval time since the last frame update
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
            
 
@@ -84,9 +91,11 @@ public class EnemyPathing : MonoBehaviour
         }
         else //if (!singleLoop)
         {
-            Destroy(gameObject);                                                                                // no more waypoints? destroy this gameObject
             FindObjectOfType<GameSession>().AddToNumberOfEscaped();          // escaped enemies
-            //Debug.Log("Destroyed ");
+            gameSession.AddToEnemiesKilledInLevel();
+            gameSession.CheckIfLevelCompleted();
+            Destroy(gameObject);                                                                                // no more waypoints? destroy this gameObject
+                        //Debug.Log("Destroyed ");
         }
 
     }
