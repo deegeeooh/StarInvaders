@@ -16,10 +16,32 @@ public class GameSession : MonoBehaviour
     [SerializeField] int pointsPerHit = 5;
     [SerializeField] int escapedEnemies = 0;
     [SerializeField] int goldValue = 0;
-    [SerializeField] bool music = true;                 //TODO make music selectable
+    [Header("Settings")]
+    [SerializeField] bool music = true;
+    [SerializeField] bool playerInvulnarable = false;
+    [Header("Loop Game")]
+    [SerializeField] bool loopGame = false;
+    [SerializeField] float gameSpeedFactor = 0.01f;
+    [SerializeField] float movementspeedFactor = 0.1f;
+    [SerializeField] float shootingspeedFactor = 0.1f;
+    [SerializeField] float scoringMultiplier = 0.1f;
+    [SerializeField] float multiplier = 2f;
+    [SerializeField] GameObject gameLoopSprite;
     
 
-    // state variables
+
+    //init variables
+    int currentGameLoop = 1;
+    float setGameSpeed;
+    float setMovementSpeed;
+    float setShootingSpeed;
+    float setScoringMultiplier;
+    int enemiesSpawnedInCurrentLevel;
+    int enemiesKilledInCurrentLevel;
+    int spawnersActiveInLevel;
+    bool isEnemiesRemainingInCurrentLvl = true;
+    bool isSpawnersRemaininginCurrentLvl = true;
+
 
     private void Awake()
     {
@@ -42,11 +64,194 @@ public class GameSession : MonoBehaviour
 
     private void Start()
     {
+        setScoringMultiplier = 1 + ((currentGameLoop - 1) * scoringMultiplier);         // multiplier = 1 on first loop
         CheckHighscore();
         AddToscore(0);
         AddToHealthRemaining(0);
+        //CheckIfLevelCompleted();
         
     }
+
+    public void AddToGameLoop()
+    {
+        currentGameLoop++;
+        if (currentGameLoop > 3)                        // You made it !
+        {
+            FindObjectOfType<Levels>().LoadGameOverScene();
+        }
+
+        setGameSpeed = currentGameLoop * gameSpeedFactor;
+        setMovementSpeed = movementspeedFactor * (currentGameLoop * multiplier);
+        setShootingSpeed = shootingspeedFactor * (currentGameLoop * multiplier);
+        setScoringMultiplier = 1+ ((currentGameLoop-1) * scoringMultiplier * multiplier);
+
+        Debug.Log(
+            "CurrentGameLoop: " + currentGameLoop +
+            "gameSpeedFactor: " + setGameSpeed +
+            "movementspeedFactor: " + setMovementSpeed +
+            "shootingspeedFactor: " + setShootingSpeed +
+            "scoringMultiplier: " + setScoringMultiplier);
+
+        FindObjectOfType<BackgroundScroller>().SetGameSpeed(setGameSpeed);
+        SetLevel(1);
+
+        if (currentGameLoop > 1)
+        {
+            GameObject sprite = Instantiate(gameLoopSprite, new Vector2(5.2f - ((currentGameLoop - 1) * 0.3f), -9.257f), Quaternion.identity);
+            sprite.transform.parent = gameObject.transform;
+        }
+
+    }
+
+    public void CheckIfLevelCompleted()                        // Did we kill everything in the current Scene?
+    {
+        
+        Debug.Log(" EnemiesLeft ? " + isEnemiesRemainingInCurrentLvl + " Spawners? " + isSpawnersRemaininginCurrentLvl);
+
+        if (spawnersActiveInLevel == 0)
+            {
+                SetSpawnersRemainingInLvl(false);
+            }
+        else
+            {
+                SetSpawnersRemainingInLvl(true);
+            }
+
+
+        if (enemiesSpawnedInCurrentLevel - enemiesKilledInCurrentLevel == 0)
+            {
+
+                Debug.Log("SETTING ENEMIES FALSE!");
+                SetEnemiesRemainingInLvl(false);
+            }
+        else
+            {
+                SetEnemiesRemainingInLvl(true);
+            }
+
+        
+        //Debug.Log("Spawners active "+ numberofSpawners+"enemies left: " +numberofEnemiesLeft);
+
+        if (!isEnemiesRemainingInCurrentLvl && !isSpawnersRemaininginCurrentLvl)
+            {
+                FindObjectOfType<Levels>().LoadNextScene();
+                ResetEnemiesAndSpawnersInLevel();           
+            
+            }
+
+    }
+
+
+    public void SetEnemiesRemainingInLvl(bool enemiesRemaining)
+    {
+        isEnemiesRemainingInCurrentLvl = enemiesRemaining;
+    }
+
+    public void SetSpawnersRemainingInLvl(bool spawnersRemaining)
+    {
+        isSpawnersRemaininginCurrentLvl = spawnersRemaining;
+    }
+
+    public void AddToEnemiesSpawnedInLevel()
+    {
+        Debug.Log("EnemyRem" + (enemiesSpawnedInCurrentLevel - enemiesKilledInCurrentLevel) + "EnemySpawned " + enemiesSpawnedInCurrentLevel + "Spawners: "+ spawnersActiveInLevel);
+        Debug.Log("EnemiesLeft? " + isEnemiesRemainingInCurrentLvl + "Spawners? " + isSpawnersRemaininginCurrentLvl);
+        enemiesSpawnedInCurrentLevel++;
+    }
+    
+    public void AddToEnemiesKilledInLevel()
+    {
+        Debug.Log("EnemyRem" + (enemiesSpawnedInCurrentLevel - enemiesKilledInCurrentLevel) + "EnemySpawned " + enemiesSpawnedInCurrentLevel + "Spawners: " + spawnersActiveInLevel);
+        Debug.Log("EnemiesLeft? " + isEnemiesRemainingInCurrentLvl + "Spawners? " + isSpawnersRemaininginCurrentLvl);
+        enemiesKilledInCurrentLevel++;
+    }
+
+
+    public void AddToSpawnersInLevel(int spawners)
+    {
+        spawnersActiveInLevel += spawners;
+
+    }
+
+    public void ResetEnemiesAndSpawnersInLevel()
+    {
+        enemiesSpawnedInCurrentLevel = 0;
+        enemiesKilledInCurrentLevel = 0;
+        spawnersActiveInLevel = 0;
+        SetSpawnersRemainingInLvl(false);
+        SetEnemiesRemainingInLvl(false);
+
+    }
+
+
+    void Update()
+     {
+        if (Input.GetKeyDown(KeyCode.DownArrow))            // reset highscore
+        {
+            PlayerPrefs.SetInt("highScore", 0);
+            highScore = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))         // next level    
+        {
+            FindObjectOfType<Levels>().LoadNextScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))                   // toggle music
+        {
+            if (music)
+            {
+                music = false;
+            }
+            else if (!music) 
+            {
+                music = true;
+            }
+            if (FindObjectOfType<MusicPlayerLevel>() != null)
+            {
+                FindObjectOfType<MusicPlayerLevel>().GetComponent<AudioSource>().mute = music;
+            }
+
+            if (FindObjectOfType<MusicPlayer>() != null)
+            {
+                FindObjectOfType<MusicPlayer>().GetComponent<AudioSource>().mute = music;
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (playerInvulnarable)
+            {
+                playerInvulnarable = false;
+            }
+            else
+            {
+                playerInvulnarable = true;
+            }
+            FindObjectOfType<Player>().SetPlayerInvulnerable(playerInvulnarable);
+        }
+
+        if (Input.GetButtonDown("Start"))
+        {
+            if (currentLevel == 0)
+            {
+                FindObjectOfType<Levels>().LoadFirstLevel();
+            }
+            else if (FindObjectOfType<Levels>().GetCurrentSceneName() == "GameOver")
+            {
+                FindObjectOfType<Levels>().LoadStartScene();
+            } 
+            
+        }
+
+
+        //CheckIfLevelCompleted();
+
+    }
+        
+       
+
 
     public bool CheckHighscore()
     {
@@ -65,19 +270,17 @@ public class GameSession : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.DownArrow))            // reset highscore
-        {
-            PlayerPrefs.SetInt("highScore", 0);
-            highScore = 0;
-        }
-       
-    }
+    
     public void AddToscore(int score)
     {
-        currentScore += score;
         
+        currentScore += Mathf.RoundToInt(score * setScoringMultiplier);
+        
+    }
+
+    public void SetScore(int score)
+    {
+        currentScore = score;
     }
 
     public void AddToGold(int value)
@@ -92,6 +295,13 @@ public class GameSession : MonoBehaviour
         
     }
 
+    public void SetLevel(int level)
+    {
+        currentLevel = level;
+    }
+    
+    
+    
     public void AddToLevel()
     {
         currentLevel++;
@@ -147,6 +357,14 @@ public class GameSession : MonoBehaviour
 
     }
 
+    public void SetCurrentGameLoop(int loop)
+    {
+        currentGameLoop = loop;
+
+    }
+
+    
+   
     public int GetScore() { return currentScore; }
 
     public int GetShipsRemaining () { return healthRemaining; }
@@ -168,5 +386,26 @@ public class GameSession : MonoBehaviour
     public int GetEnemiesEscaped() { return escapedEnemies; }
 
     public bool MusicOn() { return music; }
+
+    public bool IsPlayerInvulnarable() { return playerInvulnarable; }
+
+    /// <summary>
+    /// Game loop randomizer 
+    /// </summary>
+
+    public bool Loopgame() { return loopGame; }
+
+    public float GetLoopGameSpeedFactor() { return setGameSpeed; }
+
+    public float GetLoopMovementSpeedFactor() { return setMovementSpeed; }
+
+    public float GetLoopShootingSpeedFactor() { return setShootingSpeed; }
+
+    public float GetLoopMultiplier() { return multiplier; }
+
+    public float GetLoopScoringMultiplier () { return setScoringMultiplier; }
+
+    public int GetCurrentGameLoop () { return currentGameLoop; }
+
 
 }
