@@ -145,31 +145,6 @@ Bosses
 
 make the spawning of waves completely scriptable 
 
-=============================
-temp gameplay: LOOP the game
-=============================
-Hooks:
-- Levels.cs (current gamespeedfactor etc)
-- gameSession (multipliers and bool yes/no)
-- backgroundScroller (scrollingspeed)
-- Enemypathing.cs (enemy movement speed)
-- Enemy.cs
-
-
-Reloopfactor for:
-
-gameSession:
-	bool yes/no
-	gamespeed factor 
-
-check in load levels: life left before gameover screen
-
-
-
-Enemy fly speed (in enemypathing.cs)
-Faster spawntime between waves (Enemyspawner.cs)
-faster shooting speed (in enemy.cs)
-
 
 
 
