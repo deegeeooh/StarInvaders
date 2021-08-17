@@ -33,14 +33,14 @@ public class Levels : MonoBehaviour
 
     public void LoadNextScene()
     {
-
+        currentGameLoop = gamesession.GetCurrentGameLoop();
 
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         //Debug.Log("Levels: currentSceneIndex: " + currentSceneIndex);
 
         if (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings - 1) // We are entering the GameOver Screen but haven't died
         {
-            if (gamesession.Loopgame())
+            if (gamesession.Loopgame() && currentGameLoop < 3)
             {
                 if (goingtoNextGameLoop == false)           // so CheckRemainingEnemies won't keep executing this while in Coroutine
                 {

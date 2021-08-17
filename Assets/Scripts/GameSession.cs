@@ -75,11 +75,6 @@ public class GameSession : MonoBehaviour
     public void AddToGameLoop()
     {
         currentGameLoop++;
-        if (currentGameLoop > 3)                        // You made it !
-        {
-            FindObjectOfType<Levels>().LoadGameOverScene();
-        }
-
         setGameSpeed = currentGameLoop * gameSpeedFactor;
         setMovementSpeed = movementspeedFactor * (currentGameLoop * multiplier);
         setShootingSpeed = shootingspeedFactor * (currentGameLoop * multiplier);
