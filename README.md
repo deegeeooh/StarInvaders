@@ -20,6 +20,11 @@ The game currently features:
 
 The game runs in classic arcade 4:3 aspect ratio in 1024x768 resolion in a window (Alt-Enter to switch fullscreen)
 
+Installation (Windows desktop build)
+====================================
+
+Download and unzip the binary from the latest release, start with Starinvaders.exe
+
 Todo:
 
 - Splashscreen
@@ -32,5 +37,5 @@ Todo:
 (to be implemented when I mastered additional methods I'm learning in current courses)
 
 Credits:
-Music by SketchyLogic https://opengameart.org/users/sketchylogic
+Music by SketchyLogic https://opengameart.org/users/sketchylogic 
 Several animated Sprites by Margyb! and deegeeooh
