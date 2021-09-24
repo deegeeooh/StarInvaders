@@ -18,6 +18,8 @@ The game currently features:
 - highscore saving
 - several shooting styles
 
+The game runs in classic arcade 4:3 aspect ratio in 1024x768 resolion in a window (Alt-Enter to switch fullscreen)
+
 Todo:
 
 - Splashscreen
