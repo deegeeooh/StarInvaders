@@ -87,7 +87,7 @@ config:
 {
 - Levels.cs (current gamespeedfactor etc)
 - gameSession 
-	multipliers and bool yes/no gamneloop
+	multipliers and bool yes/no gameloop
 	Checks if level is completed (CheckIfLevelCompleted)// it was in player in Update but this caused problems when true; it spammed the Coroutines in Levels
 		- Keeps track of number of spawners (Added and subtracted via EnemySpawners.cs
 		- Keeps track of spawned enemies (via Enemy.cs kills, enemypathing.cs )

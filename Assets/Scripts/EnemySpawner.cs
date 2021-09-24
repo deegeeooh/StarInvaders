@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         gameSession.CheckIfLevelCompleted();
         do
         {
-            yield return StartCoroutine(WaitForSeconds(timeBeforeStarting));
+            yield return StartCoroutine(WaitForSeconds(timeBeforeStarting));                        //TODO: does this work currently?
             yield return StartCoroutine(SpawnAllWaves());
 
             //    //var nmberofLoops = waveConfigs[startingWave].GetNumberOfLoops();                 // number of loops from the current Wave
@@ -59,8 +59,6 @@ public class EnemySpawner : MonoBehaviour
         gameSession.CheckIfLevelCompleted();
         Destroy(gameObject);
         
-        
-        
     }                                                 
 
 
@@ -74,6 +72,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 currentWave = waveConfigs[Random.Range(0, waveConfigs.Count)];
             }
+
             //Debug.Log("WaveConfigs.count: " + waveConfigs.Count + "waveindex " + waveIndex);
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
             
@@ -124,7 +123,6 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         
-
     }
 
 }

@@ -181,13 +181,13 @@ public class GameSession : MonoBehaviour
 
     void Update()
      {
-        if (Input.GetKeyDown(KeyCode.DownArrow))            // reset highscore
+        if (Input.GetKeyDown(KeyCode.Home))            // reset highscore 
         {
             PlayerPrefs.SetInt("highScore", 0);
             highScore = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))         // next level    
+        if (Input.GetKeyDown(KeyCode.PageDown))         // next level    
         {
             FindObjectOfType<Levels>().LoadNextScene();
         }
