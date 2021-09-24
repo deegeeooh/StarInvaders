@@ -1,7 +1,8 @@
 # StarInvaders
  Unity 2D prototype Arcade shooter 
 
-Starinvaders is inpired on the classic vertical arcade shoot'em-ups from the 80's
+Starinvaders is inpired on the classic hardcore vertical arcade shoot'em-ups from the 80's with
+the main goal revolving around getting the highest score possible.
 
 This prototype is developed as part of the GameDev.TV 2D Unity/C# course, with several additions
 
