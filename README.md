@@ -39,4 +39,5 @@ Todo:
 
 Credits:
 Music by SketchyLogic https://opengameart.org/users/sketchylogic 
+
 Several animated Sprites by Margyb! and deegeeooh
