@@ -10,6 +10,7 @@ public class laser : MonoBehaviour
 
     AudioSource myAudiosource;
 
+    
     // Start is called before the first frame update
     private void Awake()
     {
@@ -31,8 +32,7 @@ public class laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
 
 }
