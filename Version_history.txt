@@ -1,7 +1,8 @@
 Star Invaders
-=============
 
-2D shooter prototype as part of the GameWeb.TV Unity 2D /C# course
+2D arcadelike shooter prototype as part of the GameWeb.TV Unity 2D /C# course
+
+=============
 
 Basic functionalities:
 
@@ -122,6 +123,15 @@ Enemy Spawner:
 - found bug that increased the level; it was the random routine in enemy spawner 
 			currentWave = waveConfigs[Random.Range(0, waveConfigs.Count) -1 ]; the -1 one was removed
 
+0.6 Alpha 02/11/2021
+
+Several small tweaks, to make completing the gameloops to the end actually possible: (not actively working on this atm)
+
+- upgrades and coin drops add to score
+- added time played and number of tries to stats
+- tweaked upgrade drop to add damage to laserfire and better increase in overal speed
+
+
 
 TODO // Ideas
 ====
@@ -143,7 +153,10 @@ a kinda shop where you fly over things.
 Boss levels
 Bosses
 
-make the spawning of waves completely scriptable 
+make the spawning of waves and loot completely scriptable via json files
+more variety and randomness to pattern
+
+
 
 
 
