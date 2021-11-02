@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Globalization;
 public class GameSession : MonoBehaviour
 {
       
@@ -27,7 +27,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] float scoringMultiplier = 0.1f;
     [SerializeField] float multiplier = 2f;
     [SerializeField] GameObject gameLoopSprite;
-    
+
 
 
     //init variables
@@ -41,6 +41,9 @@ public class GameSession : MonoBehaviour
     int spawnersActiveInLevel;
     bool isEnemiesRemainingInCurrentLvl = true;
     bool isSpawnersRemaininginCurrentLvl = true;
+    DateTime startTime;
+    
+    
 
 
     private void Awake()
@@ -68,8 +71,11 @@ public class GameSession : MonoBehaviour
         CheckHighscore();
         AddToscore(0);
         AddToHealthRemaining(0);
+        startTime = DateTime.Now;
+
         //CheckIfLevelCompleted();
-        
+
+
     }
 
     public void AddToGameLoop()
@@ -184,6 +190,10 @@ public class GameSession : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Home))            // reset highscore 
         {
             PlayerPrefs.SetInt("highScore", 0);
+            PlayerPrefs.SetInt("gameplayed", 0);
+            PlayerPrefs.SetInt("gamesCompleted", 0); 
+
+
             highScore = 0;
         }
 
@@ -263,6 +273,12 @@ public class GameSession : MonoBehaviour
             return false;
         }
     }
+
+    
+
+    
+
+
 
     // Update is called once per frame
     
@@ -358,8 +374,29 @@ public class GameSession : MonoBehaviour
 
     }
 
-    
-   
+    //public SetTotalPlaytime(DateTime aDatetime)
+    //{
+    //    var timePlayedThisSession = (aDatetime - startTime);
+
+
+    //    PlayerPrefs.GetString("totalTimePlayed", totalTimePlayed);
+
+    //    if (DateTime.TryParse(totalTimePlayed, out DateTime aResult))
+    //    {
+    //        var newTotal = timePlayedThisSession.ToString("hh:ss") + aResult.ToString("hh:ss");
+    //        PlayerPrefs.SetString(totalTimePlayed, newTotal);
+    //    }
+    //    else
+    //    {
+    //        var newTotal = timePlayedThisSession.ToString("c");
+    //        PlayerPrefs.SetString(totalTimePlayed, newTotal);
+    //    }
+
+    //    return timePlayedThisSession.ToString();
+    //}
+
+    public DateTime GetStarTime() { return startTime; }
+
     public int GetScore() { return currentScore; }
 
     public int GetShipsRemaining () { return healthRemaining; }

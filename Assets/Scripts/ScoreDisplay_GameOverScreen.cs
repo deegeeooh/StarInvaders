@@ -1,55 +1,55 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using TMPro;
+using UnityEngine;
 
 public class ScoreDisplay_GameOverScreen : MonoBehaviour
 {
-
-    [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI finalScoreText;
-    [SerializeField] TextMeshProUGUI goldText;
-    [SerializeField] TextMeshProUGUI goldBonus;
-    [SerializeField] TextMeshProUGUI accuracyBonus;
-    [SerializeField] TextMeshProUGUI healthBonus;
-    [SerializeField] TextMeshProUGUI healthText;
-    [SerializeField] TextMeshProUGUI levelText;
-    [SerializeField] TextMeshProUGUI highscoreText;
-    [SerializeField] TextMeshProUGUI numberOfKillsText;
-    [SerializeField] TextMeshProUGUI numberOfEnemiesEscaped;
-    [SerializeField] TextMeshProUGUI numberOfShotsText;
-    [SerializeField] TextMeshProUGUI numberOfHitsText;
-    [SerializeField] TextMeshProUGUI accuracyText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private TextMeshProUGUI goldBonus;
+    [SerializeField] private TextMeshProUGUI accuracyBonus;
+    [SerializeField] private TextMeshProUGUI healthBonus;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI highscoreText;
+    [SerializeField] private TextMeshProUGUI numberOfKillsText;
+    [SerializeField] private TextMeshProUGUI numberOfEnemiesEscaped;
+    [SerializeField] private TextMeshProUGUI numberOfShotsText;
+    [SerializeField] private TextMeshProUGUI numberOfHitsText;
+    [SerializeField] private TextMeshProUGUI accuracyText;
+    [SerializeField] private TextMeshProUGUI totalTimePlayedText;
+    [SerializeField] private TextMeshProUGUI gamesPlayedText;
 
     // init variables
 
-    [SerializeField] int highScore;
-    [SerializeField] int currentScore;
-    [SerializeField] int currentLevel;
-    [SerializeField] int numberOfKills;
-    [SerializeField] int numberOfShotsFired;
-    [SerializeField] int numberOfHits;
+    [SerializeField] private int highScore;
+    [SerializeField] private int currentScore;
+    [SerializeField] private int currentLevel;
+    [SerializeField] private int numberOfKills;
+    [SerializeField] private int numberOfShotsFired;
+    [SerializeField] private int numberOfHits;
 
-
-    int counter;
-    int currentGameLoop;
+    private int counter;
+    private int currentGameLoop;
+    private DateTime endTime;
+    private int gamesPlayed;
+    private int gamesCompleted;
+    //private string totalTimePlayed;
 
     // cache references
-       
-    GameSession gameSession;
-    GameObject player;
-    GameObject music;
 
+    private GameSession gameSession;
+    private GameObject player;
+    private GameObject music;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
         gameSession = FindObjectOfType<GameSession>();
         currentGameLoop = gameSession.GetCurrentGameLoop();
         if (FindObjectsOfType<Player>().Length == 1)             // if there's a player left, destroy it
         {
-
             Debug.Log("PLayer found");
             player = GameObject.FindWithTag("Player");
             Destroy(player);
@@ -59,12 +59,16 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
         {
             music = GameObject.Find("MusicPlayerLevel");
             Destroy(music);
-
         }
         FindObjectOfType<GameSession>().UnLockMouseCursor();
 
+        endTime = DateTime.Now;
+        var timespan = endTime - gameSession.GetStarTime();
+        UpdatePlayerPrefs();
+        var timePassedString = timespan.Minutes.ToString().Trim() + ":" + timespan.Seconds.ToString().Trim();
+        totalTimePlayedText.text = timePassedString;
+        gamesPlayedText.text = gamesPlayed.ToString();
         
-
 
         healthText.text = gameSession.GetHealthRemaining().ToString();
         goldText.text = gameSession.GetTotalGold().ToString();                  // text under Goldpot
@@ -85,24 +89,24 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
         }
         else
         {
-           accuracy = 0;
+            accuracy = 0;
         }
-        accuracyText.text = accuracy.ToString("000")+"%";
-        accuracyBonus.text = Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel()*250*currentGameLoop).ToString();                    //TODO: make better score bonuses
-        
-        
+        accuracyText.text = accuracy.ToString("000") + "%";
+        accuracyBonus.text = Mathf.RoundToInt((accuracy * (gameSession.GetCurrentLevel() + (currentGameLoop - 1) * 5))  
+                                                * gameSession.GetNumberOfKills() / 10 ).ToString();                    //TODO: make better score bonuses
+
         healthBonus.text = (gameSession.GetHealthRemaining() * 20 * currentGameLoop).ToString();
-       
+
         var total = (gameSession.GetScore() +
                          gameSession.GetTotalGold() +
                          gameSession.GetHealthRemaining() * 20 * currentGameLoop +
                          Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel() * 250 * currentGameLoop));
 
-        Debug.Log(gameSession.GetScore() +" "+
-                         gameSession.GetTotalGold() +" "+
-                         gameSession.GetHealthRemaining() * 20 * currentGameLoop + " "+
+        Debug.Log(gameSession.GetScore() + " " +
+                         gameSession.GetTotalGold() + " " +
+                         gameSession.GetHealthRemaining() * 20 * currentGameLoop + " " +
                          Mathf.RoundToInt(accuracy * 25 + gameSession.GetCurrentLevel() * 250 * currentGameLoop));
-        
+
         finalScoreText.text = total.ToString();
 
         gameSession.SetScore(total);
@@ -116,13 +120,22 @@ public class ScoreDisplay_GameOverScreen : MonoBehaviour
         {
             highscoreText.text = gameSession.GetHighScore().ToString();
         }
+    }
 
+    private void UpdatePlayerPrefs()
+    {
+        gamesPlayed = PlayerPrefs.GetInt("gameplayed", gamesPlayed);
+        gamesPlayed++;
+        PlayerPrefs.SetInt("gameplayed", gamesPlayed);
+        gamesCompleted = PlayerPrefs.GetInt("gamesCompleted", gamesCompleted);
+        if (gameSession.GetHealthRemaining() > 0)
+        {
+            gamesCompleted++;
+            PlayerPrefs.GetInt("gamesCompleted", gamesCompleted);
+        }
     }
 
     private void Update()
     {
-        
     }
-
-
 }
