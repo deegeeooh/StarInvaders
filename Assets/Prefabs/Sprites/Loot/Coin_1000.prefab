@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7299532509275435971}
   - component: {fileID: 8081005672598978151}
   m_Layer: 12
-  m_Name: Coin 1
+  m_Name: Coin_1000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,8 +160,9 @@ MonoBehaviour:
   shooter_double: 0
   life: 0
   health: 0
-  bonusScore: 0
+  bonusScore: 1
   powerUp: 0
+  special: 0
   value: 1000
   lootSound: {fileID: 8300000, guid: b96d2e5d7a2dcc341a289cc71b8b771b, type: 3}
   volume: 1

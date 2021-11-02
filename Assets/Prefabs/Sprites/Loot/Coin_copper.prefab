@@ -259,6 +259,6 @@ MonoBehaviour:
   bonusScore: 0
   powerUp: 0
   special: 1
-  value: 1
+  value: 1000
   lootSound: {fileID: 8300000, guid: b96d2e5d7a2dcc341a289cc71b8b771b, type: 3}
   volume: 1
