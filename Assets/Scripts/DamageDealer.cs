@@ -12,6 +12,13 @@ public class DamageDealer : MonoBehaviour
     {
         return damage;
     }
+
+    public void SetDamage(int aDamage)
+    {
+        damage = aDamage;
+    }
+
+
     public void Hit()
     {
         Destroy(gameObject);
